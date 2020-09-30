@@ -1,0 +1,1 @@
+This folder contains a version of the code files with 2 spaces as indentation.  This is used to create the code snippets in the manual.
