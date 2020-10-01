@@ -5,7 +5,7 @@ trigger:
       - master
   paths:
     include:
-      - '/basic_samples/OmfIngress/DotNet'
+      - "/"
 
 pr:
   branches:
@@ -13,10 +13,10 @@ pr:
       - master
   paths:
     include:
-      - '/basic_samples/OmfIngress/DotNet'
+      - "/"
 
 schedules:
-  - cron: '0 0 * * 0'
+  - cron: "0 0 * * 0"
     displayName: Weekly build
     branches:
       include:
@@ -24,41 +24,42 @@ schedules:
     always: true
 
 variables:
-  - template: '/miscellaneous/build_templates/variables.yml'
+  - template: "/miscellaneous/build_templates/variables.yml"
   - name: projPath
-    value: '/basic_samples/OmfIngress/DotNet'
+    value: "/"
   - name: CredFile
     value: appsettings.json
   - name: CredFileLibrary
-    value: product-readiness.omf_ing_dotnet.json
+    value: product-readiness.PI_af-gsg.json
   - name: analysisProject
-    value: OMF_Ing_DotNet
+    value: PI_AFGSG_DotNet
 
 jobs:
   - job: Tests
-    strategy:
-      matrix:
-        linux:
-          imageName: ubuntu-latest
-        windows:
-          imageName: windows-latest
     pool:
-      vmImage: $(imageName)
+      name: 00-OSIManaged-Test
+      demands: COMPUTERNAME -equals $(buildAgent)
     steps:
-      - template: '/miscellaneous/build_templates/config.yml'
+      - template: "/miscellaneous/build_templates/config.yml"
         parameters:
           fileOriginal: $(CredFile)
           fileLibrary: $(CredFileLibrary)
           filePath: $(projPath)/OmfIngressClientLibraries
 
+      - script: |
+          echo Install afdatabase
+          call "%pihome64%\af\afimport" "\\localhost\temp" /F:"AF Database - Green Power Company.xml" /P
+        workingDirectory: $(Build.SourcesDirectory)$(projPath)
+        displayName: "import database"
+
       - task: DotNetCoreCLI@2
-        displayName: 'Run tests'
+        displayName: "Run tests"
         inputs:
           command: test
           publishTestResults: true
-          testRunTitle: '$(Agent.JobName) on $(imageName)'
+          testRunTitle: "$(Agent.JobName) on $(imageName)"
           workingDirectory: $(Build.SourcesDirectory)$(projPath)/
 
-  - template: '/miscellaneous/build_templates/analysis.yml'
+  - template: "/miscellaneous/build_templates/analysis.yml"
     parameters:
       language: dotnet

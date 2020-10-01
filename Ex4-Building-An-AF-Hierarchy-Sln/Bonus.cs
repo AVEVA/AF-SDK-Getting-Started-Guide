@@ -200,7 +200,7 @@ namespace Ex4BuildingAnAFHierarchySln
             {
                 configuration = database.Elements.Add("Configuration");
                 AFAttribute name= configuration.Attributes.Add("PIDataArchiveName");
-                name.SetValue(database.DefaultPIServerName);
+                name.SetValue(new AFValue(database.DefaultPIServerName));
             }
                
             AFElement meters = database.Elements["Meters"];
