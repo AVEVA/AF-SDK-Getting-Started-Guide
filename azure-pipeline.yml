@@ -52,7 +52,7 @@ jobs:
         displayName: "dir"
         
       - script: |
-          %pihome64%\af\afimport" "\\OCSSAMPLESAPI01\Green Power Company" /F:"AF Database - Green Power Company.xml" /P
+          "%pihome64%\af\afimport" "\\OCSSAMPLESAPI01\Green Power Company" /F:"AF Database - Green Power Company.xml" /P
         workingDirectory: $(Build.SourcesDirectory)$(projPath)
         displayName: "import database2"
 
