@@ -30,7 +30,7 @@ variables:
   - name: CredFile
     value: appsettings.json
   - name: CredFileLibrary
-    value: product-readiness.PI_af-gsg.json
+    value: product-readiness.pi_afgsg_apsettings.json
   - name: analysisProject
     value: PI_AFGSG_DotNet
 
@@ -48,14 +48,22 @@ jobs:
 
       - script: |
           echo Install afdatabase
-          call "%pihome64%\af\afimport" "\\localhost\temp" /F:"AF Database - Green Power Company.xml" /P
+          call "%pihome64%\af\afimport" "\\OCSSAMPLESAPI01\Green Power Company" /F:"AF Database - Green Power Company.xml" /P
         workingDirectory: $(Build.SourcesDirectory)$(projPath)
         displayName: "import database"
 
       - task: DotNetCoreCLI@2
         displayName: "Run tests"
         inputs:
-          command: test
+          command: test --filter "Category~Solution"
+          publishTestResults: true
+          testRunTitle: "$(Agent.JobName) on $(imageName)"
+          workingDirectory: $(Build.SourcesDirectory)$(projPath)/
+
+      - task: DotNetCoreCLI@2
+        displayName: "Run Delete"
+        inputs:
+          command: test --filter "Category~Delete"
           publishTestResults: true
           testRunTitle: "$(Agent.JobName) on $(imageName)"
           workingDirectory: $(Build.SourcesDirectory)$(projPath)/

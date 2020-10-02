@@ -759,5 +759,14 @@ namespace Tests
                 Assert.Contains(", Meter003,", actual);
             }
         }
+
+
+
+        [Fact]
+        [Trait("Category", "Delete")]
+        public void Cleanup()
+        {
+            database.PISystem.Databases.Remove(database);
+        }
     }
 }
