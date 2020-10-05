@@ -26,7 +26,7 @@ schedules:
 variables:
   - template: "/miscellaneous/build_templates/variables.yml"
   - name: projPath
-    value: "/"
+    value: ""
   - name: CredFile
     value: appsettings.json
   - name: CredFileLibrary
@@ -44,7 +44,7 @@ jobs:
         parameters:
           fileOriginal: $(CredFile)
           fileLibrary: $(CredFileLibrary)
-          filePath: $(projPath)/OmfIngressClientLibraries
+          filePath: $(projPath)
 
       - script: |
           dir
@@ -59,7 +59,8 @@ jobs:
       - task: DotNetCoreCLI@2
         displayName: "Run tests"
         inputs:
-          command: test --filter "Category~Solution"
+          command: test
+          arguments: --filter Category=Solution
           publishTestResults: true
           testRunTitle: "$(Agent.JobName) on $(imageName)"
           workingDirectory: $(Build.SourcesDirectory)$(projPath)/
@@ -67,7 +68,8 @@ jobs:
       - task: DotNetCoreCLI@2
         displayName: "Run Delete"
         inputs:
-          command: test --filter "Category~Delete"
+          command: test
+          arguments: --filter Category=Solution
           publishTestResults: true
           testRunTitle: "$(Agent.JobName) on $(imageName)"
           workingDirectory: $(Build.SourcesDirectory)$(projPath)/
