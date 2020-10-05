@@ -69,7 +69,7 @@ jobs:
         displayName: "Run Delete"
         inputs:
           command: test
-          arguments: --filter Category=Solution
+          arguments: --filter Category=Delete
           publishTestResults: true
           testRunTitle: "$(Agent.JobName) on $(imageName)"
           workingDirectory: $(Build.SourcesDirectory)$(projPath)/
