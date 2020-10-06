@@ -55,6 +55,11 @@ jobs:
           "%pihome64%\af\afimport" "\\OCSSAMPLESAPI01\Green Power Company" /F:"AF Database - Green Power Company.xml" /P
         workingDirectory: $(Build.SourcesDirectory)$(projPath)
         displayName: "import database2"
+        
+      - script: |
+          nuget restore
+        workingDirectory: $(Build.SourcesDirectory)$(projPath)
+        displayName: "nuget restore"
 
       - task: DotNetCoreCLI@2
         displayName: "Run tests"
