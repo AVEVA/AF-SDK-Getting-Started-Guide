@@ -1,5 +1,5 @@
 parameters:
-  language: ''
+  language: ""
   lib: false
   skipBinSkim: false
   useRequirementsTxt: false
@@ -16,13 +16,15 @@ jobs:
       # - Note: --ignore-failed-sources is sometimes necessary for build agent to overcome old
       #         cached NuGet sources that no longer exist on the machine
       - script: |
+          echo nuget restore
+          call nuget restore
           echo Clean
           call dotnet clean
           echo Build
           call dotnet build
           echo Complete
         workingDirectory: $(Build.SourcesDirectory)$(projPath)/
-        displayName: 'Build (DotNet)'
+        displayName: "Build (DotNet)"
         condition: eq('${{ parameters.language }}', 'dotnet')
 
       # - Java
@@ -33,7 +35,7 @@ jobs:
           call mvn compile
           echo Complete
         workingDirectory: $(Build.SourcesDirectory)$(libPath)/
-        displayName: 'Build (Java): Library'
+        displayName: "Build (Java): Library"
         condition: and(eq('${{ parameters.language }}', 'java'), eq(${{ parameters.lib }}, false))
       - script: |
           echo Install
@@ -42,7 +44,7 @@ jobs:
           call mvn compile
           echo Complete
         workingDirectory: $(Build.SourcesDirectory)$(projPath)/
-        displayName: 'Build (Java)'
+        displayName: "Build (Java)"
         condition: eq('${{ parameters.language }}', 'java')
 
       # - Python
@@ -56,7 +58,7 @@ jobs:
           call pip install -r requirements.txt
           echo Complete
         workingDirectory: $(Build.SourcesDirectory)$(projPath)/
-        displayName: 'Build (Python): Install dependencies'
+        displayName: "Build (Python): Install dependencies"
         condition: and(eq('${{ parameters.language }}', 'python'), eq(${{ parameters.lib }}, false))
       - script: |
           echo Install tools
@@ -66,7 +68,7 @@ jobs:
           call python setup.py sdist bdist_wheel
           echo Complete
         workingDirectory: $(Build.SourcesDirectory)$(projPath)/
-        displayName: 'Build (Python Library)'
+        displayName: "Build (Python Library)"
         condition: and(eq('${{ parameters.language }}', 'python'), eq(${{ parameters.lib }}, true))
 
       # - Jupyter
@@ -79,22 +81,22 @@ jobs:
           jupyter nbconvert --to script *.ipynb
           echo Complete
         workingDirectory: $(Build.SourcesDirectory)$(projPath)/
-        displayName: 'Build (Jupyter): Install dependencies'
+        displayName: "Build (Jupyter): Install dependencies"
         condition:
           eq('${{ parameters.language }}', 'jupyter')
           # - NodeJS
       - task: NodeTool@0
         inputs:
-          versionSpec: '10.x'
-        displayName: 'Build (NodeJS): Specify Node version'
+          versionSpec: "10.x"
+        displayName: "Build (NodeJS): Specify Node version"
         condition: eq('${{ parameters.language }}', 'nodejs')
       - script: npm ci
         workingDirectory: $(Build.SourcesDirectory)$(projPath)/
-        displayName: 'Build (NodeJS): Install dependencies'
+        displayName: "Build (NodeJS): Install dependencies"
         condition: eq('${{ parameters.language }}', 'nodejs')
       - script: npm run build
         workingDirectory: $(Build.SourcesDirectory)$(projPath)/
-        displayName: 'Build (NodeJS): Run build'
+        displayName: "Build (NodeJS): Run build"
         condition: and(eq('${{ parameters.language }}', 'nodejs'), eq('${{ parameters.npmBuild }}', true))
 
       # - PowerBI
@@ -102,28 +104,28 @@ jobs:
           call vsdevcmd
           call msbuild
         workingDirectory: $(Build.SourcesDirectory)$(projPath)/
-        displayName: 'Build (PowerBI)'
+        displayName: "Build (PowerBI)"
         condition: eq('${{ parameters.language }}', 'powerbi')
 
       # BinSkim
       # BinSkim errors if it encounters chromedriver.exe, which is used by many tests
       # To avoid this issue, delete the file before running BinSkim
       - task: DeleteFiles@1
-        displayName: 'BinSkim (DotNet): Delete Chromedriver'
+        displayName: "BinSkim (DotNet): Delete Chromedriver"
         inputs:
           SourceFolder: $(Build.SourcesDirectory)$(projPath)
-          Contents: '**/chromedriver.exe'
+          Contents: "**/chromedriver.exe"
         condition: and(eq('${{ parameters.language }}', 'dotnet'), eq(${{ parameters.skipBinSkim }}, false))
 
       - task: ms-codeanalysis.vss-microsoft-security-code-analysis-devops.build-task-binskim.BinSkim@3
-        displayName: 'BinSkim (DotNet): Analyze'
+        displayName: "BinSkim (DotNet): Analyze"
         inputs:
           AnalyzeTarget: '$(Build.SourcesDirectory)\*.dll;$(Build.SourcesDirectory)\*.exe'
           toolVersion: LatestPreRelease
         condition: and(eq('${{ parameters.language }}', 'dotnet'), eq(${{ parameters.skipBinSkim }}, false))
 
       - task: ms-codeanalysis.vss-microsoft-security-code-analysis-devops.build-task-postanalysis.PostAnalysis@1
-        displayName: 'BinSkim (DotNet): Post-Analysis'
+        displayName: "BinSkim (DotNet): Post-Analysis"
         inputs:
           BinSkim: true
           BinSkimBreakOn: WarningAbove
@@ -139,13 +141,13 @@ jobs:
           & 'polaris.exe' -c polaris.yml analyze -w
         workingDirectory: $(Build.SourcesDirectory)$(projPath)/
         condition: or(eq('${{ parameters.language }}', 'dotnet'), eq('${{ parameters.language }}', 'java'), eq('${{ parameters.language }}', 'python'), eq('${{ parameters.language }}', 'jupyter'), eq('${{ parameters.language }}', 'angular'), eq('${{ parameters.language }}', 'nodejs'))
-        displayName: 'Polaris Analyze'
+        displayName: "Polaris Analyze"
 
       # Synopsys BlackDuck
       - task: synopsys-detect.synopsys-detect.synopsys-detect-task.SynopsysDetectTask@2
         inputs:
           Products: BD
-          BlackDuckService: 'product-readiness.BlackDuck'
+          BlackDuckService: "product-readiness.BlackDuck"
           DetectArguments: |
             --detect.project.name="product-readiness.$(analysisProject)"
             --detect.project.version.name="$(Build.SourceBranchName)"
@@ -153,12 +155,12 @@ jobs:
             --detect.code.location.name="code_location_$(analysisProject)_$(Build.SourceBranchName)"
             --detect.bom.aggregate.name="bom_$(analysisProject)_$(Build.SourceBranchName)"
         condition: and(succeeded(), eq(${{ parameters.useRequirementsTxt }}, false), or(ne('${{ parameters.language }}', 'python'), eq(${{ parameters.lib }}, true)))
-        displayName: 'Synopsys Detect: BlackDuck'
+        displayName: "Synopsys Detect: BlackDuck"
 
       - task: synopsys-detect.synopsys-detect.synopsys-detect-task.SynopsysDetectTask@2
         inputs:
           Products: BD
-          BlackDuckService: 'product-readiness.BlackDuck'
+          BlackDuckService: "product-readiness.BlackDuck"
           DetectArguments: |
             --detect.project.name="product-readiness.$(analysisProject)"
             --detect.project.version.name="$(Build.SourceBranchName)"
@@ -167,4 +169,4 @@ jobs:
             --detect.bom.aggregate.name="bom_$(analysisProject)_$(Build.SourceBranchName)"
             --detect.pip.requirements.path=$(Build.SourcesDirectory)$(projPath)/requirements.txt
         condition: and(succeeded(), or(eq(${{ parameters.useRequirementsTxt }}, true), and(eq('${{ parameters.language }}', 'python'), eq(${{ parameters.lib }}, false))))
-        displayName: 'Synopsys Detect: BlackDuck (Python Requirements.txt)'
+        displayName: "Synopsys Detect: BlackDuck (Python Requirements.txt)"
