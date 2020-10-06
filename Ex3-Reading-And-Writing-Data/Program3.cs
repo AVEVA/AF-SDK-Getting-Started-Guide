@@ -52,20 +52,18 @@ namespace Ex3ReadingAndWritingData
 
         static AFDatabase GetDatabase(string serverName, string databaseName)
         {
-            PISystem assetServer = GetPISystem(null, serverName);
+            PISystems systems = new PISystems();
+            PISystem assetServer;
+
+            if (!string.IsNullOrEmpty(serverName))
+                assetServer = systems[serverName];
+            else
+                assetServer = systems.DefaultPISystem;
+
             if (!string.IsNullOrEmpty(databaseName))
                 return assetServer.Databases[databaseName];
             else
                 return assetServer.Databases.DefaultDatabase;
-        }
-
-        static PISystem GetPISystem(PISystems systems = null, string systemName = null)
-        {
-            systems = systems == null ? new PISystems() : systems;
-            if (!string.IsNullOrEmpty(systemName))
-                return systems[systemName];
-            else
-                return systems.DefaultPISystem;
         }
 
         public static void PrintHistorical(AFDatabase database, string meterName, string startTime, string endTime)

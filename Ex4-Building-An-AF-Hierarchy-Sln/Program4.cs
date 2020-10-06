@@ -42,34 +42,32 @@ namespace Ex4BuildingAnAFHierarchySln
             Console.ReadLine();
         }
 
+
         static AFDatabase GetDatabase(string serverName, string databaseName)
         {
-            Console.WriteLine("Retrieving the AF database");
-            PISystem assetServer = GetPISystem(null, serverName);
+            PISystems systems = new PISystems();
+            PISystem assetServer;
+
+            if (!string.IsNullOrEmpty(serverName))
+                assetServer = systems[serverName];
+            else
+                assetServer = systems.DefaultPISystem;
+
             if (!string.IsNullOrEmpty(databaseName))
                 return assetServer.Databases[databaseName];
             else
                 return assetServer.Databases.DefaultDatabase;
         }
 
-        static PISystem GetPISystem(PISystems systems = null, string systemName = null)
-        {
-            systems = systems == null ? new PISystems() : systems;
-            if (!string.IsNullOrEmpty(systemName))
-                return systems[systemName];
-            else
-                return systems.DefaultPISystem;
-        }
-
         public static void CreateFeedersRootElement(AFDatabase database)
-		{
+        {
             Console.WriteLine("Creating the Feeders root Element");
             if (database.Elements.Contains("Feeders"))
-				return;
+                return;
 
-			database.Elements.Add("Feeders");
-			database.CheckIn();
-		}
+            database.Elements.Add("Feeders");
+            database.CheckIn();
+        }
 
         public static void CreateElementTemplate(AFDatabase database)
         {
@@ -111,8 +109,8 @@ namespace Ex4BuildingAnAFHierarchySln
             AFAttribute power = feeder001.Attributes["Power"];
             power.ConfigString = @"%@\Configuration|PIDataArchiveName%\SINUSOID";
 
-			if (database.IsDirty)
-				database.CheckIn();
+            if (database.IsDirty)
+                database.CheckIn();
         }
 
         public static void CreateWeakReference(AFDatabase database)
@@ -125,10 +123,10 @@ namespace Ex4BuildingAnAFHierarchySln
             AFElement feeder0001 = database.Elements["Feeders"].Elements["Feeder001"];
             if (london == null || feeder0001 == null) return;
 
-			if (!london.Elements.Contains(feeder0001))
-				london.Elements.Add(feeder0001, weakRefType);
-			if (database.IsDirty)
-				database.CheckIn();
+            if (!london.Elements.Contains(feeder0001))
+                london.Elements.Add(feeder0001, weakRefType);
+            if (database.IsDirty)
+                database.CheckIn();
         }
 
         public static void Setup()

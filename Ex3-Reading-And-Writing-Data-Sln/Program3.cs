@@ -52,26 +52,24 @@ namespace Ex3ReadingAndWritingDataSln
 
         static AFDatabase GetDatabase(string serverName, string databaseName)
         {
-            PISystem assetServer = GetPISystem(null, serverName);
+            PISystems systems = new PISystems();
+            PISystem assetServer;
+
+            if (!string.IsNullOrEmpty(serverName))
+                assetServer = systems[serverName];
+            else
+                assetServer = systems.DefaultPISystem;
+
             if (!string.IsNullOrEmpty(databaseName))
                 return assetServer.Databases[databaseName];
             else
                 return assetServer.Databases.DefaultDatabase;
         }
 
-        static PISystem GetPISystem(PISystems systems = null, string systemName = null)
-        {
-            systems = systems == null ? new PISystems() : systems;
-            if (!string.IsNullOrEmpty(systemName))
-                return systems[systemName];
-            else
-                return systems.DefaultPISystem;
-        }
-
         public static void PrintHistorical(AFDatabase database, string meterName, string startTime, string endTime)
         {
             Console.WriteLine(string.Format("Print Historical Values - Meter: {0}, Start: {1}, End: {2}", meterName, startTime, endTime));
-            
+
             AFAttribute attr = AFAttribute.FindAttribute(@"\Meters\" + meterName + @"|Energy Usage", database);
 
             AFTime start = new AFTime(startTime);
@@ -137,7 +135,7 @@ namespace Ex3ReadingAndWritingDataSln
 
             foreach (AFValue val in vals[AFSummaryTypes.Average])
             {
-                Console.WriteLine("Timestamp (Local): {0:yyyy-MM-dd HH\\h}, Value: {1:0.00} {2}", val.Timestamp.LocalTime, val.Value,val?.UOM?.Abbreviation);
+                Console.WriteLine("Timestamp (Local): {0:yyyy-MM-dd HH\\h}, Value: {1:0.00} {2}", val.Timestamp.LocalTime, val.Value, val?.UOM?.Abbreviation);
             }
 
             Console.WriteLine();
@@ -155,7 +153,7 @@ namespace Ex3ReadingAndWritingDataSln
 
             foreach (AFValue val in vals)
             {
-                Console.WriteLine("Meter: {0}, Timestamp (Local): {1:yyyy-MM-dd HH\\h}, Value: {2:0.00} {3}",val.Attribute.Element.Name,val.Timestamp.LocalTime,val.Value,val?.UOM?.Abbreviation);
+                Console.WriteLine("Meter: {0}, Timestamp (Local): {1:yyyy-MM-dd HH\\h}, Value: {2:0.00} {3}", val.Attribute.Element.Name, val.Timestamp.LocalTime, val.Value, val?.UOM?.Abbreviation);
             }
             Console.WriteLine();
         }
@@ -190,7 +188,7 @@ namespace Ex3ReadingAndWritingDataSln
                 // Loop through values per attribute
                 foreach (AFValue val in dict[AFSummaryTypes.Average])
                 {
-                    Console.WriteLine("Timestamp (Local): {0:yyyy-MM-dd}, Avg. Value: {1:0.00} {2}",val.Timestamp.LocalTime,val.Value,val?.UOM?.Abbreviation);
+                    Console.WriteLine("Timestamp (Local): {0:yyyy-MM-dd}, Avg. Value: {1:0.00} {2}", val?.Timestamp.LocalTime, val?.Value, val?.UOM?.Abbreviation);
                 }
                 Console.WriteLine();
 

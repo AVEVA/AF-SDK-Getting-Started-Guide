@@ -34,6 +34,7 @@ namespace Tests
             // ==== Client constants ====
             AFServer = _config["AFServer"];
             Database = _config["Database"];
+            (_config as ConfigurationRoot).Dispose();
         }
 
 
