@@ -400,7 +400,6 @@ namespace Tests
 
                 Ex3ReadingAndWritingDataSln.Program3.PrintHistorical(database, "Meter001", "*-30s", "*");
                 var actual = sw.ToString();
-                string expected = "Print Categories\r\nElement Categories\r\nMeasures Energy\r\nShows Status\r\n\r\nAttribute Categories\r\nBuilding Info\r\nLocation\r\nTime-Series Data\r\n\r\n";
 
                 Assert.Contains("Print Historical Values - Meter: Meter001, Start: *-30s, End: *\r\nTimestamp (UTC):", actual);
                 Assert.Contains(", Value (kJ): ", actual);
@@ -516,7 +515,6 @@ namespace Tests
 
                 Ex3ReadingAndWritingDataSln.Program3.PrintHistorical(database, "Meter001", "*-30s", "*");
                 var actual = sw.ToString();
-                string expected = "Print Categories\r\nElement Categories\r\nMeasures Energy\r\nShows Status\r\n\r\nAttribute Categories\r\nBuilding Info\r\nLocation\r\nTime-Series Data\r\n\r\n";
 
                 Assert.Contains("Print Historical Values - Meter: Meter001, Start: *-30s, End: *\r\nTimestamp (UTC):", actual);
                 Assert.Contains(", Value (kJ): ", actual);

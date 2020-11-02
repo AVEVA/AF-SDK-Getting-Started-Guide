@@ -189,6 +189,7 @@ namespace Ex4BuildingAnAFHierarchySln
             cityEnergyUsageAttrTemp.ConfigString = @"\\%@\Configuration|PIDataArchiveName%\%Element%.%Attribute%";
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Globalization", "CA1305:Specify IFormatProvider", Justification = "<Pending>")]
         private static void CreateElements(AFDatabase database)
         {
             if (database == null) return;

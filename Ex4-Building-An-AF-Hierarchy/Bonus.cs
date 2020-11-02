@@ -39,6 +39,9 @@ namespace Ex4BuildingAnAFHierarchy
             CreateWeakReferences(database);
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("CodeQuality", "IDE0051:Remove unused private members", Justification = "Skeleton")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0060:Remove unused parameter", Justification = "Skeleton")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "CA1801:Review unused parameters", Justification = "Skeleton")]
         static AFDatabase GetOrCreateDatabase(string servername, string databasename)
         {
             AFDatabase database = null;
@@ -47,18 +50,27 @@ namespace Ex4BuildingAnAFHierarchy
             return database;
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("CodeQuality", "IDE0051:Remove unused private members", Justification = "Skeleton")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0060:Remove unused parameter", Justification = "Skeleton")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "CA1801:Review unused parameters", Justification = "Skeleton")]
         static void CreateCategories(AFDatabase database)
         {
             if (database == null) return;
             // Your code here
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("CodeQuality", "IDE0051:Remove unused private members", Justification = "Skeleton")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0060:Remove unused parameter", Justification = "Skeleton")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "CA1801:Review unused parameters", Justification = "Skeleton")]
         static void CreateEnumerationSets(AFDatabase database)
         {
             if (database == null) return;
             // Your code here
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("CodeQuality", "IDE0051:Remove unused private members", Justification = "Skeleton")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0060:Remove unused parameter", Justification = "Skeleton")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "CA1801:Review unused parameters", Justification = "Skeleton")]
         private static void CreateTemplates(AFDatabase database)
         {
             if (database == null) return;
@@ -66,6 +78,9 @@ namespace Ex4BuildingAnAFHierarchy
 
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("CodeQuality", "IDE0051:Remove unused private members", Justification = "Skeleton")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0060:Remove unused parameter", Justification = "Skeleton")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "CA1801:Review unused parameters", Justification = "Skeleton")]
         // Helper method for CreateTemplates
         private static AFElementTemplate CreateMeterBasicTemplate(AFDatabase database)
         {
@@ -78,11 +93,17 @@ namespace Ex4BuildingAnAFHierarchy
             return meterBasicTemplate;
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("CodeQuality", "IDE0051:Remove unused private members", Justification = "Skeleton")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0060:Remove unused parameter", Justification = "Skeleton")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "CA1801:Review unused parameters", Justification = "Skeleton")]
         private static void CreateMeterAdvancedTemplate(AFElementTemplate meterBasicTemplate)
         {
             // Your code here
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("CodeQuality", "IDE0051:Remove unused private members", Justification = "Skeleton")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0060:Remove unused parameter", Justification = "Skeleton")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "CA1801:Review unused parameters", Justification = "Skeleton")]
         private static void CreateCityTemplate(AFDatabase database)
         {
             // Your code here

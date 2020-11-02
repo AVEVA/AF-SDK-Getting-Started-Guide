@@ -40,6 +40,7 @@ namespace Ex1ConnectionAndHierarchyBasicsSln
 
         public static void PrintRootElements(AFDatabase database)
         {
+            if (database == null) throw new ArgumentNullException(nameof(database));
             Console.WriteLine("Print Root Elements: {0}", database.Elements.Count);
             foreach (AFElement element in database.Elements)
             {
@@ -51,6 +52,7 @@ namespace Ex1ConnectionAndHierarchyBasicsSln
 
         public static void PrintElementTemplates(AFDatabase database)
         {
+            if (database == null) throw new ArgumentNullException(nameof(database));
             Console.WriteLine("Print Element Templates");
             AFNamedCollectionList<AFElementTemplate> elemTemplates = database.ElementTemplates.FilterBy(typeof(AFElement));
             foreach (AFElementTemplate elemTemp in elemTemplates)
@@ -63,6 +65,7 @@ namespace Ex1ConnectionAndHierarchyBasicsSln
 
         public static void PrintAttributeTemplates(AFDatabase database, string elemTempName)
         {
+            if (database == null) throw new ArgumentNullException(nameof(database));
             Console.WriteLine("Print Attribute Templates for Element Template: {0}", elemTempName);
             AFElementTemplate elemTemp = database.ElementTemplates[elemTempName];
             foreach (AFAttributeTemplate attrTemp in elemTemp.AttributeTemplates)
@@ -76,6 +79,7 @@ namespace Ex1ConnectionAndHierarchyBasicsSln
 
         public static void PrintEnergyUOMs(PISystem system)
         {
+            if (system == null) throw new ArgumentNullException(nameof(system));
             Console.WriteLine("Print Energy UOMs");
             UOMClass uomClass = system.UOMDatabase.UOMClasses["Energy"];
             foreach (UOM uom in uomClass.UOMs)
@@ -88,6 +92,7 @@ namespace Ex1ConnectionAndHierarchyBasicsSln
 
         public static void PrintEnumerationSets(AFDatabase database)
         {
+            if (database == null) throw new ArgumentNullException(nameof(database));
             Console.WriteLine("Print Enumeration Sets");
             AFEnumerationSets enumSets = database.EnumerationSets;
             foreach (AFEnumerationSet enumSet in enumSets)
@@ -104,6 +109,7 @@ namespace Ex1ConnectionAndHierarchyBasicsSln
 
         public static void PrintCategories(AFDatabase database)
         {
+            if (database == null) throw new ArgumentNullException(nameof(database));
             Console.WriteLine("Print Categories");
             Console.WriteLine("Element Categories");
             foreach (AFCategory category in database.ElementCategories)

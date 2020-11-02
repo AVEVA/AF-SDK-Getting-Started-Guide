@@ -5,7 +5,7 @@ using OSIsoft.AF.UnitsOfMeasure;
 
 namespace Ex1ConnectionAndHierarchyBasics
 {
-    public class Program1
+    public static class Program1
     {
         public static void Main()
         {
@@ -32,6 +32,7 @@ namespace Ex1ConnectionAndHierarchyBasics
 
         public static void PrintRootElements(AFDatabase database)
         {
+            if (database == null) throw new ArgumentNullException(nameof(database));
             Console.WriteLine("Print Root Elements: {0}", database.Elements.Count);
             foreach (AFElement element in database.Elements)
             {
@@ -41,26 +42,41 @@ namespace Ex1ConnectionAndHierarchyBasics
             Console.WriteLine();
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("CodeQuality", "IDE0051:Remove unused private members", Justification = "Skeleton")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0060:Remove unused parameter", Justification = "Skeleton")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "CA1801:Review unused parameters", Justification = "Skeleton")]
         public static void PrintElementTemplates(AFDatabase database)
         {
             /// Your code here
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("CodeQuality", "IDE0051:Remove unused private members", Justification = "Skeleton")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0060:Remove unused parameter", Justification = "Skeleton")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "CA1801:Review unused parameters", Justification = "Skeleton")]
         public static void PrintAttributeTemplates(AFDatabase database, string elemTempName)
         {
             /// Your code here
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("CodeQuality", "IDE0051:Remove unused private members", Justification = "Skeleton")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0060:Remove unused parameter", Justification = "Skeleton")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "CA1801:Review unused parameters", Justification = "Skeleton")]
         public static void PrintEnergyUOMs(PISystem system)
         {
             /// Your code here
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("CodeQuality", "IDE0051:Remove unused private members", Justification = "Skeleton")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0060:Remove unused parameter", Justification = "Skeleton")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "CA1801:Review unused parameters", Justification = "Skeleton")]
         public static void PrintEnumerationSets(AFDatabase database)
         {
             /// Your code here
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("CodeQuality", "IDE0051:Remove unused private members", Justification = "Skeleton")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0060:Remove unused parameter", Justification = "Skeleton")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "CA1801:Review unused parameters", Justification = "Skeleton")]
         public static void PrintCategories(AFDatabase database)
         {
             /// Your code here

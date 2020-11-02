@@ -66,8 +66,10 @@ namespace Ex3ReadingAndWritingData
                 return assetServer.Databases.DefaultDatabase;
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Globalization", "CA1305:Specify IFormatProvider", Justification = "<Pending>")]
         public static void PrintHistorical(AFDatabase database, string meterName, string startTime, string endTime)
         {
+            if (database == null) throw new ArgumentNullException(nameof(database));
             Console.WriteLine(string.Format("Print Historical Values - Meter: {0}, Start: {1}, End: {2}", meterName, startTime, endTime));
 
             AFAttribute attr = AFAttribute.FindAttribute(@"\Meters\" + meterName + @"|Energy Usage", database);
@@ -90,6 +92,9 @@ namespace Ex3ReadingAndWritingData
             Console.WriteLine();
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("CodeQuality", "IDE0051:Remove unused private members", Justification = "Skeleton")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0060:Remove unused parameter", Justification = "Skeleton")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "CA1801:Review unused parameters", Justification = "Skeleton")]
         public static void PrintInterpolated(AFDatabase database, string meterName, string startTime, string endTime, TimeSpan timeSpan)
         {
             AFAttribute attr = AFAttribute.FindAttribute(@"\Meters\" + meterName + @"|Energy Usage", database);
@@ -97,6 +102,9 @@ namespace Ex3ReadingAndWritingData
             // Your code here
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("CodeQuality", "IDE0051:Remove unused private members", Justification = "Skeleton")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0060:Remove unused parameter", Justification = "Skeleton")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "CA1801:Review unused parameters", Justification = "Skeleton")]
         public static void PrintHourlyAverage(AFDatabase database, string meterName, string startTime, string endTime)
         {
             AFAttribute attr = AFAttribute.FindAttribute(@"\Meters\" + meterName + @"|Energy Usage", database);
@@ -104,6 +112,9 @@ namespace Ex3ReadingAndWritingData
             // Your code here
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("CodeQuality", "IDE0051:Remove unused private members", Justification = "Skeleton")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0060:Remove unused parameter", Justification = "Skeleton")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "CA1801:Review unused parameters", Justification = "Skeleton")]
         public static void PrintEnergyUsageAtTime(AFDatabase database, string timeStamp)
         {
             Console.WriteLine("Print Energy Usage at Time: {0}", timeStamp);
@@ -115,6 +126,10 @@ namespace Ex3ReadingAndWritingData
             // Your code here
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("CodeQuality", "IDE0051:Remove unused private members", Justification = "Skeleton")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0060:Remove unused parameter", Justification = "Skeleton")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "CA1801:Review unused parameters", Justification = "Skeleton")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Globalization", "CA1305:Specify IFormatProvider", Justification = "<Pending>")]
         public static void PrintDailyAverageEnergyUsage(AFDatabase database, string startTime, string endTime)
         {
             Console.WriteLine(string.Format("Print Daily Energy Usage - Start: {0}, End: {1}", startTime, endTime));
@@ -124,15 +139,22 @@ namespace Ex3ReadingAndWritingData
             // attrList = GetAttributes();
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("CodeQuality", "IDE0051:Remove unused private members", Justification = "Skeleton")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0060:Remove unused parameter", Justification = "Skeleton")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "CA1801:Review unused parameters", Justification = "Skeleton")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Globalization", "CA1305:Specify IFormatProvider", Justification = "<Pending>")]
         public static void SwapValues(AFDatabase database, string meter1, string meter2, string startTime, string endTime)
         {
             Console.WriteLine(string.Format("Swap values for meters: {0}, {1} between {2} and {3}", meter1, meter2, startTime, endTime));
             // Your code here
         }
 
+
         // Helper method used in PrintEnergyUsageAtTime() and PrintDailyAverageEnergyUseage 
         // Note that this is an optional method, it is used in the solutions, but it is possible
         // to get a valid solution without using this method
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Globalization", "CA1307:Specify StringComparison", Justification = "<Pending>")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Globalization", "CA1305:Specify IFormatProvider", Justification = "<Pending>")]
         public static AFAttributeList GetAttributes(AFDatabase database, string templateName, string attributeName)
         {
             AFAttributeList attrList = new AFAttributeList();

@@ -61,6 +61,7 @@ namespace Ex4BuildingAnAFHierarchySln
 
         public static void CreateFeedersRootElement(AFDatabase database)
         {
+            if (database == null) throw new ArgumentNullException(nameof(database));
             Console.WriteLine("Creating the Feeders root Element");
             if (database.Elements.Contains("Feeders"))
                 return;
@@ -71,6 +72,7 @@ namespace Ex4BuildingAnAFHierarchySln
 
         public static void CreateElementTemplate(AFDatabase database)
         {
+            if (database == null) throw new ArgumentNullException(nameof(database));
             Console.WriteLine("Creating the element template: FeederTemplate");
             string templateName = "FeederTemplate";
             AFElementTemplate feederTemplate;
@@ -93,6 +95,7 @@ namespace Ex4BuildingAnAFHierarchySln
 
         public static void CreateFeederElements(AFDatabase database)
         {
+            if (database == null) throw new ArgumentNullException(nameof(database));
 
             Console.WriteLine("Creating a feeder element under the Feeders Element");
             AFElementTemplate template = database.ElementTemplates["FeederTemplate"];
@@ -115,6 +118,7 @@ namespace Ex4BuildingAnAFHierarchySln
 
         public static void CreateWeakReference(AFDatabase database)
         {
+            if (database == null) throw new ArgumentNullException(nameof(database));
 
             Console.WriteLine("Adding a week reference of the Feeder001 under London");
             AFReferenceType weakRefType = database.ReferenceTypes["Weak Reference"];

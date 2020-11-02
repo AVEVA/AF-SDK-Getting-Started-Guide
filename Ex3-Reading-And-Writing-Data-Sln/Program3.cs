@@ -66,8 +66,10 @@ namespace Ex3ReadingAndWritingDataSln
                 return assetServer.Databases.DefaultDatabase;
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Globalization", "CA1305:Specify IFormatProvider", Justification = "<Pending>")]
         public static void PrintHistorical(AFDatabase database, string meterName, string startTime, string endTime)
         {
+            if (database == null) throw new ArgumentNullException(nameof(database));
             Console.WriteLine(string.Format("Print Historical Values - Meter: {0}, Start: {1}, End: {2}", meterName, startTime, endTime));
 
             AFAttribute attr = AFAttribute.FindAttribute(@"\Meters\" + meterName + @"|Energy Usage", database);
@@ -89,6 +91,7 @@ namespace Ex3ReadingAndWritingDataSln
             Console.WriteLine();
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Globalization", "CA1305:Specify IFormatProvider", Justification = "<Pending>")]
         public static void PrintInterpolated(AFDatabase database, string meterName, string startTime, string endTime, TimeSpan timeSpan)
         {
             Console.WriteLine(string.Format("Print Interpolated Values - Meter: {0}, Start: {1}, End: {2}", meterName, startTime, endTime));
@@ -115,6 +118,7 @@ namespace Ex3ReadingAndWritingDataSln
             Console.WriteLine();
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Globalization", "CA1305:Specify IFormatProvider", Justification = "<Pending>")]
         public static void PrintHourlyAverage(AFDatabase database, string meterName, string startTime, string endTime)
         {
             Console.WriteLine(string.Format("Print Hourly Average - Meter: {0}, Start: {1}, End: {2}", meterName, startTime, endTime));
@@ -158,6 +162,7 @@ namespace Ex3ReadingAndWritingDataSln
             Console.WriteLine();
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Globalization", "CA1305:Specify IFormatProvider", Justification = "<Pending>")]
         public static void PrintDailyAverageEnergyUsage(AFDatabase database, string startTime, string endTime)
         {
             Console.WriteLine(string.Format("Print Daily Energy Usage - Start: {0}, End: {1}", startTime, endTime));
@@ -196,6 +201,7 @@ namespace Ex3ReadingAndWritingDataSln
             Console.WriteLine();
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Globalization", "CA1305:Specify IFormatProvider", Justification = "<Pending>")]
         public static void SwapValues(AFDatabase database, string meter1, string meter2, string startTime, string endTime)
         {
             Console.WriteLine(string.Format("Swap values for meters: {0}, {1} between {2} and {3}", meter1, meter2, startTime, endTime));
@@ -244,7 +250,10 @@ namespace Ex3ReadingAndWritingDataSln
         }
 
 
+
         // Helper method used in PrintEnergyUsageAtTime() and PrintDailyAverageEnergyUseage
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Globalization", "CA1305:Specify IFormatProvider", Justification = "<Pending>")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Globalization", "CA1307:Specify StringComparison", Justification = "<Pending>")]
         public static AFAttributeList GetAttributes(AFDatabase database, string templateName, string attributeName)
         {
             AFAttributeList attrList = new AFAttributeList();

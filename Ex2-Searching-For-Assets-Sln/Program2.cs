@@ -83,6 +83,7 @@ namespace Ex2SearchingForAssetsSln
             Console.WriteLine();
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Globalization", "CA1305:Specify IFormatProvider", Justification = "<Pending>")]
         public static void FindMetersByTemplate(AFDatabase database, string templateName)
         {
             Console.WriteLine("Find Meters by Template: {0}", templateName);
@@ -103,6 +104,7 @@ namespace Ex2SearchingForAssetsSln
             }
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Globalization", "CA1305:Specify IFormatProvider", Justification = "<Pending>")]
         public static void FindMetersBySubstation(AFDatabase database, string substationLocation)
         {
             Console.WriteLine("Find Meters by Substation: {0}", substationLocation);
@@ -123,6 +125,7 @@ namespace Ex2SearchingForAssetsSln
             }
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Globalization", "CA1305:Specify IFormatProvider", Justification = "<Pending>")]
         public static void FindMetersAboveUsage(AFDatabase database, double val)
         {
             Console.WriteLine("Find Meters above Usage: {0}", val);
@@ -143,8 +146,10 @@ namespace Ex2SearchingForAssetsSln
             }
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Globalization", "CA1305:Specify IFormatProvider", Justification = "<Pending>")]
         public static void FindBuildingInfo(AFDatabase database, string templateName)
         {
+            if (database == null) throw new ArgumentNullException(nameof(database));
             Console.WriteLine("Find Building Info: {0}", templateName);
 
             AFCategory buildingInfoCat = database.AttributeCategories["Building Info"];

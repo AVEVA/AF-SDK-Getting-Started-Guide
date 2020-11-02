@@ -60,6 +60,7 @@ namespace Ex4BuildingAnAFHierarchy
 
         public static void CreateElementTemplate(AFDatabase database)
         {
+            if (database == null) throw new ArgumentNullException(nameof(database));
             string templateName = "FeederTemplate";
             AFElementTemplate feederTemplate;
             if (database.ElementTemplates.Contains(templateName))
@@ -79,16 +80,25 @@ namespace Ex4BuildingAnAFHierarchy
             database.CheckIn();
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("CodeQuality", "IDE0051:Remove unused private members", Justification = "Skeleton")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0060:Remove unused parameter", Justification = "Skeleton")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "CA1801:Review unused parameters", Justification = "Skeleton")]
         public static void CreateFeedersRootElement(AFDatabase database)
         {
             // Your code here
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("CodeQuality", "IDE0051:Remove unused private members", Justification = "Skeleton")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0060:Remove unused parameter", Justification = "Skeleton")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "CA1801:Review unused parameters", Justification = "Skeleton")]
         public static void CreateFeederElements(AFDatabase database)
         {
             // Your code here
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("CodeQuality", "IDE0051:Remove unused private members", Justification = "Skeleton")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0060:Remove unused parameter", Justification = "Skeleton")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "CA1801:Review unused parameters", Justification = "Skeleton")]
         public static void CreateWeakReference(AFDatabase database)
         {
             // Your code here
