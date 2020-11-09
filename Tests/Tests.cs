@@ -660,7 +660,6 @@ namespace Tests
             var reftype = database.Elements["Geographical Locations"].Elements["London"].GetReferenceTypes(feeder0001);
 
             Assert.Equal("Weak Reference", reftype[0].Name);
-
         }
 
 
@@ -679,7 +678,6 @@ namespace Tests
 
 
             Assert.Equal("Weak Reference", reftype[0].Name);
-
         }
 
 
@@ -699,7 +697,6 @@ namespace Tests
 
 
             Assert.Equal("Weak Reference", reftype[0].Name);
-
         }
 
         [Fact]
