@@ -65,6 +65,7 @@ namespace Ex5WorkingWithEventFrames
 
         public static AFElementTemplate CreateEventFrameTemplate(AFDatabase database)
         {
+            if (database == null) throw new ArgumentNullException(nameof(database));
             AFElementTemplate eventFrameTemplate = database.ElementTemplates["Daily Usage"];
             if (eventFrameTemplate != null)
                 return eventFrameTemplate;
@@ -87,16 +88,22 @@ namespace Ex5WorkingWithEventFrames
 
         public static void CreateEventFrames(AFDatabase database, AFElementTemplate eventFrameTemplate)
         {
+            if (database == null) throw new ArgumentNullException(nameof(database));
+            if (eventFrameTemplate == null) throw new ArgumentNullException(nameof(eventFrameTemplate));
             // Your code here
         }
 
         public static void CaptureValues(AFDatabase database, AFElementTemplate eventFrameTemplate)
         {
+            if (database == null) throw new ArgumentNullException(nameof(database));
+            if (eventFrameTemplate == null) throw new ArgumentNullException(nameof(eventFrameTemplate));
             // Your code here
         }
 
         public static void PrintReport(AFDatabase database, AFElementTemplate eventFrameTemplate)
         {
+            if (database == null) throw new ArgumentNullException(nameof(database));
+            if (eventFrameTemplate == null) throw new ArgumentNullException(nameof(eventFrameTemplate));
             // Your code here
         }
 

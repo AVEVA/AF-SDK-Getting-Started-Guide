@@ -65,6 +65,7 @@ namespace Ex5WorkingWithEventFramesSln
 
         public static AFElementTemplate CreateEventFrameTemplate(AFDatabase database)
         {
+            if (database == null) throw new ArgumentNullException(nameof(database));
             AFElementTemplate eventFrameTemplate = database.ElementTemplates["Daily Usage"];
             if (eventFrameTemplate != null)
                 return eventFrameTemplate;
@@ -87,6 +88,8 @@ namespace Ex5WorkingWithEventFramesSln
 
         public static void CreateEventFrames(AFDatabase database, AFElementTemplate eventFrameTemplate)
         {
+            if (database == null) throw new ArgumentNullException(nameof(database));
+            if (eventFrameTemplate == null) throw new ArgumentNullException(nameof(eventFrameTemplate));
             string queryString = "Template:MeterBasic";
             {
                 // This method returns the collection of AFBaseElement objects that were created with this template.
@@ -118,6 +121,8 @@ namespace Ex5WorkingWithEventFramesSln
 
         public static void CaptureValues(AFDatabase database, AFElementTemplate eventFrameTemplate)
         {
+            if (database == null) throw new ArgumentNullException(nameof(database));
+            if (eventFrameTemplate == null) throw new ArgumentNullException(nameof(eventFrameTemplate));
             // Formulate search constraints on time and template
             AFTime startTime = DateTime.Today.AddDays(-7);
             string queryString = $"template:\"{eventFrameTemplate.Name}\"";
@@ -138,6 +143,8 @@ namespace Ex5WorkingWithEventFramesSln
 
         public static void PrintReport(AFDatabase database, AFElementTemplate eventFrameTemplate)
         {
+            if (database == null) throw new ArgumentNullException(nameof(database));
+            if (eventFrameTemplate == null) throw new ArgumentNullException(nameof(eventFrameTemplate));
             AFTime startTime = DateTime.Today.AddDays(-7);
             AFTime endTime = startTime.LocalTime.AddDays(+8); // Or DateTime.Today.AddDays(1);
             string queryString = $"template:'{eventFrameTemplate.Name}' ElementName:Meter003";
