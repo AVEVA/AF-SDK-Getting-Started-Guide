@@ -47,14 +47,9 @@ jobs:
           filePath: $(projPath)
 
       - script: |
-          dir
-        workingDirectory: $(Build.SourcesDirectory)$(projPath)
-        displayName: "dir"
-
-      - script: |
           for /D %%a in (".\*.*") do xcopy /y /d appsettings.json "%%a\"
         workingDirectory: $(Build.SourcesDirectory)$(projPath)
-        displayName: "dir"
+        displayName: "copy file to subfolders"
 
       - script: |
           "%pihome64%\af\afimport" "\\OCSSAMPLESAPI01\Green Power Company" /F:"AF Database - Green Power Company.xml" /P

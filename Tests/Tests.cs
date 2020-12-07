@@ -270,8 +270,8 @@ namespace Tests
 
                 Ex2SearchingForAssetsSln.Program2.FindMetersBySubstation(database, "SSA*");
                 var actual = sw.ToString();
-                string expected = "Find Meters by Substation: SSA*\r\nMeter001, Meter005, Meter009\n\r\n";
-                Assert.Equal(expected, actual);
+                string expected = "Find Meters by Substation: SSA*\r\nMeter001, Meter005, Meter009";
+                Assert.Contains(expected, actual);
             }
         }
 
@@ -287,8 +287,8 @@ namespace Tests
 
                 Ex2SearchingForAssetsSln.Program2.FindMetersAboveUsage(database, 300);
                 var actual = sw.ToString();
-                string expected = "Find Meters above Usage: 300\r\n\n\r\n";
-                Assert.Equal(expected, actual);
+                string expected = "Find Meters above Usage: 300";
+                Assert.Contains(expected, actual);
             }
         }
 
@@ -619,6 +619,10 @@ namespace Tests
         [Trait("Category", "Exercise4")]
         public void Ex4()
         {
+            var standardOutput = new StreamWriter(Console.OpenStandardOutput());
+            standardOutput.AutoFlush = true;
+            Console.SetOut(standardOutput);
+
             //note this method either creates or ensures it was created.  That is what we will test
             Ex4BuildingAnAFHierarchy.Program4.CreateElementTemplate(database);
             Assert.True(database.ElementTemplates.Contains("FeederTemplate"));
@@ -642,6 +646,10 @@ namespace Tests
         [Trait("Category", "Solution")]
         public void Ex4Sln()
         {
+            var standardOutput = new StreamWriter(Console.OpenStandardOutput());
+            standardOutput.AutoFlush = true;
+            Console.SetOut(standardOutput);
+
             //note this method either creates or ensures it was created.  That is what we will test
             Ex4BuildingAnAFHierarchySln.Program4.CreateElementTemplate(database);
             Assert.True(database.ElementTemplates.Contains("FeederTemplate"));
@@ -667,6 +675,10 @@ namespace Tests
         [Trait("Category", "Exercise4")]
         public void Ex4Bonus()
         {
+            var standardOutput = new StreamWriter(Console.OpenStandardOutput());
+            standardOutput.AutoFlush = true;
+            Console.SetOut(standardOutput);
+
             //note this method either creates or ensures it was created.  That is what we will test
             Ex4BuildingAnAFHierarchy.Bonus.Run();
             var newDB = database.PISystem.Databases["Ethical Power Company"];
@@ -686,6 +698,10 @@ namespace Tests
         [Trait("Category", "Solution")]
         public void Ex4BonusSln()
         {
+            var standardOutput = new StreamWriter(Console.OpenStandardOutput());
+            standardOutput.AutoFlush = true;
+            Console.SetOut(standardOutput);
+
             //note this method either creates or ensures it was created.  That is what we will test
             Ex4BuildingAnAFHierarchySln.Bonus.Run();
             var newDB = database.PISystem.Databases["Ethical Power Company"];
