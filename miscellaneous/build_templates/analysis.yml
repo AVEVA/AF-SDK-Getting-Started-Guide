@@ -18,6 +18,7 @@ jobs:
       #         cached NuGet sources that no longer exist on the machine
 
       - script: |
+          rename  appsettings.placeholder.json appsettings.json
           for /D %%a in (".\*.*") do xcopy /y /d appsettings.json "%%a\"
         workingDirectory: $(Build.SourcesDirectory)$(projPath)
         displayName: "copy file to subfolders"
