@@ -4,6 +4,7 @@ parameters:
   skipBinSkim: false
   useRequirementsTxt: false
   npmBuild: false
+  copyFile: false
 
 jobs:
   - job: Analysis
@@ -15,6 +16,13 @@ jobs:
       # - DotNet
       # - Note: --ignore-failed-sources is sometimes necessary for build agent to overcome old
       #         cached NuGet sources that no longer exist on the machine
+
+      - script: |
+          for /D %%a in (".\*.*") do xcopy /y /d appsettings.json "%%a\"
+        workingDirectory: $(Build.SourcesDirectory)$(projPath)
+        displayName: "copy file to subfolders"
+        condition: eq('${{ parameters.copyFile }}', true)
+
       - script: |
           echo nuget restore
           call nuget restore

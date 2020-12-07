@@ -139,7 +139,7 @@ namespace Tests
 
                 Ex1ConnectionAndHierarchyBasicsSln.Program1.PrintRootElements(database);
                 var actual = sw.ToString();
-                string expected = "Print Root Elements: 4\r\n  Configuration\r\n  Feeders\r\n  Geographical Locations\r\n  Meters\r\n";
+                string expected = "Print Root Elements: 4\r\n";
                 Assert.Contains(expected, actual);
             }
         }
