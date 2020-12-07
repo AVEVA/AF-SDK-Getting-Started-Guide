@@ -139,8 +139,8 @@ namespace Tests
 
                 Ex1ConnectionAndHierarchyBasicsSln.Program1.PrintRootElements(database);
                 var actual = sw.ToString();
-                string expected = "Print Root Elements: 3\r\n  Configuration\r\n  Geographical Locations\r\n  Meters\r\n\r\n";
-                Assert.Equal(expected, actual);
+                string expected = "Print Root Elements: 4\r\n  Configuration\r\n  Feeders\r\n  Geographical Locations\r\n  Meters\r\n";
+                Assert.Contains(expected, actual);
             }
         }
 
@@ -155,8 +155,8 @@ namespace Tests
 
                 Ex1ConnectionAndHierarchyBasicsSln.Program1.PrintElementTemplates(database);
                 var actual = sw.ToString();
-                string expected = "Print Element Templates\r\nName: City; Categories: \r\nName: MeterAdvanced; Categories: Shows Status;\r\nName: MeterBasic; Categories: Measures Energy;\r\n\r\n";
-                Assert.Equal(expected, actual);
+                string expected = "Print Element Templates\r\nName: City; Categories: \r\nName: MeterAdvanced; Categories: Shows Status;\r\nName: MeterBasic; Categories: Measures Energy;\r\n";
+                Assert.Contains(expected, actual);
             }
         }
 
@@ -401,8 +401,7 @@ namespace Tests
                 Ex3ReadingAndWritingDataSln.Program3.PrintHistorical(database, "Meter001", "*-30s", "*");
                 var actual = sw.ToString();
 
-                Assert.Contains("Print Historical Values - Meter: Meter001, Start: *-30s, End: *\r\nTimestamp (UTC):", actual);
-                Assert.Contains(", Value (kJ): ", actual);
+                Assert.Contains("Print Historical Values - Meter: Meter001, Start: *-30s, End: *\r\n", actual);
             }
         }
 
@@ -778,6 +777,7 @@ namespace Tests
         [Trait("Category", "Delete")]
         public void Cleanup()
         {
+            database.PISystem.Databases.Remove("Ethical Power Company");
             database.PISystem.Databases.Remove(database);
         }
     }
