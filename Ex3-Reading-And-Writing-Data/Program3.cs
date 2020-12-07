@@ -39,6 +39,8 @@ namespace Ex3ReadingAndWritingData
             Setup();
             AFDatabase database = GetDatabase(AFServer, Database);
 
+            if (database == null) throw new NullReferenceException("Database is null");
+
             PrintHistorical(database, "Meter001", "*-30s", "*");
             PrintInterpolated(database, "Meter001", "*-30s", "*", TimeSpan.FromSeconds(10));
             PrintHourlyAverage(database, "Meter001", "y", "t");

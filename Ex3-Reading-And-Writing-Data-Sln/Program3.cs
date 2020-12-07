@@ -115,7 +115,7 @@ namespace Ex3ReadingAndWritingDataSln
 
             foreach (AFValue val in vals)
             {
-                Console.WriteLine("Timestamp (Local): {0}, Value: {1:0.00} {2}", val.Timestamp.LocalTime, val.Value, val?.UOM.Abbreviation);
+                Console.WriteLine("Timestamp (Local): {0}, Value: {1:0.00} {2}", val.Timestamp.LocalTime, val.Value, val.UOM?.Abbreviation);
             }
             Console.WriteLine();
         }
@@ -159,7 +159,7 @@ namespace Ex3ReadingAndWritingDataSln
 
             foreach (AFValue val in vals)
             {
-                Console.WriteLine("Meter: {0}, Timestamp (Local): {1:yyyy-MM-dd HH\\h}, Value: {2:0.00} {3}", val.Attribute.Element.Name, val.Timestamp.LocalTime, val.Value, val?.UOM?.Abbreviation);
+                Console.WriteLine("Meter: {0}, Timestamp (Local): {1:yyyy-MM-dd HH\\h}, Value: {2:0.00} {3}", val.Attribute.Element.Name, val.Timestamp.LocalTime, val.Value, val.UOM?.Abbreviation);
             }
             Console.WriteLine();
         }
