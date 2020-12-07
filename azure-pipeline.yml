@@ -72,6 +72,7 @@ jobs:
 
       - task: DotNetCoreCLI@2
         displayName: "Run Delete"
+        condition: always()
         inputs:
           command: test
           arguments: --filter Category=Delete
