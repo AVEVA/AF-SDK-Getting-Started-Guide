@@ -52,7 +52,7 @@ jobs:
         displayName: "dir"
 
       - script: |
-          for /D %a in (".\*.*") do xcopy /y /d appsettings.json "%a\"
+          for /D %%a in (".\*.*") do xcopy /y /d appsettings.json "%%a\"
         workingDirectory: $(Build.SourcesDirectory)$(projPath)
         displayName: "dir"
 
