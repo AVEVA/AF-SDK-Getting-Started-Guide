@@ -38,6 +38,8 @@ namespace Ex5WorkingWithEventFramesSln
             Setup();
             AFDatabase database = GetDatabase(AFServer, Database);
 
+            if (database == null) throw new NullReferenceException("Database is null");
+
             AFElementTemplate eventFrameTemplate = CreateEventFrameTemplate(database);
             CreateEventFrames(database, eventFrameTemplate);
             CaptureValues(database, eventFrameTemplate);

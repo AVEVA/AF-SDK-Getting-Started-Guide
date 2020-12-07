@@ -19,6 +19,8 @@ namespace Ex1ConnectionAndHierarchyBasicsSln
             Setup();
             AFDatabase database = GetDatabase(AFServer, Database);
 
+            if (database == null) throw new NullReferenceException("Database is null");
+
             PrintRootElements(database);
             PrintElementTemplates(database);
             PrintAttributeTemplates(database, "MeterAdvanced");

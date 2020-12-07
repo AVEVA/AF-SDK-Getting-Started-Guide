@@ -35,6 +35,8 @@ namespace Ex2SearchingForAssetsSln
             Setup();
             AFDatabase database = GetDatabase(AFServer, Database);
 
+            if (database == null) throw new NullReferenceException("Database is null");
+
             FindMetersByName(database, "Meter00*");
             FindMetersByTemplate(database, "MeterBasic");
             FindMetersBySubstation(database, "SSA*");

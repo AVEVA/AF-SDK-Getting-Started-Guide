@@ -11,6 +11,8 @@ namespace Ex1ConnectionAndHierarchyBasics
         {
             AFDatabase database = GetDatabase("PISRV01", "Green Power Company");
 
+            if (database == null) throw new NullReferenceException("Database is null");
+
             PrintRootElements(database);
             PrintElementTemplates(database);
             PrintAttributeTemplates(database, "MeterAdvanced");

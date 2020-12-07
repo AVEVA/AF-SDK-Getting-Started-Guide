@@ -33,6 +33,8 @@ namespace Ex4BuildingAnAFHierarchySln
             Setup();
             AFDatabase database = GetDatabase(AFServer, Database);
 
+            if (database == null) throw new NullReferenceException("Database is null");
+
             CreateElementTemplate(database);
             CreateFeedersRootElement(database);
             CreateFeederElements(database);
