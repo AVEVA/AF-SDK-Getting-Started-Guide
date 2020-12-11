@@ -1,0 +1,2417 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<AF xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="OSIsoft.AF.xsd" SchemaVersion="2.0" SoftwareVersion="2.8.6.7801" ExportMode="AllReferences, NoUniqueID" Database="Green Power Company" Description="" Created="2017-02-10T16:28:22.2128644Z" id="efaeb244-122d-46f7-bfb0-cc9afd0d99ce" ParentKey="cb7a12fc-9613-4b7c-b55c-df1dc46a30d6" ExportedObject="Green Power Company" ExportedType="AFDatabase" Identity="Database" >
+  <UOMDatabase>
+    <Name>UOMDatabase</Name>
+    <UOMClass>
+      <Name>Plane Angle</Name>
+      <CanonicalUOM>radian</CanonicalUOM>
+      <CanonicalAbbr>rad</CanonicalAbbr>
+    </UOMClass>
+    <UOMClass>
+      <Name>Time</Name>
+      <CanonicalUOM>second</CanonicalUOM>
+      <CanonicalAbbr>s</CanonicalAbbr>
+    </UOMClass>
+    <UOMClass>
+      <Name>Angular Velocity</Name>
+      <CanonicalUOM>radian per second</CanonicalUOM>
+      <CanonicalAbbr>rad/s</CanonicalAbbr>
+      <UOMBaseClass>
+        <Name>Plane Angle</Name>
+        <BasePower>1</BasePower>
+      </UOMBaseClass>
+      <UOMBaseClass>
+        <Name>Time</Name>
+        <BasePower>-1</BasePower>
+      </UOMBaseClass>
+    </UOMClass>
+    <UOMClass>
+      <Name>Length</Name>
+      <CanonicalUOM>meter</CanonicalUOM>
+      <CanonicalAbbr>m</CanonicalAbbr>
+    </UOMClass>
+    <UOMClass>
+      <Name>Area</Name>
+      <CanonicalUOM>square meter</CanonicalUOM>
+      <CanonicalAbbr>m2</CanonicalAbbr>
+      <UOMBaseClass>
+        <Name>Length</Name>
+        <BasePower>2</BasePower>
+      </UOMBaseClass>
+    </UOMClass>
+    <UOMClass>
+      <Name>Mass</Name>
+      <CanonicalUOM>kilogram</CanonicalUOM>
+      <CanonicalAbbr>kg</CanonicalAbbr>
+    </UOMClass>
+    <UOMClass>
+      <Name>Density</Name>
+      <CanonicalUOM>kilogram per cubic meter</CanonicalUOM>
+      <CanonicalAbbr>kg/m3</CanonicalAbbr>
+      <UOMBaseClass>
+        <Name>Length</Name>
+        <BasePower>-3</BasePower>
+      </UOMBaseClass>
+      <UOMBaseClass>
+        <Name>Mass</Name>
+        <BasePower>1</BasePower>
+      </UOMBaseClass>
+    </UOMClass>
+    <UOMClass>
+      <Name>Dynamic Viscosity</Name>
+      <CanonicalUOM>pascal second</CanonicalUOM>
+      <CanonicalAbbr>Pa*s</CanonicalAbbr>
+      <UOMBaseClass>
+        <Name>Length</Name>
+        <BasePower>-1</BasePower>
+      </UOMBaseClass>
+      <UOMBaseClass>
+        <Name>Mass</Name>
+        <BasePower>1</BasePower>
+      </UOMBaseClass>
+      <UOMBaseClass>
+        <Name>Time</Name>
+        <BasePower>-1</BasePower>
+      </UOMBaseClass>
+    </UOMClass>
+    <UOMClass>
+      <Name>Electric Current</Name>
+      <CanonicalUOM>ampere</CanonicalUOM>
+      <CanonicalAbbr>A</CanonicalAbbr>
+    </UOMClass>
+    <UOMClass>
+      <Name>Electric Charge</Name>
+      <CanonicalUOM>coulomb</CanonicalUOM>
+      <CanonicalAbbr>C</CanonicalAbbr>
+      <UOMBaseClass>
+        <Name>Electric Current</Name>
+        <BasePower>1</BasePower>
+      </UOMBaseClass>
+      <UOMBaseClass>
+        <Name>Time</Name>
+        <BasePower>1</BasePower>
+      </UOMBaseClass>
+    </UOMClass>
+    <UOMClass>
+      <Name>Electric Potential</Name>
+      <CanonicalUOM>volt</CanonicalUOM>
+      <CanonicalAbbr>V</CanonicalAbbr>
+      <UOMBaseClass>
+        <Name>Electric Current</Name>
+        <BasePower>-1</BasePower>
+      </UOMBaseClass>
+      <UOMBaseClass>
+        <Name>Length</Name>
+        <BasePower>2</BasePower>
+      </UOMBaseClass>
+      <UOMBaseClass>
+        <Name>Mass</Name>
+        <BasePower>1</BasePower>
+      </UOMBaseClass>
+      <UOMBaseClass>
+        <Name>Time</Name>
+        <BasePower>-3</BasePower>
+      </UOMBaseClass>
+    </UOMClass>
+    <UOMClass>
+      <Name>Electric Resistance</Name>
+      <CanonicalUOM>ohm</CanonicalUOM>
+      <CanonicalAbbr>Ω</CanonicalAbbr>
+      <UOMBaseClass>
+        <Name>Electric Current</Name>
+        <BasePower>-2</BasePower>
+      </UOMBaseClass>
+      <UOMBaseClass>
+        <Name>Length</Name>
+        <BasePower>2</BasePower>
+      </UOMBaseClass>
+      <UOMBaseClass>
+        <Name>Mass</Name>
+        <BasePower>1</BasePower>
+      </UOMBaseClass>
+      <UOMBaseClass>
+        <Name>Time</Name>
+        <BasePower>-3</BasePower>
+      </UOMBaseClass>
+    </UOMClass>
+    <UOMClass>
+      <Name>Energy</Name>
+      <CanonicalUOM>joule</CanonicalUOM>
+      <CanonicalAbbr>J</CanonicalAbbr>
+      <UOMBaseClass>
+        <Name>Length</Name>
+        <BasePower>2</BasePower>
+      </UOMBaseClass>
+      <UOMBaseClass>
+        <Name>Mass</Name>
+        <BasePower>1</BasePower>
+      </UOMBaseClass>
+      <UOMBaseClass>
+        <Name>Time</Name>
+        <BasePower>-2</BasePower>
+      </UOMBaseClass>
+    </UOMClass>
+    <UOMClass>
+      <Name>Temperature (Delta)</Name>
+      <CanonicalUOM>delta kelvin</CanonicalUOM>
+      <CanonicalAbbr>delta K</CanonicalAbbr>
+    </UOMClass>
+    <UOMClass>
+      <Name>Entropy, Heat Capacity</Name>
+      <CanonicalUOM>joule per kelvin</CanonicalUOM>
+      <CanonicalAbbr>J/K</CanonicalAbbr>
+      <UOMBaseClass>
+        <Name>Length</Name>
+        <BasePower>2</BasePower>
+      </UOMBaseClass>
+      <UOMBaseClass>
+        <Name>Mass</Name>
+        <BasePower>1</BasePower>
+      </UOMBaseClass>
+      <UOMBaseClass>
+        <Name>Temperature (Delta)</Name>
+        <BasePower>-1</BasePower>
+      </UOMBaseClass>
+      <UOMBaseClass>
+        <Name>Time</Name>
+        <BasePower>-2</BasePower>
+      </UOMBaseClass>
+    </UOMClass>
+    <UOMClass>
+      <Name>Force</Name>
+      <CanonicalUOM>newton</CanonicalUOM>
+      <CanonicalAbbr>N</CanonicalAbbr>
+      <UOMBaseClass>
+        <Name>Length</Name>
+        <BasePower>1</BasePower>
+      </UOMBaseClass>
+      <UOMBaseClass>
+        <Name>Mass</Name>
+        <BasePower>1</BasePower>
+      </UOMBaseClass>
+      <UOMBaseClass>
+        <Name>Time</Name>
+        <BasePower>-2</BasePower>
+      </UOMBaseClass>
+    </UOMClass>
+    <UOMClass>
+      <Name>Frequency</Name>
+      <CanonicalUOM>hertz</CanonicalUOM>
+      <CanonicalAbbr>Hz</CanonicalAbbr>
+      <UOMBaseClass>
+        <Name>Time</Name>
+        <BasePower>-1</BasePower>
+      </UOMBaseClass>
+    </UOMClass>
+    <UOMClass>
+      <Name>Luminous Intensity</Name>
+      <CanonicalUOM>candela</CanonicalUOM>
+      <CanonicalAbbr>cd</CanonicalAbbr>
+    </UOMClass>
+    <UOMClass>
+      <Name>Mass Flow Rate</Name>
+      <CanonicalUOM>kilogram per second</CanonicalUOM>
+      <CanonicalAbbr>kg/s</CanonicalAbbr>
+      <UOMBaseClass>
+        <Name>Mass</Name>
+        <BasePower>1</BasePower>
+      </UOMBaseClass>
+      <UOMBaseClass>
+        <Name>Time</Name>
+        <BasePower>-1</BasePower>
+      </UOMBaseClass>
+    </UOMClass>
+    <UOMClass>
+      <Name>Moles</Name>
+      <CanonicalUOM>mole</CanonicalUOM>
+      <CanonicalAbbr>mol</CanonicalAbbr>
+    </UOMClass>
+    <UOMClass>
+      <Name>Molar Flow Rate</Name>
+      <CanonicalUOM>mole per second</CanonicalUOM>
+      <CanonicalAbbr>mol/s</CanonicalAbbr>
+      <UOMBaseClass>
+        <Name>Moles</Name>
+        <BasePower>1</BasePower>
+      </UOMBaseClass>
+      <UOMBaseClass>
+        <Name>Time</Name>
+        <BasePower>-1</BasePower>
+      </UOMBaseClass>
+    </UOMClass>
+    <UOMClass>
+      <Name>Molecular Weight</Name>
+      <CanonicalUOM>kilogram per mole</CanonicalUOM>
+      <CanonicalAbbr>kg/mol</CanonicalAbbr>
+      <UOMBaseClass>
+        <Name>Mass</Name>
+        <BasePower>1</BasePower>
+      </UOMBaseClass>
+      <UOMBaseClass>
+        <Name>Moles</Name>
+        <BasePower>-1</BasePower>
+      </UOMBaseClass>
+    </UOMClass>
+    <UOMClass>
+      <Name>Power</Name>
+      <CanonicalUOM>watt</CanonicalUOM>
+      <CanonicalAbbr>W</CanonicalAbbr>
+      <UOMBaseClass>
+        <Name>Length</Name>
+        <BasePower>2</BasePower>
+      </UOMBaseClass>
+      <UOMBaseClass>
+        <Name>Mass</Name>
+        <BasePower>1</BasePower>
+      </UOMBaseClass>
+      <UOMBaseClass>
+        <Name>Time</Name>
+        <BasePower>-3</BasePower>
+      </UOMBaseClass>
+    </UOMClass>
+    <UOMClass>
+      <Name>Pressure</Name>
+      <CanonicalUOM>pascal</CanonicalUOM>
+      <CanonicalAbbr>Pa</CanonicalAbbr>
+      <UOMBaseClass>
+        <Name>Length</Name>
+        <BasePower>-1</BasePower>
+      </UOMBaseClass>
+      <UOMBaseClass>
+        <Name>Mass</Name>
+        <BasePower>1</BasePower>
+      </UOMBaseClass>
+      <UOMBaseClass>
+        <Name>Time</Name>
+        <BasePower>-2</BasePower>
+      </UOMBaseClass>
+    </UOMClass>
+    <UOMClass>
+      <Name>Quantity</Name>
+      <CanonicalUOM>count</CanonicalUOM>
+      <CanonicalAbbr>count</CanonicalAbbr>
+    </UOMClass>
+    <UOMClass>
+      <Name>Ratio</Name>
+      <CanonicalUOM>percent</CanonicalUOM>
+      <CanonicalAbbr>%</CanonicalAbbr>
+    </UOMClass>
+    <UOMClass>
+      <Name>Specific Energy</Name>
+      <CanonicalUOM>joule per kilogram</CanonicalUOM>
+      <CanonicalAbbr>J/kg</CanonicalAbbr>
+      <UOMBaseClass>
+        <Name>Length</Name>
+        <BasePower>2</BasePower>
+      </UOMBaseClass>
+      <UOMBaseClass>
+        <Name>Time</Name>
+        <BasePower>-2</BasePower>
+      </UOMBaseClass>
+    </UOMClass>
+    <UOMClass>
+      <Name>Specific Entropy, Specific Heat Capacity</Name>
+      <CanonicalUOM>joule per kilogram kelvin</CanonicalUOM>
+      <CanonicalAbbr>J/(kg K)</CanonicalAbbr>
+      <UOMBaseClass>
+        <Name>Length</Name>
+        <BasePower>2</BasePower>
+      </UOMBaseClass>
+      <UOMBaseClass>
+        <Name>Temperature (Delta)</Name>
+        <BasePower>-1</BasePower>
+      </UOMBaseClass>
+      <UOMBaseClass>
+        <Name>Time</Name>
+        <BasePower>-2</BasePower>
+      </UOMBaseClass>
+    </UOMClass>
+    <UOMClass>
+      <Name>Specific Volume</Name>
+      <CanonicalUOM>cubic meter per kilogram</CanonicalUOM>
+      <CanonicalAbbr>m3/kg</CanonicalAbbr>
+      <UOMBaseClass>
+        <Name>Length</Name>
+        <BasePower>3</BasePower>
+      </UOMBaseClass>
+      <UOMBaseClass>
+        <Name>Mass</Name>
+        <BasePower>-1</BasePower>
+      </UOMBaseClass>
+    </UOMClass>
+    <UOMClass>
+      <Name>Speed</Name>
+      <CanonicalUOM>meter per second</CanonicalUOM>
+      <CanonicalAbbr>m/s</CanonicalAbbr>
+      <UOMBaseClass>
+        <Name>Length</Name>
+        <BasePower>1</BasePower>
+      </UOMBaseClass>
+      <UOMBaseClass>
+        <Name>Time</Name>
+        <BasePower>-1</BasePower>
+      </UOMBaseClass>
+    </UOMClass>
+    <UOMClass>
+      <Name>Temperature</Name>
+      <CanonicalUOM>kelvin</CanonicalUOM>
+      <CanonicalAbbr>K</CanonicalAbbr>
+    </UOMClass>
+    <UOMClass>
+      <Name>Volume</Name>
+      <CanonicalUOM>cubic meter</CanonicalUOM>
+      <CanonicalAbbr>m3</CanonicalAbbr>
+      <UOMBaseClass>
+        <Name>Length</Name>
+        <BasePower>3</BasePower>
+      </UOMBaseClass>
+    </UOMClass>
+    <UOMClass>
+      <Name>Volume Flow Rate</Name>
+      <CanonicalUOM>cubic meter per second</CanonicalUOM>
+      <CanonicalAbbr>m3/s</CanonicalAbbr>
+      <UOMBaseClass>
+        <Name>Length</Name>
+        <BasePower>3</BasePower>
+      </UOMBaseClass>
+      <UOMBaseClass>
+        <Name>Time</Name>
+        <BasePower>-1</BasePower>
+      </UOMBaseClass>
+    </UOMClass>
+    <UOM>
+      <Name>radian</Name>
+      <Abbreviation>rad</Abbreviation>
+      <Class>Plane Angle</Class>
+    </UOM>
+    <UOM>
+      <Name>degree</Name>
+      <Abbreviation>°</Abbreviation>
+      <RefFactor>0.0174532925199433</RefFactor>
+      <RefUOM>radian</RefUOM>
+      <Class>Plane Angle</Class>
+    </UOM>
+    <UOM>
+      <Name>revolution</Name>
+      <Abbreviation>r</Abbreviation>
+      <RefFactor>6.28318530717959</RefFactor>
+      <RefUOM>radian</RefUOM>
+      <Class>Plane Angle</Class>
+    </UOM>
+    <UOM>
+      <Name>second</Name>
+      <Abbreviation>s</Abbreviation>
+      <Class>Time</Class>
+    </UOM>
+    <UOM>
+      <Name>minute</Name>
+      <Abbreviation>min</Abbreviation>
+      <RefFactor>60</RefFactor>
+      <RefUOM>second</RefUOM>
+      <Class>Time</Class>
+    </UOM>
+    <UOM>
+      <Name>hour</Name>
+      <Abbreviation>h</Abbreviation>
+      <RefFactor>60</RefFactor>
+      <RefUOM>minute</RefUOM>
+      <Class>Time</Class>
+    </UOM>
+    <UOM>
+      <Name>day</Name>
+      <Abbreviation>d</Abbreviation>
+      <RefFactor>24</RefFactor>
+      <RefUOM>hour</RefUOM>
+      <Class>Time</Class>
+    </UOM>
+    <UOM>
+      <Name>month</Name>
+      <Abbreviation>month</Abbreviation>
+      <RefFactor>30.4166666666667</RefFactor>
+      <RefUOM>day</RefUOM>
+      <Class>Time</Class>
+    </UOM>
+    <UOM>
+      <Name>week</Name>
+      <Abbreviation>week</Abbreviation>
+      <RefFactor>7</RefFactor>
+      <RefUOM>day</RefUOM>
+      <Class>Time</Class>
+    </UOM>
+    <UOM>
+      <Name>year</Name>
+      <Abbreviation>yr</Abbreviation>
+      <RefFactor>365</RefFactor>
+      <RefUOM>day</RefUOM>
+      <Class>Time</Class>
+    </UOM>
+    <UOM>
+      <Name>radian per second</Name>
+      <Abbreviation>rad/s</Abbreviation>
+      <Class>Angular Velocity</Class>
+    </UOM>
+    <UOM>
+      <Name>revolution per minute</Name>
+      <Abbreviation>rpm</Abbreviation>
+      <RefFactor>0.10471975511966</RefFactor>
+      <RefUOM>radian per second</RefUOM>
+      <Class>Angular Velocity</Class>
+    </UOM>
+    <UOM>
+      <Name>meter</Name>
+      <Abbreviation>m</Abbreviation>
+      <Class>Length</Class>
+    </UOM>
+    <UOM>
+      <Name>centimeter</Name>
+      <Abbreviation>cm</Abbreviation>
+      <RefFactor>0.01</RefFactor>
+      <RefUOM>meter</RefUOM>
+      <Class>Length</Class>
+    </UOM>
+    <UOM>
+      <Name>inch</Name>
+      <Abbreviation>in</Abbreviation>
+      <RefFactor>0.0254</RefFactor>
+      <RefUOM>meter</RefUOM>
+      <Class>Length</Class>
+    </UOM>
+    <UOM>
+      <Name>foot</Name>
+      <Abbreviation>ft</Abbreviation>
+      <RefFactor>12</RefFactor>
+      <RefUOM>inch</RefUOM>
+      <Class>Length</Class>
+    </UOM>
+    <UOM>
+      <Name>International nautical mile</Name>
+      <Abbreviation>nmi</Abbreviation>
+      <RefFactor>1852</RefFactor>
+      <RefUOM>meter</RefUOM>
+      <Class>Length</Class>
+    </UOM>
+    <UOM>
+      <Name>kilometer</Name>
+      <Abbreviation>km</Abbreviation>
+      <RefFactor>1000</RefFactor>
+      <RefUOM>meter</RefUOM>
+      <Class>Length</Class>
+    </UOM>
+    <UOM>
+      <Name>mile</Name>
+      <Abbreviation>mi</Abbreviation>
+      <RefFactor>63360</RefFactor>
+      <RefUOM>inch</RefUOM>
+      <Class>Length</Class>
+    </UOM>
+    <UOM>
+      <Name>millimeter</Name>
+      <Abbreviation>mm</Abbreviation>
+      <RefFactor>0.001</RefFactor>
+      <RefUOM>meter</RefUOM>
+      <Class>Length</Class>
+    </UOM>
+    <UOM>
+      <Name>sixteenth of an inch</Name>
+      <Abbreviation>sxi</Abbreviation>
+      <RefFactor>0.0625</RefFactor>
+      <RefUOM>inch</RefUOM>
+      <Class>Length</Class>
+    </UOM>
+    <UOM>
+      <Name>yard</Name>
+      <Abbreviation>yd</Abbreviation>
+      <RefFactor>36</RefFactor>
+      <RefUOM>inch</RefUOM>
+      <Class>Length</Class>
+    </UOM>
+    <UOM>
+      <Name>square meter</Name>
+      <Abbreviation>m2</Abbreviation>
+      <Class>Area</Class>
+    </UOM>
+    <UOM>
+      <Name>square inch</Name>
+      <Abbreviation>in2</Abbreviation>
+      <RefFactor>0.00064516</RefFactor>
+      <RefUOM>square meter</RefUOM>
+      <Class>Area</Class>
+    </UOM>
+    <UOM>
+      <Name>square foot</Name>
+      <Abbreviation>ft2</Abbreviation>
+      <RefFactor>144</RefFactor>
+      <RefUOM>square inch</RefUOM>
+      <Class>Area</Class>
+    </UOM>
+    <UOM>
+      <Name>acre</Name>
+      <Abbreviation>acre</Abbreviation>
+      <RefFactor>43560</RefFactor>
+      <RefUOM>square foot</RefUOM>
+      <Class>Area</Class>
+    </UOM>
+    <UOM>
+      <Name>hectare</Name>
+      <Abbreviation>ha</Abbreviation>
+      <RefFactor>10000</RefFactor>
+      <RefUOM>square meter</RefUOM>
+      <Class>Area</Class>
+    </UOM>
+    <UOM>
+      <Name>square centimeter</Name>
+      <Abbreviation>cm2</Abbreviation>
+      <RefFactor>0.0001</RefFactor>
+      <RefUOM>square meter</RefUOM>
+      <Class>Area</Class>
+    </UOM>
+    <UOM>
+      <Name>square kilometer</Name>
+      <Abbreviation>km2</Abbreviation>
+      <RefFactor>1000000</RefFactor>
+      <RefUOM>square meter</RefUOM>
+      <Class>Area</Class>
+    </UOM>
+    <UOM>
+      <Name>square mile</Name>
+      <Abbreviation>mi2</Abbreviation>
+      <RefFactor>27878400</RefFactor>
+      <RefUOM>square foot</RefUOM>
+      <Class>Area</Class>
+    </UOM>
+    <UOM>
+      <Name>square millimeter</Name>
+      <Abbreviation>mm2</Abbreviation>
+      <RefFactor>1E-06</RefFactor>
+      <RefUOM>square meter</RefUOM>
+      <Class>Area</Class>
+    </UOM>
+    <UOM>
+      <Name>square yard</Name>
+      <Abbreviation>yd2</Abbreviation>
+      <RefFactor>9</RefFactor>
+      <RefUOM>square foot</RefUOM>
+      <Class>Area</Class>
+    </UOM>
+    <UOM>
+      <Name>kilogram</Name>
+      <Abbreviation>kg</Abbreviation>
+      <Class>Mass</Class>
+    </UOM>
+    <UOM>
+      <Name>gram</Name>
+      <Abbreviation>g</Abbreviation>
+      <RefFactor>0.001</RefFactor>
+      <RefUOM>kilogram</RefUOM>
+      <Class>Mass</Class>
+    </UOM>
+    <UOM>
+      <Name>pound</Name>
+      <Abbreviation>lb</Abbreviation>
+      <RefFactor>0.45359237</RefFactor>
+      <RefUOM>kilogram</RefUOM>
+      <Class>Mass</Class>
+    </UOM>
+    <UOM>
+      <Name>long ton</Name>
+      <Abbreviation>lton</Abbreviation>
+      <RefFactor>2240</RefFactor>
+      <RefUOM>pound</RefUOM>
+      <Class>Mass</Class>
+    </UOM>
+    <UOM>
+      <Name>milligram</Name>
+      <Abbreviation>mg</Abbreviation>
+      <RefFactor>1E-06</RefFactor>
+      <RefUOM>kilogram</RefUOM>
+      <Class>Mass</Class>
+    </UOM>
+    <UOM>
+      <Name>million pound</Name>
+      <Abbreviation>MM lb</Abbreviation>
+      <RefFactor>1000000</RefFactor>
+      <RefUOM>pound</RefUOM>
+      <Class>Mass</Class>
+    </UOM>
+    <UOM>
+      <Name>ounce</Name>
+      <Abbreviation>oz</Abbreviation>
+      <RefFactor>0.0625</RefFactor>
+      <RefUOM>pound</RefUOM>
+      <Class>Mass</Class>
+    </UOM>
+    <UOM>
+      <Name>short ton</Name>
+      <Abbreviation>ston</Abbreviation>
+      <RefFactor>2000</RefFactor>
+      <RefUOM>pound</RefUOM>
+      <Class>Mass</Class>
+    </UOM>
+    <UOM>
+      <Name>thousand pound</Name>
+      <Abbreviation>klb</Abbreviation>
+      <RefFactor>1000</RefFactor>
+      <RefUOM>pound</RefUOM>
+      <Class>Mass</Class>
+    </UOM>
+    <UOM>
+      <Name>ton</Name>
+      <Abbreviation>ton</Abbreviation>
+      <RefFactor>2000</RefFactor>
+      <RefUOM>pound</RefUOM>
+      <Class>Mass</Class>
+    </UOM>
+    <UOM>
+      <Name>tonne</Name>
+      <Abbreviation>t</Abbreviation>
+      <RefFactor>1000</RefFactor>
+      <RefUOM>kilogram</RefUOM>
+      <Class>Mass</Class>
+    </UOM>
+    <UOM>
+      <Name>kilogram per cubic meter</Name>
+      <Abbreviation>kg/m3</Abbreviation>
+      <Class>Density</Class>
+    </UOM>
+    <UOM>
+      <Name>gram per liter</Name>
+      <Abbreviation>g/L</Abbreviation>
+      <RefUOM>kilogram per cubic meter</RefUOM>
+      <Class>Density</Class>
+    </UOM>
+    <UOM>
+      <Name>kilogram per liter</Name>
+      <Abbreviation>kg/L</Abbreviation>
+      <RefFactor>1000</RefFactor>
+      <RefUOM>kilogram per cubic meter</RefUOM>
+      <Class>Density</Class>
+    </UOM>
+    <UOM>
+      <Name>pound per barrel</Name>
+      <Abbreviation>lb/bbl</Abbreviation>
+      <RefFactor>2.85301017421182</RefFactor>
+      <RefUOM>kilogram per cubic meter</RefUOM>
+      <Class>Density</Class>
+    </UOM>
+    <UOM>
+      <Name>pound per cubic foot</Name>
+      <Abbreviation>lb/ft3</Abbreviation>
+      <RefFactor>16.0184633739601</RefFactor>
+      <RefUOM>kilogram per cubic meter</RefUOM>
+      <Class>Density</Class>
+    </UOM>
+    <UOM>
+      <Name>pound per US gallon</Name>
+      <Abbreviation>lb/US gal</Abbreviation>
+      <RefFactor>119.826427316897</RefFactor>
+      <RefUOM>kilogram per cubic meter</RefUOM>
+      <Class>Density</Class>
+    </UOM>
+    <UOM>
+      <Name>tonne per cubic meter</Name>
+      <Abbreviation>t/m3</Abbreviation>
+      <RefFactor>1000</RefFactor>
+      <RefUOM>kilogram per cubic meter</RefUOM>
+      <Class>Density</Class>
+    </UOM>
+    <UOM>
+      <Name>pascal second</Name>
+      <Abbreviation>Pa*s</Abbreviation>
+      <Class>Dynamic Viscosity</Class>
+    </UOM>
+    <UOM>
+      <Name>poise</Name>
+      <Abbreviation>P</Abbreviation>
+      <RefFactor>0.1</RefFactor>
+      <RefUOM>pascal second</RefUOM>
+      <Class>Dynamic Viscosity</Class>
+    </UOM>
+    <UOM>
+      <Name>ampere</Name>
+      <Abbreviation>A</Abbreviation>
+      <Class>Electric Current</Class>
+    </UOM>
+    <UOM>
+      <Name>milliampere</Name>
+      <Abbreviation>mA</Abbreviation>
+      <RefFactor>0.001</RefFactor>
+      <RefUOM>ampere</RefUOM>
+      <Class>Electric Current</Class>
+    </UOM>
+    <UOM>
+      <Name>coulomb</Name>
+      <Abbreviation>C</Abbreviation>
+      <Class>Electric Charge</Class>
+    </UOM>
+    <UOM>
+      <Name>Ampere hour</Name>
+      <Abbreviation>Ah</Abbreviation>
+      <RefFactor>3600</RefFactor>
+      <RefUOM>coulomb</RefUOM>
+      <Class>Electric Charge</Class>
+    </UOM>
+    <UOM>
+      <Name>volt</Name>
+      <Abbreviation>V</Abbreviation>
+      <Class>Electric Potential</Class>
+    </UOM>
+    <UOM>
+      <Name>kilovolt</Name>
+      <Abbreviation>kV</Abbreviation>
+      <RefFactor>1000</RefFactor>
+      <RefUOM>volt</RefUOM>
+      <Class>Electric Potential</Class>
+    </UOM>
+    <UOM>
+      <Name>megavolt</Name>
+      <Abbreviation>MV</Abbreviation>
+      <RefFactor>1000000</RefFactor>
+      <RefUOM>volt</RefUOM>
+      <Class>Electric Potential</Class>
+    </UOM>
+    <UOM>
+      <Name>ohm</Name>
+      <Abbreviation>Ω</Abbreviation>
+      <Class>Electric Resistance</Class>
+    </UOM>
+    <UOM>
+      <Name>joule</Name>
+      <Abbreviation>J</Abbreviation>
+      <Class>Energy</Class>
+    </UOM>
+    <UOM>
+      <Name>British thermal unit</Name>
+      <Abbreviation>Btu</Abbreviation>
+      <RefFactor>1055.05585262</RefFactor>
+      <RefUOM>joule</RefUOM>
+      <Class>Energy</Class>
+    </UOM>
+    <UOM>
+      <Name>calorie</Name>
+      <Abbreviation>cal</Abbreviation>
+      <RefFactor>4.1868</RefFactor>
+      <RefUOM>joule</RefUOM>
+      <Class>Energy</Class>
+    </UOM>
+    <UOM>
+      <Name>gigajoule</Name>
+      <Abbreviation>GJ</Abbreviation>
+      <RefFactor>1000000000</RefFactor>
+      <RefUOM>joule</RefUOM>
+      <Class>Energy</Class>
+    </UOM>
+    <UOM>
+      <Name>gigawatt hour</Name>
+      <Abbreviation>GWh</Abbreviation>
+      <RefFactor>3600000000000</RefFactor>
+      <RefUOM>joule</RefUOM>
+      <Class>Energy</Class>
+    </UOM>
+    <UOM>
+      <Name>kilocalorie</Name>
+      <Abbreviation>kcal</Abbreviation>
+      <RefFactor>1000</RefFactor>
+      <RefUOM>calorie</RefUOM>
+      <Class>Energy</Class>
+    </UOM>
+    <UOM>
+      <Name>kilojoule</Name>
+      <Abbreviation>kJ</Abbreviation>
+      <RefFactor>1000</RefFactor>
+      <RefUOM>joule</RefUOM>
+      <Class>Energy</Class>
+    </UOM>
+    <UOM>
+      <Name>kilowatt hour</Name>
+      <Abbreviation>kWh</Abbreviation>
+      <RefFactor>3600000</RefFactor>
+      <RefUOM>joule</RefUOM>
+      <Class>Energy</Class>
+    </UOM>
+    <UOM>
+      <Name>megajoule</Name>
+      <Abbreviation>MJ</Abbreviation>
+      <RefFactor>1000000</RefFactor>
+      <RefUOM>joule</RefUOM>
+      <Class>Energy</Class>
+    </UOM>
+    <UOM>
+      <Name>megawatt hour</Name>
+      <Abbreviation>MWh</Abbreviation>
+      <RefFactor>3600000000</RefFactor>
+      <RefUOM>joule</RefUOM>
+      <Class>Energy</Class>
+    </UOM>
+    <UOM>
+      <Name>million British thermal unit</Name>
+      <Abbreviation>MM Btu</Abbreviation>
+      <RefFactor>1000000</RefFactor>
+      <RefUOM>British thermal unit</RefUOM>
+      <Class>Energy</Class>
+    </UOM>
+    <UOM>
+      <Name>million calorie</Name>
+      <Abbreviation>MMcal</Abbreviation>
+      <RefFactor>1000000</RefFactor>
+      <RefUOM>calorie</RefUOM>
+      <Class>Energy</Class>
+    </UOM>
+    <UOM>
+      <Name>watt hour</Name>
+      <Abbreviation>Wh</Abbreviation>
+      <RefFactor>3600</RefFactor>
+      <RefUOM>joule</RefUOM>
+      <Class>Energy</Class>
+    </UOM>
+    <UOM>
+      <Name>watt second</Name>
+      <Abbreviation>Ws</Abbreviation>
+      <RefUOM>joule</RefUOM>
+      <Class>Energy</Class>
+    </UOM>
+    <UOM>
+      <Name>delta kelvin</Name>
+      <Abbreviation>delta K</Abbreviation>
+      <Class>Temperature (Delta)</Class>
+    </UOM>
+    <UOM>
+      <Name>delta degree Celsius</Name>
+      <Abbreviation>delta °C</Abbreviation>
+      <RefUOM>delta kelvin</RefUOM>
+      <Class>Temperature (Delta)</Class>
+    </UOM>
+    <UOM>
+      <Name>delta degree Fahrenheit</Name>
+      <Abbreviation>delta °F</Abbreviation>
+      <RefFactor>0.555555555555556</RefFactor>
+      <RefUOM>delta degree Celsius</RefUOM>
+      <Class>Temperature (Delta)</Class>
+    </UOM>
+    <UOM>
+      <Name>delta degree Rankine</Name>
+      <Abbreviation>delta °R</Abbreviation>
+      <RefFactor>0.555555555555556</RefFactor>
+      <RefUOM>delta degree Celsius</RefUOM>
+      <Class>Temperature (Delta)</Class>
+    </UOM>
+    <UOM>
+      <Name>joule per kelvin</Name>
+      <Abbreviation>J/K</Abbreviation>
+      <Class>Entropy, Heat Capacity</Class>
+    </UOM>
+    <UOM>
+      <Name>British thermal unit per degree Fahrenheit</Name>
+      <Abbreviation>Btu/°F</Abbreviation>
+      <RefFactor>1899.100534716</RefFactor>
+      <RefUOM>joule per kelvin</RefUOM>
+      <Class>Entropy, Heat Capacity</Class>
+    </UOM>
+    <UOM>
+      <Name>British thermal unit per degree Rankine</Name>
+      <Abbreviation>Btu/°R</Abbreviation>
+      <RefFactor>1899.100534716</RefFactor>
+      <RefUOM>joule per kelvin</RefUOM>
+      <Class>Entropy, Heat Capacity</Class>
+    </UOM>
+    <UOM>
+      <Name>kilojoule per kelvin</Name>
+      <Abbreviation>kJ/K</Abbreviation>
+      <RefFactor>1000</RefFactor>
+      <RefUOM>joule per kelvin</RefUOM>
+      <Class>Entropy, Heat Capacity</Class>
+    </UOM>
+    <UOM>
+      <Name>newton</Name>
+      <Abbreviation>N</Abbreviation>
+      <Class>Force</Class>
+    </UOM>
+    <UOM>
+      <Name>dyne</Name>
+      <Abbreviation>dyne</Abbreviation>
+      <RefFactor>1E-05</RefFactor>
+      <RefUOM>newton</RefUOM>
+      <Class>Force</Class>
+    </UOM>
+    <UOM>
+      <Name>kilogram-force</Name>
+      <Abbreviation>kgf</Abbreviation>
+      <RefFactor>9.80665</RefFactor>
+      <RefUOM>newton</RefUOM>
+      <Class>Force</Class>
+    </UOM>
+    <UOM>
+      <Name>pound-force</Name>
+      <Abbreviation>lbf</Abbreviation>
+      <RefFactor>4.44822161526</RefFactor>
+      <RefUOM>newton</RefUOM>
+      <Class>Force</Class>
+    </UOM>
+    <UOM>
+      <Name>hertz</Name>
+      <Abbreviation>Hz</Abbreviation>
+      <Class>Frequency</Class>
+    </UOM>
+    <UOM>
+      <Name>candela</Name>
+      <Abbreviation>cd</Abbreviation>
+      <Class>Luminous Intensity</Class>
+    </UOM>
+    <UOM>
+      <Name>kilogram per second</Name>
+      <Abbreviation>kg/s</Abbreviation>
+      <Class>Mass Flow Rate</Class>
+    </UOM>
+    <UOM>
+      <Name>gram per second</Name>
+      <Abbreviation>g/s</Abbreviation>
+      <RefFactor>0.001</RefFactor>
+      <RefUOM>kilogram per second</RefUOM>
+      <Class>Mass Flow Rate</Class>
+    </UOM>
+    <UOM>
+      <Name>pound per second</Name>
+      <Abbreviation>lb/s</Abbreviation>
+      <RefFactor>0.45359237</RefFactor>
+      <RefUOM>kilogram per second</RefUOM>
+      <Class>Mass Flow Rate</Class>
+    </UOM>
+    <UOM>
+      <Name>long ton per day</Name>
+      <Abbreviation>lton/d</Abbreviation>
+      <RefFactor>0.0259259259259259</RefFactor>
+      <RefUOM>pound per second</RefUOM>
+      <Class>Mass Flow Rate</Class>
+    </UOM>
+    <UOM>
+      <Name>million pound per day</Name>
+      <Abbreviation>MMlb/d</Abbreviation>
+      <RefFactor>11.5740740740741</RefFactor>
+      <RefUOM>pound per second</RefUOM>
+      <Class>Mass Flow Rate</Class>
+    </UOM>
+    <UOM>
+      <Name>short ton per day</Name>
+      <Abbreviation>ston/d</Abbreviation>
+      <RefFactor>0.0231481481481481</RefFactor>
+      <RefUOM>pound per second</RefUOM>
+      <Class>Mass Flow Rate</Class>
+    </UOM>
+    <UOM>
+      <Name>thousand pound per day</Name>
+      <Abbreviation>klb/d</Abbreviation>
+      <RefFactor>0.0115740740740741</RefFactor>
+      <RefUOM>pound per second</RefUOM>
+      <Class>Mass Flow Rate</Class>
+    </UOM>
+    <UOM>
+      <Name>tonne per day</Name>
+      <Abbreviation>t/d</Abbreviation>
+      <RefFactor>0.0115740740740741</RefFactor>
+      <RefUOM>kilogram per second</RefUOM>
+      <Class>Mass Flow Rate</Class>
+    </UOM>
+    <UOM>
+      <Name>mole</Name>
+      <Abbreviation>mol</Abbreviation>
+      <Class>Moles</Class>
+    </UOM>
+    <UOM>
+      <Name>gram mole</Name>
+      <Abbreviation>gmol</Abbreviation>
+      <RefUOM>mole</RefUOM>
+      <Class>Moles</Class>
+    </UOM>
+    <UOM>
+      <Name>kilogram mole</Name>
+      <Abbreviation>kmol</Abbreviation>
+      <RefFactor>1000</RefFactor>
+      <RefUOM>mole</RefUOM>
+      <Class>Moles</Class>
+    </UOM>
+    <UOM>
+      <Name>pound mole</Name>
+      <Abbreviation>lbmol</Abbreviation>
+      <RefFactor>453.59237</RefFactor>
+      <RefUOM>mole</RefUOM>
+      <Class>Moles</Class>
+    </UOM>
+    <UOM>
+      <Name>mole per second</Name>
+      <Abbreviation>mol/s</Abbreviation>
+      <Class>Molar Flow Rate</Class>
+    </UOM>
+    <UOM>
+      <Name>gram mole per second</Name>
+      <Abbreviation>gmol/s</Abbreviation>
+      <RefUOM>mole per second</RefUOM>
+      <Class>Molar Flow Rate</Class>
+    </UOM>
+    <UOM>
+      <Name>kilogram mole per second</Name>
+      <Abbreviation>kmol/s</Abbreviation>
+      <RefFactor>1000</RefFactor>
+      <RefUOM>mole per second</RefUOM>
+      <Class>Molar Flow Rate</Class>
+    </UOM>
+    <UOM>
+      <Name>pound mole per second</Name>
+      <Abbreviation>lbmol/s</Abbreviation>
+      <RefFactor>453.59237</RefFactor>
+      <RefUOM>mole per second</RefUOM>
+      <Class>Molar Flow Rate</Class>
+    </UOM>
+    <UOM>
+      <Name>kilogram per mole</Name>
+      <Abbreviation>kg/mol</Abbreviation>
+      <Class>Molecular Weight</Class>
+    </UOM>
+    <UOM>
+      <Name>kilogram per kilogram mole</Name>
+      <Abbreviation>kg/kmol</Abbreviation>
+      <RefFactor>0.001</RefFactor>
+      <RefUOM>kilogram per mole</RefUOM>
+      <Class>Molecular Weight</Class>
+    </UOM>
+    <UOM>
+      <Name>gram per gram mole</Name>
+      <Abbreviation>g/gmol</Abbreviation>
+      <RefUOM>kilogram per kilogram mole</RefUOM>
+      <Class>Molecular Weight</Class>
+    </UOM>
+    <UOM>
+      <Name>pound per pound mole</Name>
+      <Abbreviation>lb/lbmol</Abbreviation>
+      <RefUOM>kilogram per kilogram mole</RefUOM>
+      <Class>Molecular Weight</Class>
+    </UOM>
+    <UOM>
+      <Name>watt</Name>
+      <Abbreviation>W</Abbreviation>
+      <Class>Power</Class>
+    </UOM>
+    <UOM>
+      <Name>British thermal unit per hour</Name>
+      <Abbreviation>Btu/h</Abbreviation>
+      <RefFactor>0.29307107017222</RefFactor>
+      <RefUOM>watt</RefUOM>
+      <Class>Power</Class>
+    </UOM>
+    <UOM>
+      <Name>calorie per second</Name>
+      <Abbreviation>cal/s</Abbreviation>
+      <RefFactor>4.1868</RefFactor>
+      <RefUOM>watt</RefUOM>
+      <Class>Power</Class>
+    </UOM>
+    <UOM>
+      <Name>gigawatt</Name>
+      <Abbreviation>GW</Abbreviation>
+      <RefFactor>1000000000</RefFactor>
+      <RefUOM>watt</RefUOM>
+      <Class>Power</Class>
+    </UOM>
+    <UOM>
+      <Name>horsepower</Name>
+      <Abbreviation>hp</Abbreviation>
+      <RefFactor>745.699871582</RefFactor>
+      <RefUOM>watt</RefUOM>
+      <Class>Power</Class>
+    </UOM>
+    <UOM>
+      <Name>joule per second</Name>
+      <Abbreviation>J/s</Abbreviation>
+      <RefUOM>watt</RefUOM>
+      <Class>Power</Class>
+    </UOM>
+    <UOM>
+      <Name>kilowatt</Name>
+      <Abbreviation>kW</Abbreviation>
+      <RefFactor>1000</RefFactor>
+      <RefUOM>watt</RefUOM>
+      <Class>Power</Class>
+    </UOM>
+    <UOM>
+      <Name>megajoule per hour</Name>
+      <Abbreviation>MJ/h</Abbreviation>
+      <RefFactor>277.777777777778</RefFactor>
+      <RefUOM>watt</RefUOM>
+      <Class>Power</Class>
+    </UOM>
+    <UOM>
+      <Name>megawatt</Name>
+      <Abbreviation>MW</Abbreviation>
+      <RefFactor>1000000</RefFactor>
+      <RefUOM>watt</RefUOM>
+      <Class>Power</Class>
+    </UOM>
+    <UOM>
+      <Name>million British thermal unit per day</Name>
+      <Abbreviation>MM Btu/d</Abbreviation>
+      <RefFactor>41666.6666666667</RefFactor>
+      <RefUOM>British thermal unit per hour</RefUOM>
+      <Class>Power</Class>
+    </UOM>
+    <UOM>
+      <Name>million British thermal unit per hour</Name>
+      <Abbreviation>MM Btu/h</Abbreviation>
+      <RefFactor>1000000</RefFactor>
+      <RefUOM>British thermal unit per hour</RefUOM>
+      <Class>Power</Class>
+    </UOM>
+    <UOM>
+      <Name>million calorie per hour</Name>
+      <Abbreviation>MMcal/h</Abbreviation>
+      <RefFactor>1163</RefFactor>
+      <RefUOM>watt</RefUOM>
+      <Class>Power</Class>
+    </UOM>
+    <UOM>
+      <Name>pascal</Name>
+      <Abbreviation>Pa</Abbreviation>
+      <Class>Pressure</Class>
+    </UOM>
+    <UOM>
+      <Name>atmosphere</Name>
+      <Abbreviation>atm</Abbreviation>
+      <RefFactor>101325</RefFactor>
+      <RefUOM>pascal</RefUOM>
+      <Class>Pressure</Class>
+    </UOM>
+    <UOM>
+      <Name>bar</Name>
+      <Abbreviation>bar</Abbreviation>
+      <RefFactor>100000</RefFactor>
+      <RefUOM>pascal</RefUOM>
+      <Class>Pressure</Class>
+    </UOM>
+    <UOM>
+      <Name>inches of mercury</Name>
+      <Abbreviation>inHg</Abbreviation>
+      <RefFactor>3386.38815789</RefFactor>
+      <RefUOM>pascal</RefUOM>
+      <Class>Pressure</Class>
+    </UOM>
+    <UOM>
+      <Name>kilogram-force per square centimeter</Name>
+      <Abbreviation>kgf/cm2</Abbreviation>
+      <RefFactor>98066.5</RefFactor>
+      <RefUOM>pascal</RefUOM>
+      <Class>Pressure</Class>
+    </UOM>
+    <UOM>
+      <Name>kilogram-force per square meter</Name>
+      <Abbreviation>kgf/m2</Abbreviation>
+      <RefFactor>9.80665</RefFactor>
+      <RefUOM>pascal</RefUOM>
+      <Class>Pressure</Class>
+    </UOM>
+    <UOM>
+      <Name>kilopascal</Name>
+      <Abbreviation>kPa</Abbreviation>
+      <RefFactor>1000</RefFactor>
+      <RefUOM>pascal</RefUOM>
+      <Class>Pressure</Class>
+    </UOM>
+    <UOM>
+      <Name>millimeter of mercury</Name>
+      <Abbreviation>mmHg</Abbreviation>
+      <RefFactor>133.322368421</RefFactor>
+      <RefUOM>pascal</RefUOM>
+      <Class>Pressure</Class>
+    </UOM>
+    <UOM>
+      <Name>newton per square meter</Name>
+      <Abbreviation>N/m2</Abbreviation>
+      <RefUOM>pascal</RefUOM>
+      <Class>Pressure</Class>
+    </UOM>
+    <UOM>
+      <Name>pound-force per square inch</Name>
+      <Abbreviation>psi</Abbreviation>
+      <RefFactor>6894.75729316836</RefFactor>
+      <RefUOM>pascal</RefUOM>
+      <Class>Pressure</Class>
+    </UOM>
+    <UOM>
+      <Name>pound-force per square inch (customary)</Name>
+      <Abbreviation>psia</Abbreviation>
+      <RefFactor>6894.75729316836</RefFactor>
+      <RefUOM>pascal</RefUOM>
+      <Class>Pressure</Class>
+    </UOM>
+    <UOM>
+      <Name>torr</Name>
+      <Abbreviation>torr</Abbreviation>
+      <RefFactor>133.322368421</RefFactor>
+      <RefUOM>pascal</RefUOM>
+      <Class>Pressure</Class>
+    </UOM>
+    <UOM>
+      <Name>count</Name>
+      <Abbreviation>count</Abbreviation>
+      <Class>Quantity</Class>
+    </UOM>
+    <UOM>
+      <Name>percent</Name>
+      <Abbreviation>%</Abbreviation>
+      <Class>Ratio</Class>
+    </UOM>
+    <UOM>
+      <Name>parts per billion</Name>
+      <Abbreviation>ppb</Abbreviation>
+      <RefFactor>1E-07</RefFactor>
+      <RefUOM>percent</RefUOM>
+      <Class>Ratio</Class>
+    </UOM>
+    <UOM>
+      <Name>parts per million</Name>
+      <Abbreviation>ppm</Abbreviation>
+      <RefFactor>0.0001</RefFactor>
+      <RefUOM>percent</RefUOM>
+      <Class>Ratio</Class>
+    </UOM>
+    <UOM>
+      <Name>joule per kilogram</Name>
+      <Abbreviation>J/kg</Abbreviation>
+      <Class>Specific Energy</Class>
+    </UOM>
+    <UOM>
+      <Name>British thermal unit per pound</Name>
+      <Abbreviation>Btu/lb</Abbreviation>
+      <RefFactor>2326</RefFactor>
+      <RefUOM>joule per kilogram</RefUOM>
+      <Class>Specific Energy</Class>
+    </UOM>
+    <UOM>
+      <Name>joule per gram</Name>
+      <Abbreviation>J/g</Abbreviation>
+      <RefFactor>1000</RefFactor>
+      <RefUOM>joule per kilogram</RefUOM>
+      <Class>Specific Energy</Class>
+    </UOM>
+    <UOM>
+      <Name>kilocalorie per kilogram</Name>
+      <Abbreviation>kcal/kg</Abbreviation>
+      <RefFactor>4186.8</RefFactor>
+      <RefUOM>joule per kilogram</RefUOM>
+      <Class>Specific Energy</Class>
+    </UOM>
+    <UOM>
+      <Name>kilojoule per kilogram</Name>
+      <Abbreviation>kJ/kg</Abbreviation>
+      <RefFactor>1000</RefFactor>
+      <RefUOM>joule per kilogram</RefUOM>
+      <Class>Specific Energy</Class>
+    </UOM>
+    <UOM>
+      <Name>kilojoule per pound</Name>
+      <Abbreviation>kJ/lb</Abbreviation>
+      <RefFactor>2204.62262184878</RefFactor>
+      <RefUOM>joule per kilogram</RefUOM>
+      <Class>Specific Energy</Class>
+    </UOM>
+    <UOM>
+      <Name>joule per kilogram kelvin</Name>
+      <Abbreviation>J/(kg K)</Abbreviation>
+      <Class>Specific Entropy, Specific Heat Capacity</Class>
+    </UOM>
+    <UOM>
+      <Name>British thermal unit per pound degree Fahrenheit</Name>
+      <Abbreviation>Btu/(lb °F)</Abbreviation>
+      <RefFactor>4186.8</RefFactor>
+      <RefUOM>joule per kilogram kelvin</RefUOM>
+      <Class>Specific Entropy, Specific Heat Capacity</Class>
+    </UOM>
+    <UOM>
+      <Name>British thermal unit per pound degree Rankine</Name>
+      <Abbreviation>Btu/(lb °R)</Abbreviation>
+      <RefFactor>4186.8</RefFactor>
+      <RefUOM>joule per kilogram kelvin</RefUOM>
+      <Class>Specific Entropy, Specific Heat Capacity</Class>
+    </UOM>
+    <UOM>
+      <Name>joule per gram kelvin</Name>
+      <Abbreviation>J/(g K)</Abbreviation>
+      <RefFactor>1000</RefFactor>
+      <RefUOM>joule per kilogram kelvin</RefUOM>
+      <Class>Specific Entropy, Specific Heat Capacity</Class>
+    </UOM>
+    <UOM>
+      <Name>kilojoule per kilogram kelvin</Name>
+      <Abbreviation>kJ/(kg K)</Abbreviation>
+      <RefFactor>1000</RefFactor>
+      <RefUOM>joule per kilogram kelvin</RefUOM>
+      <Class>Specific Entropy, Specific Heat Capacity</Class>
+    </UOM>
+    <UOM>
+      <Name>cubic meter per kilogram</Name>
+      <Abbreviation>m3/kg</Abbreviation>
+      <Class>Specific Volume</Class>
+    </UOM>
+    <UOM>
+      <Name>cubic centimeter per gram</Name>
+      <Abbreviation>cm3/g</Abbreviation>
+      <RefFactor>0.001</RefFactor>
+      <RefUOM>cubic meter per kilogram</RefUOM>
+      <Class>Specific Volume</Class>
+    </UOM>
+    <UOM>
+      <Name>cubic foot per pound</Name>
+      <Abbreviation>ft3/lb</Abbreviation>
+      <RefFactor>0.0624279605761446</RefFactor>
+      <RefUOM>cubic meter per kilogram</RefUOM>
+      <Class>Specific Volume</Class>
+    </UOM>
+    <UOM>
+      <Name>meter per second</Name>
+      <Abbreviation>m/s</Abbreviation>
+      <Class>Speed</Class>
+    </UOM>
+    <UOM>
+      <Name>centimeter per second</Name>
+      <Abbreviation>cm/s</Abbreviation>
+      <RefFactor>0.01</RefFactor>
+      <RefUOM>meter per second</RefUOM>
+      <Class>Speed</Class>
+    </UOM>
+    <UOM>
+      <Name>foot per second</Name>
+      <Abbreviation>ft/s</Abbreviation>
+      <RefFactor>0.3048</RefFactor>
+      <RefUOM>meter per second</RefUOM>
+      <Class>Speed</Class>
+    </UOM>
+    <UOM>
+      <Name>International nautical mile per hour</Name>
+      <Abbreviation>nmi/h</Abbreviation>
+      <RefFactor>0.514444444444444</RefFactor>
+      <RefUOM>meter per second</RefUOM>
+      <Class>Speed</Class>
+    </UOM>
+    <UOM>
+      <Name>kilometer per hour</Name>
+      <Abbreviation>km/h</Abbreviation>
+      <RefFactor>0.277777777777778</RefFactor>
+      <RefUOM>meter per second</RefUOM>
+      <Class>Speed</Class>
+    </UOM>
+    <UOM>
+      <Name>mile per hour</Name>
+      <Abbreviation>mi/h</Abbreviation>
+      <RefFactor>0.44704</RefFactor>
+      <RefUOM>meter per second</RefUOM>
+      <Class>Speed</Class>
+    </UOM>
+    <UOM>
+      <Name>kelvin</Name>
+      <Abbreviation>K</Abbreviation>
+      <Class>Temperature</Class>
+    </UOM>
+    <UOM>
+      <Name>degree Celsius</Name>
+      <Abbreviation>°C</Abbreviation>
+      <RefOffset>273.15</RefOffset>
+      <RefUOM>kelvin</RefUOM>
+      <Class>Temperature</Class>
+    </UOM>
+    <UOM>
+      <Name>degree Fahrenheit</Name>
+      <Abbreviation>°F</Abbreviation>
+      <RefFactor>0.555555555555556</RefFactor>
+      <RefOffset>-17.7777777777778</RefOffset>
+      <RefUOM>degree Celsius</RefUOM>
+      <Class>Temperature</Class>
+    </UOM>
+    <UOM>
+      <Name>degree Rankine</Name>
+      <Abbreviation>°R</Abbreviation>
+      <RefOffset>-459.67</RefOffset>
+      <RefUOM>degree Fahrenheit</RefUOM>
+      <Class>Temperature</Class>
+    </UOM>
+    <UOM>
+      <Name>cubic meter</Name>
+      <Abbreviation>m3</Abbreviation>
+      <Class>Volume</Class>
+    </UOM>
+    <UOM>
+      <Name>cubic foot</Name>
+      <Abbreviation>ft3</Abbreviation>
+      <RefFactor>0.028316846592</RefFactor>
+      <RefUOM>cubic meter</RefUOM>
+      <Class>Volume</Class>
+    </UOM>
+    <UOM>
+      <Name>acre foot</Name>
+      <Abbreviation>acre ft</Abbreviation>
+      <RefFactor>43560</RefFactor>
+      <RefUOM>cubic foot</RefUOM>
+      <Class>Volume</Class>
+    </UOM>
+    <UOM>
+      <Name>US gallon</Name>
+      <Abbreviation>US gal</Abbreviation>
+      <RefFactor>0.003785411784</RefFactor>
+      <RefUOM>cubic meter</RefUOM>
+      <Class>Volume</Class>
+    </UOM>
+    <UOM>
+      <Name>barrel</Name>
+      <Abbreviation>bbl</Abbreviation>
+      <RefFactor>42</RefFactor>
+      <RefUOM>US gallon</RefUOM>
+      <Class>Volume</Class>
+    </UOM>
+    <UOM>
+      <Name>cubic centimeter</Name>
+      <Abbreviation>cm3</Abbreviation>
+      <RefFactor>1E-06</RefFactor>
+      <RefUOM>cubic meter</RefUOM>
+      <Class>Volume</Class>
+    </UOM>
+    <UOM>
+      <Name>Imperial gallon</Name>
+      <Abbreviation>Imp gal</Abbreviation>
+      <RefFactor>1.20094992550485</RefFactor>
+      <RefUOM>US gallon</RefUOM>
+      <Class>Volume</Class>
+    </UOM>
+    <UOM>
+      <Name>kiloliter</Name>
+      <Abbreviation>kL</Abbreviation>
+      <RefUOM>cubic meter</RefUOM>
+      <Class>Volume</Class>
+    </UOM>
+    <UOM>
+      <Name>liter</Name>
+      <Abbreviation>L</Abbreviation>
+      <RefFactor>0.001</RefFactor>
+      <RefUOM>cubic meter</RefUOM>
+      <Class>Volume</Class>
+    </UOM>
+    <UOM>
+      <Name>megaliter</Name>
+      <Abbreviation>M L</Abbreviation>
+      <RefFactor>1000</RefFactor>
+      <RefUOM>cubic meter</RefUOM>
+      <Class>Volume</Class>
+    </UOM>
+    <UOM>
+      <Name>milliliter</Name>
+      <Abbreviation>mL</Abbreviation>
+      <RefFactor>1E-06</RefFactor>
+      <RefUOM>cubic meter</RefUOM>
+      <Class>Volume</Class>
+    </UOM>
+    <UOM>
+      <Name>million barrel</Name>
+      <Abbreviation>MMbbl</Abbreviation>
+      <RefFactor>1000000</RefFactor>
+      <RefUOM>barrel</RefUOM>
+      <Class>Volume</Class>
+    </UOM>
+    <UOM>
+      <Name>million imperial gallon</Name>
+      <Abbreviation>Imp Mgal</Abbreviation>
+      <RefFactor>1000000</RefFactor>
+      <RefUOM>Imperial gallon</RefUOM>
+      <Class>Volume</Class>
+    </UOM>
+    <UOM>
+      <Name>million US gallon</Name>
+      <Abbreviation>US Mgal</Abbreviation>
+      <RefFactor>1000000</RefFactor>
+      <RefUOM>US gallon</RefUOM>
+      <Class>Volume</Class>
+    </UOM>
+    <UOM>
+      <Name>thousand barrel</Name>
+      <Abbreviation>kbbl</Abbreviation>
+      <RefFactor>1000</RefFactor>
+      <RefUOM>barrel</RefUOM>
+      <Class>Volume</Class>
+    </UOM>
+    <UOM>
+      <Name>thousand cubic meter</Name>
+      <Abbreviation>k m3</Abbreviation>
+      <RefFactor>1000</RefFactor>
+      <RefUOM>cubic meter</RefUOM>
+      <Class>Volume</Class>
+    </UOM>
+    <UOM>
+      <Name>thousand imperial gallon</Name>
+      <Abbreviation>Imp kgal</Abbreviation>
+      <RefFactor>1000</RefFactor>
+      <RefUOM>Imperial gallon</RefUOM>
+      <Class>Volume</Class>
+    </UOM>
+    <UOM>
+      <Name>thousand US gallon</Name>
+      <Abbreviation>US kgal</Abbreviation>
+      <RefFactor>1000</RefFactor>
+      <RefUOM>US gallon</RefUOM>
+      <Class>Volume</Class>
+    </UOM>
+    <UOM>
+      <Name>cubic meter per second</Name>
+      <Abbreviation>m3/s</Abbreviation>
+      <Class>Volume Flow Rate</Class>
+    </UOM>
+    <UOM>
+      <Name>barrel per day</Name>
+      <Abbreviation>bbl/d</Abbreviation>
+      <RefFactor>1.84013072833333E-06</RefFactor>
+      <RefUOM>cubic meter per second</RefUOM>
+      <Class>Volume Flow Rate</Class>
+    </UOM>
+    <UOM>
+      <Name>cubic centimeter per second</Name>
+      <Abbreviation>cm3/s</Abbreviation>
+      <RefFactor>1E-06</RefFactor>
+      <RefUOM>cubic meter per second</RefUOM>
+      <Class>Volume Flow Rate</Class>
+    </UOM>
+    <UOM>
+      <Name>cubic foot per second</Name>
+      <Abbreviation>ft3/s</Abbreviation>
+      <RefFactor>0.028316846592</RefFactor>
+      <RefUOM>cubic meter per second</RefUOM>
+      <Class>Volume Flow Rate</Class>
+    </UOM>
+    <UOM>
+      <Name>cubic meter per hour</Name>
+      <Abbreviation>m3/h</Abbreviation>
+      <RefFactor>0.000277777777777778</RefFactor>
+      <RefUOM>cubic meter per second</RefUOM>
+      <Class>Volume Flow Rate</Class>
+    </UOM>
+    <UOM>
+      <Name>Imperial gallon per minute</Name>
+      <Abbreviation>Imp gal/min</Abbreviation>
+      <RefFactor>7.57681666666663E-05</RefFactor>
+      <RefUOM>cubic meter per second</RefUOM>
+      <Class>Volume Flow Rate</Class>
+    </UOM>
+    <UOM>
+      <Name>liter per second</Name>
+      <Abbreviation>L/s</Abbreviation>
+      <RefFactor>0.001</RefFactor>
+      <RefUOM>cubic meter per second</RefUOM>
+      <Class>Volume Flow Rate</Class>
+    </UOM>
+    <UOM>
+      <Name>US gallon per minute</Name>
+      <Abbreviation>US gal/min</Abbreviation>
+      <RefFactor>6.30901964E-05</RefFactor>
+      <RefUOM>cubic meter per second</RefUOM>
+      <Class>Volume Flow Rate</Class>
+    </UOM>
+  </UOMDatabase>
+  <AFDatabase>
+    <Name>Green Power Company</Name>
+    <AFAttributeCategory>
+      <Name>Building Info</Name>
+    </AFAttributeCategory>
+    <AFAttributeCategory>
+      <Name>Location</Name>
+    </AFAttributeCategory>
+    <AFAttributeCategory>
+      <Name>Time-Series Data</Name>
+    </AFAttributeCategory>
+    <AFElementCategory>
+      <Name>Measures Energy</Name>
+    </AFElementCategory>
+    <AFElementCategory>
+      <Name>Shows Status</Name>
+    </AFElementCategory>
+    <AFEnumerationSet>
+      <Name>Building Type</Name>
+      <AFEnumerationValue>
+        <Name>A</Name>
+        <Value>0</Value>
+      </AFEnumerationValue>
+      <AFEnumerationValue>
+        <Name>B</Name>
+        <Value>1</Value>
+      </AFEnumerationValue>
+    </AFEnumerationSet>
+    <AFEnumerationSet>
+      <Name>Meter Status</Name>
+      <AFEnumerationValue>
+        <Name>Good</Name>
+        <Value>0</Value>
+      </AFEnumerationValue>
+      <AFEnumerationValue>
+        <Name>Bad</Name>
+        <Value>1</Value>
+      </AFEnumerationValue>
+    </AFEnumerationSet>
+    <AFElementTemplate>
+      <Name>City</Name>
+      <Type>None</Type>
+      <InstanceType>Element</InstanceType>
+      <AllowElementToExtend>false</AllowElementToExtend>
+      <AFExtendedProperty>
+        <Name>Override</Name>
+        <Value type="AFElement">Geographical Locations\London</Value>
+      </AFExtendedProperty>
+      <AFAttributeTemplate>
+        <Name>Energy Usage</Name>
+        <DefaultUOM>kWh</DefaultUOM>
+        <Type>Double</Type>
+        <Value type="Double">0</Value>
+        <DataReference>PI Point</DataReference>
+        <ConfigString>\\%@\Configuration|PIDataArchiveName%\GPC.%Element%.%Attribute%;pointtype=Float64</ConfigString>
+      </AFAttributeTemplate>
+      <AFAnalysisTemplate>
+        <Name>Energy Usage Rollup</Name>
+        <Target>City</Target>
+        <AFAnalysisRule>
+          <AFPlugIn>Rollup</AFPlugIn>
+          <VariableMapping>SearchCriteria||Elements[@Name=*]|Attributes[@Name=Energy Usage];Sum||Energy Usage;[GUID]||{081d2b2b-6d17-4fb4-a797-0b35c9c7eb36};[GUID]||[UNSET];</VariableMapping>
+        </AFAnalysisRule>
+        <AFTimeRule>
+          <AFPlugIn>Natural</AFPlugIn>
+        </AFTimeRule>
+      </AFAnalysisTemplate>
+    </AFElementTemplate>
+    <AFElementTemplate>
+      <Name>MeterBasic</Name>
+      <Type>None</Type>
+      <InstanceType>Element</InstanceType>
+      <AllowElementToExtend>false</AllowElementToExtend>
+      <AFExtendedProperty>
+        <Name>Override</Name>
+        <Value type="AFElement">Meters\Meter001</Value>
+      </AFExtendedProperty>
+      <AFElementCategoryRef>Measures Energy</AFElementCategoryRef>
+      <AFAttributeTemplate>
+        <Name>Building</Name>
+        <Type>String</Type>
+        <Value type="String"></Value>
+        <AFAttributeCategoryRef>Building Info</AFAttributeCategoryRef>
+      </AFAttributeTemplate>
+      <AFAttributeTemplate>
+        <Name>Building Type</Name>
+        <Type>AFEnumerationValue</Type>
+        <TypeQualifier type="AFObject">EnumerationSets[Building Type]</TypeQualifier>
+        <AFAttributeCategoryRef>Building Info</AFAttributeCategoryRef>
+      </AFAttributeTemplate>
+      <AFAttributeTemplate>
+        <Name>City</Name>
+        <Type>String</Type>
+        <Value type="String"></Value>
+        <AFAttributeCategoryRef>Location</AFAttributeCategoryRef>
+      </AFAttributeTemplate>
+      <AFAttributeTemplate>
+        <Name>Energy Usage</Name>
+        <DefaultUOM>kWh</DefaultUOM>
+        <Type>Double</Type>
+        <Value type="Double">0</Value>
+        <DataReference>PI Point</DataReference>
+        <ConfigString>\\%@\Configuration|PIDataArchiveName%\GPC.%Element%.%Attribute%;UOM=kWh;pointtype=Float64</ConfigString>
+        <AFAttributeCategoryRef>Time-Series Data</AFAttributeCategoryRef>
+      </AFAttributeTemplate>
+      <AFAttributeTemplate>
+        <Name>Substation</Name>
+        <Type>String</Type>
+        <Value type="String"></Value>
+      </AFAttributeTemplate>
+      <AFAttributeTemplate>
+        <Name>Usage Limit</Name>
+        <DefaultUOM>kWh</DefaultUOM>
+        <Type>Double</Type>
+        <Value type="Double">0</Value>
+      </AFAttributeTemplate>
+      <AFAnalysisTemplate>
+        <Name>Simulated Energy Usage</Name>
+        <Target>MeterBasic</Target>
+        <AFAnalysisRule>
+          <AFPlugIn>PerformanceEquation</AFPlugIn>
+          <ConfigString>EnergyUsage := if BadVal(PrevVal('{18b832ba-9eca-48d8-9b95-a13ec9c0d446};Energy Usage','*')) then 10 else PrevVal('{18b832ba-9eca-48d8-9b95-a13ec9c0d446};Energy Usage','*');&#xD;
+BrownianOscillator := Max(0, EnergyUsage + Normalrnd(0,30) - 0.1*(EnergyUsage-300));</ConfigString>
+          <VariableMapping>Brownian Oscillator||Energy Usage;[GUID]||{18b832ba-9eca-48d8-9b95-a13ec9c0d446};BrownianOscillator||Energy Usage;[GUID]||{18b832ba-9eca-48d8-9b95-a13ec9c0d446};[GUID]||[UNSET];</VariableMapping>
+        </AFAnalysisRule>
+        <AFTimeRule>
+          <AFPlugIn>Periodic</AFPlugIn>
+          <ConfigString>Frequency=30</ConfigString>
+        </AFTimeRule>
+      </AFAnalysisTemplate>
+    </AFElementTemplate>
+    <AFElementTemplate>
+      <Name>MeterAdvanced</Name>
+      <BaseTemplate>MeterBasic</BaseTemplate>
+      <Type>None</Type>
+      <InstanceType>Element</InstanceType>
+      <AllowElementToExtend>false</AllowElementToExtend>
+      <AFExtendedProperty>
+        <Name>Override</Name>
+        <Value type="AFElement">Meters\Meter009</Value>
+      </AFExtendedProperty>
+      <AFElementCategoryRef>Shows Status</AFElementCategoryRef>
+      <AFAttributeTemplate>
+        <Name>Status</Name>
+        <Type>AFEnumerationValue</Type>
+        <TypeQualifier type="AFObject">EnumerationSets[Meter Status]</TypeQualifier>
+        <Value type="AFEnumerationValue">84162092-5af6-47a5-bd33-e6191890f148?0?Good</Value>
+        <DataReference>PI Point</DataReference>
+        <ConfigString>\\%@\Configuration|PIDataArchiveName%\GPC.%Element%.%Attribute%;pointtype=digital;digitalset=MeterStatus</ConfigString>
+        <AFAttributeCategoryRef>Time-Series Data</AFAttributeCategoryRef>
+      </AFAttributeTemplate>
+      <AFAnalysisTemplate>
+        <Name>Simulated Status</Name>
+        <Target>MeterAdvanced</Target>
+        <AFAnalysisRule>
+          <AFPlugIn>PerformanceEquation</AFPlugIn>
+          <ConfigString>if BadVal('{18b832ba-9eca-48d8-9b95-a13ec9c0d446};Energy Usage') then "Bad" else if '{18b832ba-9eca-48d8-9b95-a13ec9c0d446};Energy Usage' &lt; '{dce15fa5-49c4-4118-86fe-b0b78aa474ff};Usage Limit' then "Good" else "Bad"</ConfigString>
+          <VariableMapping>Output||Status;[GUID]||{c3951a08-9367-4f5d-a1e8-7d54f1a9fe40};[GUID]||[UNSET];</VariableMapping>
+        </AFAnalysisRule>
+        <AFTimeRule>
+          <AFPlugIn>Natural</AFPlugIn>
+        </AFTimeRule>
+      </AFAnalysisTemplate>
+    </AFElementTemplate>
+    <AFElement>
+      <Name>Configuration</Name>
+      <AFAttribute>
+        <Name>PIDataArchiveName</Name>
+        <Type>String</Type>
+        <Timestamp>2017-02-10T14:34:17.8218033Z</Timestamp>
+        <Value type="String">PISRV01</Value>
+      </AFAttribute>
+    </AFElement>
+    <AFElement>
+      <Name>Geographical Locations</Name>
+      <AFElement ReferenceType="Parent-Child">
+        <Name>London</Name>
+        <Template>City</Template>
+        <AFAttribute>
+          <Name>Energy Usage</Name>
+          <DataReference>PI Point</DataReference>
+          <ConfigString>London.Energy Usage?37</ConfigString>
+        </AFAttribute>
+        <AFElementRef ReferenceType="Parent-Child">Meters\Meter001</AFElementRef>
+        <AFElementRef ReferenceType="Parent-Child">Meters\Meter002</AFElementRef>
+        <AFElementRef ReferenceType="Parent-Child">Meters\Meter003</AFElementRef>
+        <AFElementRef ReferenceType="Parent-Child">Meters\Meter004</AFElementRef>
+        <AFAnalysis>
+          <Name>Energy Usage Rollup</Name>
+          <Template>Energy Usage Rollup</Template>
+          <Status>Enabled</Status>
+          <Target>
+            <AFElementRef>Geographical Locations\London</AFElementRef>
+          </Target>
+        </AFAnalysis>
+      </AFElement>
+      <AFElement ReferenceType="Parent-Child">
+        <Name>Montreal</Name>
+        <Template>City</Template>
+        <AFAttribute>
+          <Name>Energy Usage</Name>
+          <DataReference>PI Point</DataReference>
+          <ConfigString>Montreal.Energy Usage?38</ConfigString>
+        </AFAttribute>
+        <AFElementRef ReferenceType="Parent-Child">Meters\Meter009</AFElementRef>
+        <AFElementRef ReferenceType="Parent-Child">Meters\Meter010</AFElementRef>
+        <AFElementRef ReferenceType="Parent-Child">Meters\Meter011</AFElementRef>
+        <AFElementRef ReferenceType="Parent-Child">Meters\Meter012</AFElementRef>
+        <AFAnalysis>
+          <Name>Energy Usage Rollup</Name>
+          <Template>Energy Usage Rollup</Template>
+          <Status>Enabled</Status>
+          <Target>
+            <AFElementRef>Geographical Locations\Montreal</AFElementRef>
+          </Target>
+        </AFAnalysis>
+      </AFElement>
+      <AFElement ReferenceType="Parent-Child">
+        <Name>San Francisco</Name>
+        <Template>City</Template>
+        <AFAttribute>
+          <Name>Energy Usage</Name>
+          <DataReference>PI Point</DataReference>
+          <ConfigString>San Francisco.Energy Usage?39</ConfigString>
+        </AFAttribute>
+        <AFElementRef ReferenceType="Parent-Child">Meters\Meter005</AFElementRef>
+        <AFElementRef ReferenceType="Parent-Child">Meters\Meter006</AFElementRef>
+        <AFElementRef ReferenceType="Parent-Child">Meters\Meter007</AFElementRef>
+        <AFElementRef ReferenceType="Parent-Child">Meters\Meter008</AFElementRef>
+        <AFAnalysis>
+          <Name>Energy Usage Rollup</Name>
+          <Template>Energy Usage Rollup</Template>
+          <Status>Enabled</Status>
+          <Target>
+            <AFElementRef>Geographical Locations\San Francisco</AFElementRef>
+          </Target>
+        </AFAnalysis>
+      </AFElement>
+    </AFElement>
+    <AFElement>
+      <Name>Meters</Name>
+      <AFElement ReferenceType="Parent-Child">
+        <Name>Meter001</Name>
+        <Template>MeterBasic</Template>
+        <AFAttribute>
+          <Name>Building</Name>
+          <Value type="String">The Shard</Value>
+          <AFAttributeCategoryRef>Building Info</AFAttributeCategoryRef>
+        </AFAttribute>
+        <AFAttribute>
+          <Name>Building Type</Name>
+          <Value type="AFEnumerationValue">EnumerationSets[Building Type]\A</Value>
+          <AFAttributeCategoryRef>Building Info</AFAttributeCategoryRef>
+        </AFAttribute>
+        <AFAttribute>
+          <Name>City</Name>
+          <Value type="String">London</Value>
+          <AFAttributeCategoryRef>Location</AFAttributeCategoryRef>
+        </AFAttribute>
+        <AFAttribute>
+          <Name>Energy Usage</Name>
+          <DataReference>PI Point</DataReference>
+          <ConfigString>GPC.Meter001.Energy Usage?55;UOM=kWh</ConfigString>
+          <AFAttributeCategoryRef>Time-Series Data</AFAttributeCategoryRef>
+        </AFAttribute>
+        <AFAttribute>
+          <Name>Substation</Name>
+          <Value type="String">SSA-01</Value>
+        </AFAttribute>
+        <AFAttribute>
+          <Name>Usage Limit</Name>
+          <UOM>kWh</UOM>
+          <Value type="Double">350</Value>
+        </AFAttribute>
+        <AFAnalysis>
+          <Name>Simulated Energy Usage</Name>
+          <Template>Simulated Energy Usage</Template>
+          <Status>Enabled</Status>
+          <Target>
+            <AFElementRef>Meters\Meter001</AFElementRef>
+          </Target>
+        </AFAnalysis>
+      </AFElement>
+      <AFElement ReferenceType="Parent-Child">
+        <Name>Meter002</Name>
+        <Template>MeterBasic</Template>
+        <AFAttribute>
+          <Name>Building</Name>
+          <Value type="String">One Canada Square</Value>
+          <AFAttributeCategoryRef>Building Info</AFAttributeCategoryRef>
+        </AFAttribute>
+        <AFAttribute>
+          <Name>Building Type</Name>
+          <Value type="AFEnumerationValue">EnumerationSets[Building Type]\A</Value>
+          <AFAttributeCategoryRef>Building Info</AFAttributeCategoryRef>
+        </AFAttribute>
+        <AFAttribute>
+          <Name>City</Name>
+          <Value type="String">London</Value>
+          <AFAttributeCategoryRef>Location</AFAttributeCategoryRef>
+        </AFAttribute>
+        <AFAttribute>
+          <Name>Energy Usage</Name>
+          <DataReference>PI Point</DataReference>
+          <ConfigString>Meter002.Energy Usage?41;UOM=kWh</ConfigString>
+          <AFAttributeCategoryRef>Time-Series Data</AFAttributeCategoryRef>
+        </AFAttribute>
+        <AFAttribute>
+          <Name>Substation</Name>
+          <Value type="String">SSB-02</Value>
+        </AFAttribute>
+        <AFAttribute>
+          <Name>Usage Limit</Name>
+          <UOM>kWh</UOM>
+          <Value type="Double">350</Value>
+        </AFAttribute>
+        <AFAnalysis>
+          <Name>Simulated Energy Usage</Name>
+          <Template>Simulated Energy Usage</Template>
+          <Status>Enabled</Status>
+          <Target>
+            <AFElementRef>Meters\Meter002</AFElementRef>
+          </Target>
+        </AFAnalysis>
+      </AFElement>
+      <AFElement ReferenceType="Parent-Child">
+        <Name>Meter003</Name>
+        <Template>MeterBasic</Template>
+        <AFAttribute>
+          <Name>Building</Name>
+          <Value type="String">Heron tower</Value>
+          <AFAttributeCategoryRef>Building Info</AFAttributeCategoryRef>
+        </AFAttribute>
+        <AFAttribute>
+          <Name>Building Type</Name>
+          <Value type="AFEnumerationValue">EnumerationSets[Building Type]\A</Value>
+          <AFAttributeCategoryRef>Building Info</AFAttributeCategoryRef>
+        </AFAttribute>
+        <AFAttribute>
+          <Name>City</Name>
+          <Value type="String">London</Value>
+          <AFAttributeCategoryRef>Location</AFAttributeCategoryRef>
+        </AFAttribute>
+        <AFAttribute>
+          <Name>Energy Usage</Name>
+          <DataReference>PI Point</DataReference>
+          <ConfigString>Meter003.Energy Usage?42;UOM=kWh</ConfigString>
+          <AFAttributeCategoryRef>Time-Series Data</AFAttributeCategoryRef>
+        </AFAttribute>
+        <AFAttribute>
+          <Name>Substation</Name>
+          <Value type="String">SSC-03</Value>
+        </AFAttribute>
+        <AFAttribute>
+          <Name>Usage Limit</Name>
+          <UOM>kWh</UOM>
+          <Value type="Double">350</Value>
+        </AFAttribute>
+        <AFAnalysis>
+          <Name>Simulated Energy Usage</Name>
+          <Template>Simulated Energy Usage</Template>
+          <Status>Enabled</Status>
+          <Target>
+            <AFElementRef>Meters\Meter003</AFElementRef>
+          </Target>
+        </AFAnalysis>
+      </AFElement>
+      <AFElement ReferenceType="Parent-Child">
+        <Name>Meter004</Name>
+        <Template>MeterBasic</Template>
+        <AFAttribute>
+          <Name>Building</Name>
+          <Value type="String">Leadenhall</Value>
+          <AFAttributeCategoryRef>Building Info</AFAttributeCategoryRef>
+        </AFAttribute>
+        <AFAttribute>
+          <Name>Building Type</Name>
+          <Value type="AFEnumerationValue">EnumerationSets[Building Type]\B</Value>
+          <AFAttributeCategoryRef>Building Info</AFAttributeCategoryRef>
+        </AFAttribute>
+        <AFAttribute>
+          <Name>City</Name>
+          <Value type="String">London</Value>
+          <AFAttributeCategoryRef>Location</AFAttributeCategoryRef>
+        </AFAttribute>
+        <AFAttribute>
+          <Name>Energy Usage</Name>
+          <DataReference>PI Point</DataReference>
+          <ConfigString>Meter004.Energy Usage?43;UOM=kWh</ConfigString>
+          <AFAttributeCategoryRef>Time-Series Data</AFAttributeCategoryRef>
+        </AFAttribute>
+        <AFAttribute>
+          <Name>Substation</Name>
+          <Value type="String">SSD-04</Value>
+        </AFAttribute>
+        <AFAttribute>
+          <Name>Usage Limit</Name>
+          <UOM>kWh</UOM>
+          <Value type="Double">350</Value>
+        </AFAttribute>
+        <AFAnalysis>
+          <Name>Simulated Energy Usage</Name>
+          <Template>Simulated Energy Usage</Template>
+          <Status>Enabled</Status>
+          <Target>
+            <AFElementRef>Meters\Meter004</AFElementRef>
+          </Target>
+        </AFAnalysis>
+      </AFElement>
+      <AFElement ReferenceType="Parent-Child">
+        <Name>Meter005</Name>
+        <Template>MeterBasic</Template>
+        <AFAttribute>
+          <Name>Building</Name>
+          <Value type="String">Transamerica Pyramid</Value>
+          <AFAttributeCategoryRef>Building Info</AFAttributeCategoryRef>
+        </AFAttribute>
+        <AFAttribute>
+          <Name>Building Type</Name>
+          <Value type="AFEnumerationValue">EnumerationSets[Building Type]\A</Value>
+          <AFAttributeCategoryRef>Building Info</AFAttributeCategoryRef>
+        </AFAttribute>
+        <AFAttribute>
+          <Name>City</Name>
+          <Value type="String">San Francisco</Value>
+          <AFAttributeCategoryRef>Location</AFAttributeCategoryRef>
+        </AFAttribute>
+        <AFAttribute>
+          <Name>Energy Usage</Name>
+          <DataReference>PI Point</DataReference>
+          <ConfigString>Meter005.Energy Usage?40;UOM=kWh</ConfigString>
+          <AFAttributeCategoryRef>Time-Series Data</AFAttributeCategoryRef>
+        </AFAttribute>
+        <AFAttribute>
+          <Name>Substation</Name>
+          <Value type="String">SSA-11</Value>
+        </AFAttribute>
+        <AFAttribute>
+          <Name>Usage Limit</Name>
+          <UOM>kWh</UOM>
+          <Value type="Double">360</Value>
+        </AFAttribute>
+        <AFAnalysis>
+          <Name>Simulated Energy Usage</Name>
+          <Template>Simulated Energy Usage</Template>
+          <Status>Enabled</Status>
+          <Target>
+            <AFElementRef>Meters\Meter005</AFElementRef>
+          </Target>
+        </AFAnalysis>
+      </AFElement>
+      <AFElement ReferenceType="Parent-Child">
+        <Name>Meter006</Name>
+        <Template>MeterBasic</Template>
+        <AFAttribute>
+          <Name>Building</Name>
+          <Value type="String">555 California Street</Value>
+          <AFAttributeCategoryRef>Building Info</AFAttributeCategoryRef>
+        </AFAttribute>
+        <AFAttribute>
+          <Name>Building Type</Name>
+          <Value type="AFEnumerationValue">EnumerationSets[Building Type]\B</Value>
+          <AFAttributeCategoryRef>Building Info</AFAttributeCategoryRef>
+        </AFAttribute>
+        <AFAttribute>
+          <Name>City</Name>
+          <Value type="String">San Francisco</Value>
+          <AFAttributeCategoryRef>Location</AFAttributeCategoryRef>
+        </AFAttribute>
+        <AFAttribute>
+          <Name>Energy Usage</Name>
+          <DataReference>PI Point</DataReference>
+          <ConfigString>Meter006.Energy Usage?48;UOM=kWh</ConfigString>
+          <AFAttributeCategoryRef>Time-Series Data</AFAttributeCategoryRef>
+        </AFAttribute>
+        <AFAttribute>
+          <Name>Substation</Name>
+          <Value type="String">SSB-12</Value>
+        </AFAttribute>
+        <AFAttribute>
+          <Name>Usage Limit</Name>
+          <UOM>kWh</UOM>
+          <Value type="Double">360</Value>
+        </AFAttribute>
+        <AFAnalysis>
+          <Name>Simulated Energy Usage</Name>
+          <Template>Simulated Energy Usage</Template>
+          <Status>Enabled</Status>
+          <Target>
+            <AFElementRef>Meters\Meter006</AFElementRef>
+          </Target>
+        </AFAnalysis>
+      </AFElement>
+      <AFElement ReferenceType="Parent-Child">
+        <Name>Meter007</Name>
+        <Template>MeterBasic</Template>
+        <AFAttribute>
+          <Name>Building</Name>
+          <Value type="String">345 California Center</Value>
+          <AFAttributeCategoryRef>Building Info</AFAttributeCategoryRef>
+        </AFAttribute>
+        <AFAttribute>
+          <Name>Building Type</Name>
+          <Value type="AFEnumerationValue">EnumerationSets[Building Type]\A</Value>
+          <AFAttributeCategoryRef>Building Info</AFAttributeCategoryRef>
+        </AFAttribute>
+        <AFAttribute>
+          <Name>City</Name>
+          <Value type="String">San Francisco</Value>
+          <AFAttributeCategoryRef>Location</AFAttributeCategoryRef>
+        </AFAttribute>
+        <AFAttribute>
+          <Name>Energy Usage</Name>
+          <DataReference>PI Point</DataReference>
+          <ConfigString>Meter007.Energy Usage?49;UOM=kWh</ConfigString>
+          <AFAttributeCategoryRef>Time-Series Data</AFAttributeCategoryRef>
+        </AFAttribute>
+        <AFAttribute>
+          <Name>Substation</Name>
+          <Value type="String">SSC-13</Value>
+        </AFAttribute>
+        <AFAttribute>
+          <Name>Usage Limit</Name>
+          <UOM>kWh</UOM>
+          <Value type="Double">360</Value>
+        </AFAttribute>
+        <AFAnalysis>
+          <Name>Simulated Energy Usage</Name>
+          <Template>Simulated Energy Usage</Template>
+          <Status>Enabled</Status>
+          <Target>
+            <AFElementRef>Meters\Meter007</AFElementRef>
+          </Target>
+        </AFAnalysis>
+      </AFElement>
+      <AFElement ReferenceType="Parent-Child">
+        <Name>Meter008</Name>
+        <Template>MeterBasic</Template>
+        <AFAttribute>
+          <Name>Building</Name>
+          <Value type="String">Millenium Tower</Value>
+          <AFAttributeCategoryRef>Building Info</AFAttributeCategoryRef>
+        </AFAttribute>
+        <AFAttribute>
+          <Name>Building Type</Name>
+          <Value type="AFEnumerationValue">EnumerationSets[Building Type]\B</Value>
+          <AFAttributeCategoryRef>Building Info</AFAttributeCategoryRef>
+        </AFAttribute>
+        <AFAttribute>
+          <Name>City</Name>
+          <Value type="String">San Francisco</Value>
+          <AFAttributeCategoryRef>Location</AFAttributeCategoryRef>
+        </AFAttribute>
+        <AFAttribute>
+          <Name>Energy Usage</Name>
+          <DataReference>PI Point</DataReference>
+          <ConfigString>Meter008.Energy Usage?50;UOM=kWh</ConfigString>
+          <AFAttributeCategoryRef>Time-Series Data</AFAttributeCategoryRef>
+        </AFAttribute>
+        <AFAttribute>
+          <Name>Substation</Name>
+          <Value type="String">SSD-14</Value>
+        </AFAttribute>
+        <AFAttribute>
+          <Name>Usage Limit</Name>
+          <UOM>kWh</UOM>
+          <Value type="Double">360</Value>
+        </AFAttribute>
+        <AFAnalysis>
+          <Name>Simulated Energy Usage</Name>
+          <Template>Simulated Energy Usage</Template>
+          <Status>Enabled</Status>
+          <Target>
+            <AFElementRef>Meters\Meter008</AFElementRef>
+          </Target>
+        </AFAnalysis>
+      </AFElement>
+      <AFElement ReferenceType="Parent-Child">
+        <Name>Meter009</Name>
+        <Template>MeterAdvanced</Template>
+        <AFElementCategoryRef>Measures Energy</AFElementCategoryRef>
+        <AFAttribute>
+          <Name>Building</Name>
+          <Value type="String">1000 de la Gauchetiere</Value>
+          <AFAttributeCategoryRef>Building Info</AFAttributeCategoryRef>
+        </AFAttribute>
+        <AFAttribute>
+          <Name>Building Type</Name>
+          <Value type="AFEnumerationValue">EnumerationSets[Building Type]\B</Value>
+          <AFAttributeCategoryRef>Building Info</AFAttributeCategoryRef>
+        </AFAttribute>
+        <AFAttribute>
+          <Name>City</Name>
+          <Value type="String">Montreal</Value>
+          <AFAttributeCategoryRef>Location</AFAttributeCategoryRef>
+        </AFAttribute>
+        <AFAttribute>
+          <Name>Energy Usage</Name>
+          <DataReference>PI Point</DataReference>
+          <ConfigString>Meter009.Energy Usage?46;UOM=kWh</ConfigString>
+          <AFAttributeCategoryRef>Time-Series Data</AFAttributeCategoryRef>
+        </AFAttribute>
+        <AFAttribute>
+          <Name>Status</Name>
+          <DataReference>PI Point</DataReference>
+          <ConfigString>Meter009.Status?47</ConfigString>
+          <AFAttributeCategoryRef>Time-Series Data</AFAttributeCategoryRef>
+        </AFAttribute>
+        <AFAttribute>
+          <Name>Substation</Name>
+          <Value type="String">SSA-21</Value>
+        </AFAttribute>
+        <AFAttribute>
+          <Name>Usage Limit</Name>
+          <UOM>kWh</UOM>
+          <Value type="Double">370</Value>
+        </AFAttribute>
+        <AFAnalysis>
+          <Name>Simulated Energy Usage</Name>
+          <Template>Simulated Energy Usage</Template>
+          <Status>Enabled</Status>
+          <Target>
+            <AFElementRef>Meters\Meter009</AFElementRef>
+          </Target>
+        </AFAnalysis>
+        <AFAnalysis>
+          <Name>Simulated Status</Name>
+          <Template>Simulated Status</Template>
+          <Status>Enabled</Status>
+          <Target>
+            <AFElementRef>Meters\Meter009</AFElementRef>
+          </Target>
+        </AFAnalysis>
+      </AFElement>
+      <AFElement ReferenceType="Parent-Child">
+        <Name>Meter010</Name>
+        <Template>MeterAdvanced</Template>
+        <AFElementCategoryRef>Measures Energy</AFElementCategoryRef>
+        <AFAttribute>
+          <Name>Building</Name>
+          <Value type="String">Tour de la Bourse</Value>
+          <AFAttributeCategoryRef>Building Info</AFAttributeCategoryRef>
+        </AFAttribute>
+        <AFAttribute>
+          <Name>Building Type</Name>
+          <Value type="AFEnumerationValue">EnumerationSets[Building Type]\A</Value>
+          <AFAttributeCategoryRef>Building Info</AFAttributeCategoryRef>
+        </AFAttribute>
+        <AFAttribute>
+          <Name>City</Name>
+          <Value type="String">Montreal</Value>
+          <AFAttributeCategoryRef>Location</AFAttributeCategoryRef>
+        </AFAttribute>
+        <AFAttribute>
+          <Name>Energy Usage</Name>
+          <DataReference>PI Point</DataReference>
+          <ConfigString>Meter010.Energy Usage?51;UOM=kWh</ConfigString>
+          <AFAttributeCategoryRef>Time-Series Data</AFAttributeCategoryRef>
+        </AFAttribute>
+        <AFAttribute>
+          <Name>Status</Name>
+          <DataReference>PI Point</DataReference>
+          <ConfigString>Meter010.Status?52</ConfigString>
+          <AFAttributeCategoryRef>Time-Series Data</AFAttributeCategoryRef>
+        </AFAttribute>
+        <AFAttribute>
+          <Name>Substation</Name>
+          <Value type="String">SSB-22</Value>
+        </AFAttribute>
+        <AFAttribute>
+          <Name>Usage Limit</Name>
+          <UOM>kWh</UOM>
+          <Value type="Double">370</Value>
+        </AFAttribute>
+        <AFAnalysis>
+          <Name>Simulated Energy Usage</Name>
+          <Template>Simulated Energy Usage</Template>
+          <Status>Enabled</Status>
+          <Target>
+            <AFElementRef>Meters\Meter010</AFElementRef>
+          </Target>
+        </AFAnalysis>
+        <AFAnalysis>
+          <Name>Simulated Status</Name>
+          <Template>Simulated Status</Template>
+          <Status>Enabled</Status>
+          <Target>
+            <AFElementRef>Meters\Meter010</AFElementRef>
+          </Target>
+        </AFAnalysis>
+      </AFElement>
+      <AFElement ReferenceType="Parent-Child">
+        <Name>Meter011</Name>
+        <Template>MeterAdvanced</Template>
+        <AFElementCategoryRef>Measures Energy</AFElementCategoryRef>
+        <AFAttribute>
+          <Name>Building</Name>
+          <Value type="String">Place Ville-Marie</Value>
+          <AFAttributeCategoryRef>Building Info</AFAttributeCategoryRef>
+        </AFAttribute>
+        <AFAttribute>
+          <Name>Building Type</Name>
+          <Value type="AFEnumerationValue">EnumerationSets[Building Type]\A</Value>
+          <AFAttributeCategoryRef>Building Info</AFAttributeCategoryRef>
+        </AFAttribute>
+        <AFAttribute>
+          <Name>City</Name>
+          <Value type="String">Montreal</Value>
+          <AFAttributeCategoryRef>Location</AFAttributeCategoryRef>
+        </AFAttribute>
+        <AFAttribute>
+          <Name>Energy Usage</Name>
+          <DataReference>PI Point</DataReference>
+          <ConfigString>Meter011.Energy Usage?53;UOM=kWh</ConfigString>
+          <AFAttributeCategoryRef>Time-Series Data</AFAttributeCategoryRef>
+        </AFAttribute>
+        <AFAttribute>
+          <Name>Status</Name>
+          <DataReference>PI Point</DataReference>
+          <ConfigString>Meter011.Status?54</ConfigString>
+          <AFAttributeCategoryRef>Time-Series Data</AFAttributeCategoryRef>
+        </AFAttribute>
+        <AFAttribute>
+          <Name>Substation</Name>
+          <Value type="String">SSC-23</Value>
+        </AFAttribute>
+        <AFAttribute>
+          <Name>Usage Limit</Name>
+          <UOM>kWh</UOM>
+          <Value type="Double">370</Value>
+        </AFAttribute>
+        <AFAnalysis>
+          <Name>Simulated Energy Usage</Name>
+          <Template>Simulated Energy Usage</Template>
+          <Status>Enabled</Status>
+          <Target>
+            <AFElementRef>Meters\Meter011</AFElementRef>
+          </Target>
+        </AFAnalysis>
+        <AFAnalysis>
+          <Name>Simulated Status</Name>
+          <Template>Simulated Status</Template>
+          <Status>Enabled</Status>
+          <Target>
+            <AFElementRef>Meters\Meter011</AFElementRef>
+          </Target>
+        </AFAnalysis>
+      </AFElement>
+      <AFElement ReferenceType="Parent-Child">
+        <Name>Meter012</Name>
+        <Template>MeterAdvanced</Template>
+        <AFElementCategoryRef>Measures Energy</AFElementCategoryRef>
+        <AFAttribute>
+          <Name>Building</Name>
+          <Value type="String">CIBC Tower</Value>
+          <AFAttributeCategoryRef>Building Info</AFAttributeCategoryRef>
+        </AFAttribute>
+        <AFAttribute>
+          <Name>Building Type</Name>
+          <Value type="AFEnumerationValue">EnumerationSets[Building Type]\B</Value>
+          <AFAttributeCategoryRef>Building Info</AFAttributeCategoryRef>
+        </AFAttribute>
+        <AFAttribute>
+          <Name>City</Name>
+          <Value type="String">Montreal</Value>
+          <AFAttributeCategoryRef>Location</AFAttributeCategoryRef>
+        </AFAttribute>
+        <AFAttribute>
+          <Name>Energy Usage</Name>
+          <DataReference>PI Point</DataReference>
+          <ConfigString>Meter012.Energy Usage?45;UOM=kWh</ConfigString>
+          <AFAttributeCategoryRef>Time-Series Data</AFAttributeCategoryRef>
+        </AFAttribute>
+        <AFAttribute>
+          <Name>Status</Name>
+          <DataReference>PI Point</DataReference>
+          <ConfigString>Meter012.Status?44</ConfigString>
+          <AFAttributeCategoryRef>Time-Series Data</AFAttributeCategoryRef>
+        </AFAttribute>
+        <AFAttribute>
+          <Name>Substation</Name>
+          <Value type="String">SSD-24</Value>
+        </AFAttribute>
+        <AFAttribute>
+          <Name>Usage Limit</Name>
+          <UOM>kWh</UOM>
+          <Value type="Double">370</Value>
+        </AFAttribute>
+        <AFAnalysis>
+          <Name>Simulated Energy Usage</Name>
+          <Template>Simulated Energy Usage</Template>
+          <Status>Enabled</Status>
+          <Target>
+            <AFElementRef>Meters\Meter012</AFElementRef>
+          </Target>
+        </AFAnalysis>
+        <AFAnalysis>
+          <Name>Simulated Status</Name>
+          <Template>Simulated Status</Template>
+          <Status>Enabled</Status>
+          <Target>
+            <AFElementRef>Meters\Meter012</AFElementRef>
+          </Target>
+        </AFAnalysis>
+      </AFElement>
+    </AFElement>
+  </AFDatabase>
+</AF>
