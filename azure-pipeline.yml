@@ -47,12 +47,12 @@ jobs:
           filePath: $(projPath)
 
       - script: |
-          for /D %%a in ('.\*.*') do xcopy /y /d appsettings.json '%%a\'
+          for /D %%a in (".\*.*") do xcopy /y /d appsettings.json "%%a\"
         workingDirectory: $(Build.SourcesDirectory)$(projPath)
         displayName: "copy file to subfolders"
 
       - script: |
-          '%pihome64%\af\afimport' '\\OCSSAMPLESAPI01\Green Power Company' /F:'AF Database - Green Power Company.xml' /P
+          "%pihome64%\af\afimport" "\\OCSSAMPLESAPI01\Green Power Company" /F:"AF Database - Green Power Company.xml" /P
         workingDirectory: $(Build.SourcesDirectory)$(projPath)
         displayName: "import database2"
 
