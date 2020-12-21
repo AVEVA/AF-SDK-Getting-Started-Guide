@@ -14,7 +14,6 @@ namespace Tests
     public class Tests
     {
         public static AFDatabase database { get; set; }
-
         public static string AFServer { get; set; }
         public static string Database { get; set; }
 
@@ -36,7 +35,6 @@ namespace Tests
             Database = _config["Database"];
             (_config as ConfigurationRoot).Dispose();
         }
-
 
         [Fact]
         [Trait("Category", "Exercise1")]
@@ -224,7 +222,6 @@ namespace Tests
             }
         }
 
-
         [Fact]
         [Trait("Category", "Exercise2")]
         [Trait("Category", "Solution")]
@@ -240,7 +237,6 @@ namespace Tests
                 Assert.Equal(expected, actual);
             }
         }
-
 
         [Fact]
         [Trait("Category", "Exercise2")]
@@ -258,7 +254,6 @@ namespace Tests
             }
         }
 
-
         [Fact]
         [Trait("Category", "Exercise2")]
         [Trait("Category", "Solution")]
@@ -274,7 +269,6 @@ namespace Tests
                 Assert.Contains(expected, actual);
             }
         }
-
 
         [Fact]
         [Trait("Category", "Exercise2")]
@@ -292,7 +286,6 @@ namespace Tests
             }
         }
 
-
         [Fact]
         [Trait("Category", "Exercise2")]
         [Trait("Category", "Solution")]
@@ -309,7 +302,6 @@ namespace Tests
             }
         }
 
-
         [Fact]
         [Trait("Category", "Exercise2")]
         public void FindMetersByNameEx2()
@@ -324,7 +316,6 @@ namespace Tests
                 Assert.Equal(expected, actual);
             }
         }
-
 
         [Fact]
         [Trait("Category", "Exercise2")]
@@ -341,7 +332,6 @@ namespace Tests
             }
         }
 
-
         [Fact]
         [Trait("Category", "Exercise2")]
         public void FindMetersBySubstationEx2()
@@ -357,7 +347,6 @@ namespace Tests
             }
         }
 
-
         [Fact]
         [Trait("Category", "Exercise2")]
         public void FindMetersAboveUsageEx2()
@@ -372,7 +361,6 @@ namespace Tests
                 Assert.Equal(expected, actual);
             }
         }
-
 
         [Fact]
         [Trait("Category", "Exercise2")]
@@ -669,7 +657,6 @@ namespace Tests
             Assert.Equal("Weak Reference", reftype[0].Name);
         }
 
-
         [Fact]
         [Trait("Category", "Exercise4")]
         public void Ex4Bonus()
@@ -690,7 +677,6 @@ namespace Tests
 
             Assert.Equal("Weak Reference", reftype[0].Name);
         }
-
 
         [Fact]
         [Trait("Category", "Exercise4")]
@@ -770,8 +756,6 @@ namespace Tests
                 Assert.Contains(", Meter003,", actual);
             }
         }
-
-
 
         [Fact]
         [Trait("Category", "Delete")]

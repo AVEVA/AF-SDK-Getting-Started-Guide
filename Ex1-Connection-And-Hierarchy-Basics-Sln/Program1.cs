@@ -29,7 +29,7 @@ namespace Ex1ConnectionAndHierarchyBasicsSln
             PrintCategories(database);
 
             Console.WriteLine("Press ENTER key to close");
-            Console.ReadKey();
+            Console.ReadLine();
         }
 
         static AFDatabase GetDatabase(string server, string database)
@@ -140,6 +140,5 @@ namespace Ex1ConnectionAndHierarchyBasicsSln
             AFServer = _config["AFServer"];
             Database = _config["Database"];
         }
-
     }
 }
