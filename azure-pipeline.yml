@@ -5,7 +5,7 @@ trigger:
       - master
   paths:
     include:
-      - "/"
+      - '/'
 
 pr:
   branches:
@@ -13,10 +13,10 @@ pr:
       - master
   paths:
     include:
-      - "/"
+      - '/'
 
 schedules:
-  - cron: "0 0 * * 0"
+  - cron: '0 0 * * 0'
     displayName: Weekly build
     branches:
       include:
@@ -24,9 +24,9 @@ schedules:
     always: true
 
 variables:
-  - template: "/miscellaneous/build_templates/variables.yml"
+  - template: '/miscellaneous/build_templates/variables.yml'
   - name: projPath
-    value: ""
+    value: ''
   - name: CredFile
     value: appsettings.json
   - name: CredFileLibrary
@@ -40,7 +40,7 @@ jobs:
       name: 00-OSIManaged-Test
       demands: COMPUTERNAME -equals $(buildAgent)
     steps:
-      - template: "/miscellaneous/build_templates/config.yml"
+      - template: '/miscellaneous/build_templates/config.yml'
         parameters:
           fileOriginal: $(CredFile)
           fileLibrary: $(CredFileLibrary)
@@ -49,38 +49,38 @@ jobs:
       - script: |
           for /D %%a in (".\*.*") do xcopy /y /d appsettings.json "%%a\"
         workingDirectory: $(Build.SourcesDirectory)$(projPath)
-        displayName: "copy file to subfolders"
+        displayName: 'copy file to subfolders'
 
       - script: |
           "%pihome64%\af\afimport" "\\OCSSAMPLESAPI01\Green Power Company" /F:"AF Database - Green Power Company.xml" /P
         workingDirectory: $(Build.SourcesDirectory)$(projPath)
-        displayName: "import database2"
+        displayName: 'import database2'
 
       - script: |
           nuget restore
         workingDirectory: $(Build.SourcesDirectory)$(projPath)
-        displayName: "nuget restore"
+        displayName: 'nuget restore'
 
       - task: DotNetCoreCLI@2
-        displayName: "Run tests"
+        displayName: 'Run tests'
         inputs:
           command: test
           arguments: --filter Category=Solution
           publishTestResults: true
-          testRunTitle: "$(Agent.JobName) on $(imageName)"
+          testRunTitle: '$(Agent.JobName) on $(imageName)'
           workingDirectory: $(Build.SourcesDirectory)$(projPath)/
 
       - task: DotNetCoreCLI@2
-        displayName: "Run Delete"
+        displayName: 'Run Delete'
         condition: always()
         inputs:
           command: test
           arguments: --filter Category=Delete
           publishTestResults: true
-          testRunTitle: "$(Agent.JobName) on $(imageName)"
+          testRunTitle: '$(Agent.JobName) on $(imageName)'
           workingDirectory: $(Build.SourcesDirectory)$(projPath)/
 
-  - template: "/miscellaneous/build_templates/analysis.yml"
+  - template: '/miscellaneous/build_templates/analysis.yml'
     parameters:
       language: dotnet
       copyFile: true
