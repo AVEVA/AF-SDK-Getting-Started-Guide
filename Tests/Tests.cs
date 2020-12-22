@@ -485,11 +485,19 @@ namespace Tests
                 var valAtt2After = attr2.GetValue(new AFTime(startDate));
 
                 var actual = sw.ToString();
-
-                Assert.Contains("Swap values for meters: ", actual);
-                Assert.Equal(valAtt1Before.Value.ToString(), valAtt2After.Value.ToString());
-                Assert.Equal(valAtt2Before.Value.ToString(), valAtt1After.Value.ToString());
             }
+
+            var standardOutput = new StreamWriter(Console.OpenStandardOutput());
+            standardOutput.AutoFlush = true;
+            Console.SetOut(standardOutput);
+
+            Console.WriteLine($"{valAtt1Before}, {valAtt2Before}");
+            Console.WriteLine($"{valAtt1After}, {valAtt2After}");
+
+            Assert.Contains("Swap values for meters: ", actual);
+            Assert.Equal(valAtt1Before.Value.ToString(), valAtt2After.Value.ToString());
+            Assert.Equal(valAtt2Before.Value.ToString(), valAtt1After.Value.ToString());
+            
         }
 
         [Fact]
