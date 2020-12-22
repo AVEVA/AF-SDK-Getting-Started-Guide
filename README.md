@@ -8,6 +8,8 @@ This sample uses the AFSDK to accomplish some common tasks with the PISystem.
 
 The [.NET Core CLI](https://docs.microsoft.com/en-us/dotnet/core/tools/) is referenced in this sample, and should be installed to run the sample from the command line.
 
+Replace the placeholders in the appsettings.placeholder.json file and rename it it to appsettings.json.
+
 This sample is written against AF 2.10.
 
 ## Setting up the environment
