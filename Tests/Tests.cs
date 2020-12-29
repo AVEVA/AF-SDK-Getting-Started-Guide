@@ -488,13 +488,6 @@ namespace Tests
             var valAtt1After = attr1.GetValue(new AFTime(startDate));
             var valAtt2After = attr2.GetValue(new AFTime(startDate));
 
-            var standardOutput = new StreamWriter(Console.OpenStandardOutput());
-            standardOutput.AutoFlush = true;
-            Console.SetOut(standardOutput);
-
-            Console.WriteLine($"Values to swap {valAtt1Before}, {valAtt2Before}");
-            Console.WriteLine($"Swapped values {valAtt1After}, {valAtt2After}");
-
             Assert.Equal(valAtt1Before.Value.ToString(), valAtt2After.Value.ToString());
             Assert.Equal(valAtt2Before.Value.ToString(), valAtt1After.Value.ToString());
         }
