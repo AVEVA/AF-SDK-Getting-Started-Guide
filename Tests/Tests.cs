@@ -467,38 +467,36 @@ namespace Tests
         [Trait("Category", "Solution")]
         public void SwapValuesEx3Sln()
         {
+            var meter1 = "Meter001";
+            var meter2 = "Meter002";
+            var startDate = "y";
+
+            AFAttribute attr1 = AFAttribute.FindAttribute(@"\Meters\" + meter1 + @"|Energy Usage", database);
+            AFAttribute attr2 = AFAttribute.FindAttribute(@"\Meters\" + meter2 + @"|Energy Usage", database);
+            var valAtt1Before = attr1.GetValue(new AFTime(startDate));
+            var valAtt2Before = attr2.GetValue(new AFTime(startDate));
+
             using (StringWriter sw = new StringWriter())
             {
                 Console.SetOut(sw);
-                var meter1 = "Meter001";
-                var meter2 = "Meter002";
-                var startDate = "y";
-
-                AFAttribute attr1 = AFAttribute.FindAttribute(@"\Meters\" + meter1 + @"|Energy Usage", database);
-                AFAttribute attr2 = AFAttribute.FindAttribute(@"\Meters\" + meter2 + @"|Energy Usage", database);
-                var valAtt1Before = attr1.GetValue(new AFTime(startDate));
-                var valAtt2Before = attr2.GetValue(new AFTime(startDate));
-
                 Ex3ReadingAndWritingDataSln.Program3.SwapValues(database, meter1, meter2, startDate, "y+1h");
 
-                var valAtt1After = attr1.GetValue(new AFTime(startDate));
-                var valAtt2After = attr2.GetValue(new AFTime(startDate));
-
                 var actual = sw.ToString();
-
-
-                var standardOutput = new StreamWriter(Console.OpenStandardOutput());
-                standardOutput.AutoFlush = true;
-                Console.SetOut(standardOutput);
-
-                Console.WriteLine($"{valAtt1Before}, {valAtt2Before}");
-                Console.WriteLine($"{valAtt1After}, {valAtt2After}");
-
                 Assert.Contains("Swap values for meters: ", actual);
-                Assert.Equal(valAtt1Before.Value.ToString(), valAtt2After.Value.ToString());
-                Assert.Equal(valAtt2Before.Value.ToString(), valAtt1After.Value.ToString());
             }
-            
+
+            var valAtt1After = attr1.GetValue(new AFTime(startDate));
+            var valAtt2After = attr2.GetValue(new AFTime(startDate));
+
+            var standardOutput = new StreamWriter(Console.OpenStandardOutput());
+            standardOutput.AutoFlush = true;
+            Console.SetOut(standardOutput);
+
+            Console.WriteLine($"Values to swap {valAtt1Before}, {valAtt2Before}");
+            Console.WriteLine($"Swapped values {valAtt1After}, {valAtt2After}");
+
+            Assert.Equal(valAtt1Before.Value.ToString(), valAtt2After.Value.ToString());
+            Assert.Equal(valAtt2Before.Value.ToString(), valAtt1After.Value.ToString());
         }
 
         [Fact]
