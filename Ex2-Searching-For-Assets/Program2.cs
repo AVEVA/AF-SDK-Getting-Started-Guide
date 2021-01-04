@@ -15,7 +15,7 @@ namespace Ex2SearchingForAssets
         public static string AFServer { get; set; }
         public static string Database { get; set; }
 
-        static void Main()
+        public static void Main()
         {
             Setup();
             AFDatabase database = GetDatabase(AFServer, Database);
@@ -32,7 +32,7 @@ namespace Ex2SearchingForAssets
             Console.ReadLine();
         }
 
-        static AFDatabase GetDatabase(string serverName, string databaseName)
+        public static AFDatabase GetDatabase(string serverName, string databaseName)
         {
             PISystems systems = new PISystems();
             PISystem assetServer;
@@ -65,6 +65,7 @@ namespace Ex2SearchingForAssets
                         element.CategoriesString);
                 }
             }
+
             Console.WriteLine();
         }
 

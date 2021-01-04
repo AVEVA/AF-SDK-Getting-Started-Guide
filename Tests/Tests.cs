@@ -1,26 +1,26 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using System;
+using System.IO;
+using System.Linq;
+using Microsoft.Extensions.Configuration;
 using OSIsoft.AF;
 using OSIsoft.AF.Asset;
 using OSIsoft.AF.EventFrame;
 using OSIsoft.AF.Search;
 using OSIsoft.AF.Time;
-using System;
-using System.IO;
-using System.Linq;
 using Xunit;
 
 namespace Tests
 {
     public class Tests
     {
-        public static AFDatabase database { get; set; }
+        public static AFDatabase Database { get; set; }
         public static string AFServer { get; set; }
-        public static string Database { get; set; }
+        public static string DatabaseString { get; set; }
 
         public Tests()
         {
             Setup();
-            database = new PISystems()[AFServer].Databases[Database];
+            Database = new PISystems()[AFServer].Databases[DatabaseString];
         }
 
         internal static void Setup()
@@ -28,12 +28,12 @@ namespace Tests
             IConfigurationBuilder builder = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json");
-            var _config = builder.Build();
+            var config = builder.Build();
 
             // ==== Client constants ====
-            AFServer = _config["AFServer"];
-            Database = _config["Database"];
-            (_config as ConfigurationRoot).Dispose();
+            AFServer = config["AFServer"];
+            DatabaseString = config["Database"];
+            (config as ConfigurationRoot).Dispose();
         }
 
         [Fact]
@@ -44,7 +44,7 @@ namespace Tests
             {
                 Console.SetOut(sw);
 
-                Ex1ConnectionAndHierarchyBasics.Program1.PrintRootElements(database);
+                Ex1ConnectionAndHierarchyBasics.Program1.PrintRootElements(Database);
                 var actual = sw.ToString();
                 string expected = "Print Root Elements: 3\r\n  Configuration\r\n  Geographical Locations\r\n  Meters\r\n\r\n";
                 Assert.Equal(expected, actual);
@@ -59,7 +59,7 @@ namespace Tests
             {
                 Console.SetOut(sw);
 
-                Ex1ConnectionAndHierarchyBasics.Program1.PrintElementTemplates(database);
+                Ex1ConnectionAndHierarchyBasics.Program1.PrintElementTemplates(Database);
                 var actual = sw.ToString();
                 string expected = "Print Element Templates\r\nName: City; Categories: \r\nName: MeterAdvanced; Categories: Shows Status;\r\nName: MeterBasic; Categories: Measures Energy;\r\n\r\n";
                 Assert.Equal(expected, actual);
@@ -74,7 +74,7 @@ namespace Tests
             {
                 Console.SetOut(sw);
 
-                Ex1ConnectionAndHierarchyBasics.Program1.PrintAttributeTemplates(database, "MeterAdvanced");
+                Ex1ConnectionAndHierarchyBasics.Program1.PrintAttributeTemplates(Database, "MeterAdvanced");
                 var actual = sw.ToString();
                 string expected = "Print Attribute Templates for Element Template: MeterAdvanced\r\nName: Status, DRPlugin: PI Point\r\n\r\n";
                 Assert.Equal(expected, actual);
@@ -89,7 +89,7 @@ namespace Tests
             {
                 Console.SetOut(sw);
 
-                Ex1ConnectionAndHierarchyBasics.Program1.PrintEnergyUOMs(database.PISystem);
+                Ex1ConnectionAndHierarchyBasics.Program1.PrintEnergyUOMs(Database.PISystem);
                 var actual = sw.ToString();
                 string expected = "Print Energy UOMs\r\nUOM: gigawatt hour, Abbreviation: GWh\r\nUOM: megawatt hour, Abbreviation: MWh\r\nUOM: watt hour, Abbreviation: Wh\r\nUOM: joule, Abbreviation: J\r\nUOM: British thermal unit, Abbreviation: Btu\r\nUOM: calorie, Abbreviation: cal\r\nUOM: gigajoule, Abbreviation: GJ\r\nUOM: kilojoule, Abbreviation: kJ\r\nUOM: kilowatt hour, Abbreviation: kWh\r\nUOM: megajoule, Abbreviation: MJ\r\nUOM: watt second, Abbreviation: Ws\r\nUOM: kilocalorie, Abbreviation: kcal\r\nUOM: million calorie, Abbreviation: MMcal\r\nUOM: million British thermal unit, Abbreviation: MM Btu\r\n\r\n";
                 Assert.Equal(expected, actual);
@@ -104,7 +104,7 @@ namespace Tests
             {
                 Console.SetOut(sw);
 
-                Ex1ConnectionAndHierarchyBasics.Program1.PrintEnumerationSets(database);
+                Ex1ConnectionAndHierarchyBasics.Program1.PrintEnumerationSets(Database);
                 var actual = sw.ToString();
                 string expected = "Print Enumeration Sets\r\nBuilding Type\r\n0 - A\r\n1 - B\r\n\r\nMeter Status\r\n0 - Good\r\n1 - Bad\r\n\r\n";
                 Assert.Equal(expected, actual);
@@ -119,7 +119,7 @@ namespace Tests
             {
                 Console.SetOut(sw);
 
-                Ex1ConnectionAndHierarchyBasics.Program1.PrintCategories(database);
+                Ex1ConnectionAndHierarchyBasics.Program1.PrintCategories(Database);
                 var actual = sw.ToString();
                 string expected = "Print Categories\r\nElement Categories\r\nMeasures Energy\r\nShows Status\r\n\r\nAttribute Categories\r\nBuilding Info\r\nLocation\r\nTime-Series Data\r\n\r\n";
                 Assert.Equal(expected, actual);
@@ -135,7 +135,7 @@ namespace Tests
             {
                 Console.SetOut(sw);
 
-                Ex1ConnectionAndHierarchyBasicsSln.Program1.PrintRootElements(database);
+                Ex1ConnectionAndHierarchyBasicsSln.Program1.PrintRootElements(Database);
                 var actual = sw.ToString();
                 string expected = "Print Root Elements: 4\r\n";
                 Assert.Contains(expected, actual);
@@ -151,7 +151,7 @@ namespace Tests
             {
                 Console.SetOut(sw);
 
-                Ex1ConnectionAndHierarchyBasicsSln.Program1.PrintElementTemplates(database);
+                Ex1ConnectionAndHierarchyBasicsSln.Program1.PrintElementTemplates(Database);
                 var actual = sw.ToString();
                 string expected = "Print Element Templates\r\nName: City; Categories: \r\nName: MeterAdvanced; Categories: Shows Status;\r\nName: MeterBasic; Categories: Measures Energy;\r\n";
                 Assert.Contains(expected, actual);
@@ -167,7 +167,7 @@ namespace Tests
             {
                 Console.SetOut(sw);
 
-                Ex1ConnectionAndHierarchyBasicsSln.Program1.PrintAttributeTemplates(database, "MeterAdvanced");
+                Ex1ConnectionAndHierarchyBasicsSln.Program1.PrintAttributeTemplates(Database, "MeterAdvanced");
                 var actual = sw.ToString();
                 string expected = "Print Attribute Templates for Element Template: MeterAdvanced\r\nName: Status, DRPlugin: PI Point\r\n\r\n";
                 Assert.Equal(expected, actual);
@@ -183,7 +183,7 @@ namespace Tests
             {
                 Console.SetOut(sw);
 
-                Ex1ConnectionAndHierarchyBasicsSln.Program1.PrintEnergyUOMs(database.PISystem);
+                Ex1ConnectionAndHierarchyBasicsSln.Program1.PrintEnergyUOMs(Database.PISystem);
                 var actual = sw.ToString();
                 string expected = "Print Energy UOMs\r\nUOM: gigawatt hour, Abbreviation: GWh\r\nUOM: megawatt hour, Abbreviation: MWh\r\nUOM: watt hour, Abbreviation: Wh\r\nUOM: joule, Abbreviation: J\r\nUOM: British thermal unit, Abbreviation: Btu\r\nUOM: calorie, Abbreviation: cal\r\nUOM: gigajoule, Abbreviation: GJ\r\nUOM: kilojoule, Abbreviation: kJ\r\nUOM: kilowatt hour, Abbreviation: kWh\r\nUOM: megajoule, Abbreviation: MJ\r\nUOM: watt second, Abbreviation: Ws\r\nUOM: kilocalorie, Abbreviation: kcal\r\nUOM: million calorie, Abbreviation: MMcal\r\nUOM: million British thermal unit, Abbreviation: MM Btu\r\n\r\n";
                 Assert.Equal(expected, actual);
@@ -199,7 +199,7 @@ namespace Tests
             {
                 Console.SetOut(sw);
 
-                Ex1ConnectionAndHierarchyBasicsSln.Program1.PrintEnumerationSets(database);
+                Ex1ConnectionAndHierarchyBasicsSln.Program1.PrintEnumerationSets(Database);
                 var actual = sw.ToString();
                 string expected = "Print Enumeration Sets\r\nBuilding Type\r\n0 - A\r\n1 - B\r\n\r\nMeter Status\r\n0 - Good\r\n1 - Bad\r\n\r\n";
                 Assert.Equal(expected, actual);
@@ -215,7 +215,7 @@ namespace Tests
             {
                 Console.SetOut(sw);
 
-                Ex1ConnectionAndHierarchyBasicsSln.Program1.PrintCategories(database);
+                Ex1ConnectionAndHierarchyBasicsSln.Program1.PrintCategories(Database);
                 var actual = sw.ToString();
                 string expected = "Print Categories\r\nElement Categories\r\nMeasures Energy\r\nShows Status\r\n\r\nAttribute Categories\r\nBuilding Info\r\nLocation\r\nTime-Series Data\r\n\r\n";
                 Assert.Equal(expected, actual);
@@ -231,7 +231,7 @@ namespace Tests
             {
                 Console.SetOut(sw);
 
-                Ex2SearchingForAssetsSln.Program2.FindMetersByName(database, "Meter00*");
+                Ex2SearchingForAssetsSln.Program2.FindMetersByName(Database, "Meter00*");
                 var actual = sw.ToString();
                 string expected = "Find Meters by Name: Meter00*\r\nElement: Meter001, Template: MeterBasic, Categories: Measures Energy;\r\nElement: Meter002, Template: MeterBasic, Categories: Measures Energy;\r\nElement: Meter003, Template: MeterBasic, Categories: Measures Energy;\r\nElement: Meter004, Template: MeterBasic, Categories: Measures Energy;\r\nElement: Meter005, Template: MeterBasic, Categories: Measures Energy;\r\nElement: Meter006, Template: MeterBasic, Categories: Measures Energy;\r\nElement: Meter007, Template: MeterBasic, Categories: Measures Energy;\r\nElement: Meter008, Template: MeterBasic, Categories: Measures Energy;\r\nElement: Meter009, Template: MeterAdvanced, Categories: Measures Energy;Shows Status;\r\n\r\n";
                 Assert.Equal(expected, actual);
@@ -247,7 +247,7 @@ namespace Tests
             {
                 Console.SetOut(sw);
 
-                Ex2SearchingForAssetsSln.Program2.FindMetersByTemplate(database, "MeterBasic");
+                Ex2SearchingForAssetsSln.Program2.FindMetersByTemplate(Database, "MeterBasic");
                 var actual = sw.ToString();
                 string expected = "Find Meters by Template: MeterBasic\r\nElement: Meter001, Template: MeterBasic\r\nElement: Meter002, Template: MeterBasic\r\nElement: Meter003, Template: MeterBasic\r\nElement: Meter004, Template: MeterBasic\r\nElement: Meter005, Template: MeterBasic\r\nElement: Meter006, Template: MeterBasic\r\nElement: Meter007, Template: MeterBasic\r\nElement: Meter008, Template: MeterBasic\r\nElement: Meter009, Template: MeterAdvanced\r\nElement: Meter010, Template: MeterAdvanced\r\nElement: Meter011, Template: MeterAdvanced\r\nElement: Meter012, Template: MeterAdvanced\r\n   Found 4 derived templates\r\n\r\n";
                 Assert.Equal(expected, actual);
@@ -263,7 +263,7 @@ namespace Tests
             {
                 Console.SetOut(sw);
 
-                Ex2SearchingForAssetsSln.Program2.FindMetersBySubstation(database, "SSA*");
+                Ex2SearchingForAssetsSln.Program2.FindMetersBySubstation(Database, "SSA*");
                 var actual = sw.ToString();
                 string expected = "Find Meters by Substation: SSA*\r\nMeter001, Meter005, Meter009";
                 Assert.Contains(expected, actual);
@@ -279,7 +279,7 @@ namespace Tests
             {
                 Console.SetOut(sw);
 
-                Ex2SearchingForAssetsSln.Program2.FindMetersAboveUsage(database, 300);
+                Ex2SearchingForAssetsSln.Program2.FindMetersAboveUsage(Database, 300);
                 var actual = sw.ToString();
                 string expected = "Find Meters above Usage: 300";
                 Assert.Contains(expected, actual);
@@ -295,7 +295,7 @@ namespace Tests
             {
                 Console.SetOut(sw);
 
-                Ex2SearchingForAssetsSln.Program2.FindBuildingInfo(database, "MeterAdvanced");
+                Ex2SearchingForAssetsSln.Program2.FindBuildingInfo(Database, "MeterAdvanced");
                 var actual = sw.ToString();
                 string expected = "Find Building Info: MeterAdvanced\r\nFound 8 attributes.\r\n\r\n";
                 Assert.Equal(expected, actual);
@@ -310,7 +310,7 @@ namespace Tests
             {
                 Console.SetOut(sw);
 
-                Ex2SearchingForAssets.Program2.FindMetersByName(database, "Meter00*");
+                Ex2SearchingForAssets.Program2.FindMetersByName(Database, "Meter00*");
                 var actual = sw.ToString();
                 string expected = "Find Meters by Name: Meter00*\r\nElement: Meter001, Template: MeterBasic, Categories: Measures Energy;\r\nElement: Meter002, Template: MeterBasic, Categories: Measures Energy;\r\nElement: Meter003, Template: MeterBasic, Categories: Measures Energy;\r\nElement: Meter004, Template: MeterBasic, Categories: Measures Energy;\r\nElement: Meter005, Template: MeterBasic, Categories: Measures Energy;\r\nElement: Meter006, Template: MeterBasic, Categories: Measures Energy;\r\nElement: Meter007, Template: MeterBasic, Categories: Measures Energy;\r\nElement: Meter008, Template: MeterBasic, Categories: Measures Energy;\r\nElement: Meter009, Template: MeterAdvanced, Categories: Measures Energy;Shows Status;\r\n\r\n";
                 Assert.Equal(expected, actual);
@@ -325,7 +325,7 @@ namespace Tests
             {
                 Console.SetOut(sw);
 
-                Ex2SearchingForAssets.Program2.FindMetersByTemplate(database, "MeterBasic");
+                Ex2SearchingForAssets.Program2.FindMetersByTemplate(Database, "MeterBasic");
                 var actual = sw.ToString();
                 string expected = "Find Meters by Template: MeterBasic\r\nElement: Meter001, Template: MeterBasic\r\nElement: Meter002, Template: MeterBasic\r\nElement: Meter003, Template: MeterBasic\r\nElement: Meter004, Template: MeterBasic\r\nElement: Meter005, Template: MeterBasic\r\nElement: Meter006, Template: MeterBasic\r\nElement: Meter007, Template: MeterBasic\r\nElement: Meter008, Template: MeterBasic\r\nElement: Meter009, Template: MeterAdvanced\r\nElement: Meter010, Template: MeterAdvanced\r\nElement: Meter011, Template: MeterAdvanced\r\nElement: Meter012, Template: MeterAdvanced\r\n   Found 4 derived templates\r\n\r\n";
                 Assert.Equal(expected, actual);
@@ -340,7 +340,7 @@ namespace Tests
             {
                 Console.SetOut(sw);
 
-                Ex2SearchingForAssets.Program2.FindMetersBySubstation(database, "SSA*");
+                Ex2SearchingForAssets.Program2.FindMetersBySubstation(Database, "SSA*");
                 var actual = sw.ToString();
                 string expected = "Find Meters by Substation: SSA*\r\nMeter001, Meter005, Meter009\n\r\n";
                 Assert.Equal(expected, actual);
@@ -355,7 +355,7 @@ namespace Tests
             {
                 Console.SetOut(sw);
 
-                Ex2SearchingForAssets.Program2.FindMetersAboveUsage(database, 300);
+                Ex2SearchingForAssets.Program2.FindMetersAboveUsage(Database, 300);
                 var actual = sw.ToString();
                 string expected = "Find Meters above Usage: 300\r\n\n\r\n";
                 Assert.Equal(expected, actual);
@@ -370,7 +370,7 @@ namespace Tests
             {
                 Console.SetOut(sw);
 
-                Ex2SearchingForAssets.Program2.FindBuildingInfo(database, "MeterAdvanced");
+                Ex2SearchingForAssets.Program2.FindBuildingInfo(Database, "MeterAdvanced");
                 var actual = sw.ToString();
                 string expected = "Find Building Info: MeterAdvanced\r\nFound 8 attributes.\r\n\r\n";
                 Assert.Equal(expected, actual);
@@ -386,7 +386,7 @@ namespace Tests
             {
                 Console.SetOut(sw);
 
-                Ex3ReadingAndWritingDataSln.Program3.PrintHistorical(database, "Meter001", "*-30s", "*");
+                Ex3ReadingAndWritingDataSln.Program3.PrintHistorical(Database, "Meter001", "*-30s", "*");
                 var actual = sw.ToString();
 
                 Assert.Contains("Print Historical Values - Meter: Meter001, Start: *-30s, End: *\r\n", actual);
@@ -402,7 +402,7 @@ namespace Tests
             {
                 Console.SetOut(sw);
 
-                Ex3ReadingAndWritingDataSln.Program3.PrintInterpolated(database, "Meter001", "*-30s", "*", TimeSpan.FromSeconds(10));
+                Ex3ReadingAndWritingDataSln.Program3.PrintInterpolated(Database, "Meter001", "*-30s", "*", TimeSpan.FromSeconds(10));
                 var actual = sw.ToString();
 
                 Assert.Contains("Print Interpolated Values - Meter: Meter001, Start: *-30s, End: *\r\nTimestamp (Local):", actual);
@@ -419,7 +419,7 @@ namespace Tests
             {
                 Console.SetOut(sw);
 
-                Ex3ReadingAndWritingDataSln.Program3.PrintHourlyAverage(database, "Meter001", "y", "t");
+                Ex3ReadingAndWritingDataSln.Program3.PrintHourlyAverage(Database, "Meter001", "y", "t");
                 var actual = sw.ToString();
 
                 Assert.Contains("Print Hourly Average - Meter: Meter001, Start: y, End: t\r\nTimestamp (Local):", actual);
@@ -436,7 +436,7 @@ namespace Tests
             {
                 Console.SetOut(sw);
 
-                Ex3ReadingAndWritingDataSln.Program3.PrintEnergyUsageAtTime(database, "t+10h");
+                Ex3ReadingAndWritingDataSln.Program3.PrintEnergyUsageAtTime(Database, "t+10h");
                 var actual = sw.ToString();
 
                 Assert.Contains("Print Energy Usage at Time: t+10h\r\nMeter: Meter001, Timestamp (Local): ", actual);
@@ -453,7 +453,7 @@ namespace Tests
             {
                 Console.SetOut(sw);
 
-                Ex3ReadingAndWritingDataSln.Program3.PrintDailyAverageEnergyUsage(database, "t-7d", "t");
+                Ex3ReadingAndWritingDataSln.Program3.PrintDailyAverageEnergyUsage(Database, "t-7d", "t");
                 var actual = sw.ToString();
 
 
@@ -471,15 +471,15 @@ namespace Tests
             var meter2 = "Meter002";
             var startDate = "y";
 
-            AFAttribute attr1 = AFAttribute.FindAttribute(@"\Meters\" + meter1 + @"|Energy Usage", database);
-            AFAttribute attr2 = AFAttribute.FindAttribute(@"\Meters\" + meter2 + @"|Energy Usage", database);
+            AFAttribute attr1 = AFAttribute.FindAttribute(@"\Meters\" + meter1 + @"|Energy Usage", Database);
+            AFAttribute attr2 = AFAttribute.FindAttribute(@"\Meters\" + meter2 + @"|Energy Usage", Database);
             var valAtt1Before = attr1.GetValue(new AFTime(startDate));
             var valAtt2Before = attr2.GetValue(new AFTime(startDate));
 
             using (StringWriter sw = new StringWriter())
             {
                 Console.SetOut(sw);
-                Ex3ReadingAndWritingDataSln.Program3.SwapValues(database, meter1, meter2, startDate, "y+1h");
+                Ex3ReadingAndWritingDataSln.Program3.SwapValues(Database, meter1, meter2, startDate, "y+1h");
 
                 var actual = sw.ToString();
                 Assert.Contains("Swap values for meters: ", actual);
@@ -500,7 +500,7 @@ namespace Tests
             {
                 Console.SetOut(sw);
 
-                Ex3ReadingAndWritingDataSln.Program3.PrintHistorical(database, "Meter001", "*-30s", "*");
+                Ex3ReadingAndWritingDataSln.Program3.PrintHistorical(Database, "Meter001", "*-30s", "*");
                 var actual = sw.ToString();
 
                 Assert.Contains("Print Historical Values - Meter: Meter001, Start: *-30s, End: *\r\nTimestamp (UTC):", actual);
@@ -516,7 +516,7 @@ namespace Tests
             {
                 Console.SetOut(sw);
 
-                Ex3ReadingAndWritingDataSln.Program3.PrintInterpolated(database, "Meter001", "*-30s", "*", TimeSpan.FromSeconds(10));
+                Ex3ReadingAndWritingDataSln.Program3.PrintInterpolated(Database, "Meter001", "*-30s", "*", TimeSpan.FromSeconds(10));
                 var actual = sw.ToString();
 
                 Assert.Contains("Print Interpolated Values - Meter: Meter001, Start: *-30s, End: *\r\nTimestamp (Local):", actual);
@@ -532,7 +532,7 @@ namespace Tests
             {
                 Console.SetOut(sw);
 
-                Ex3ReadingAndWritingDataSln.Program3.PrintHourlyAverage(database, "Meter001", "y", "t");
+                Ex3ReadingAndWritingDataSln.Program3.PrintHourlyAverage(Database, "Meter001", "y", "t");
                 var actual = sw.ToString();
 
                 Assert.Contains("Print Hourly Average - Meter: Meter001, Start: y, End: t\r\nTimestamp (Local):", actual);
@@ -548,7 +548,7 @@ namespace Tests
             {
                 Console.SetOut(sw);
 
-                Ex3ReadingAndWritingDataSln.Program3.PrintEnergyUsageAtTime(database, "t+10h");
+                Ex3ReadingAndWritingDataSln.Program3.PrintEnergyUsageAtTime(Database, "t+10h");
                 var actual = sw.ToString();
 
                 Assert.Contains("Print Energy Usage at Time: t+10h\r\nMeter: Meter001, Timestamp (Local): ", actual);
@@ -564,7 +564,7 @@ namespace Tests
             {
                 Console.SetOut(sw);
 
-                Ex3ReadingAndWritingDataSln.Program3.PrintDailyAverageEnergyUsage(database, "t-7d", "t");
+                Ex3ReadingAndWritingDataSln.Program3.PrintDailyAverageEnergyUsage(Database, "t-7d", "t");
                 var actual = sw.ToString();
 
 
@@ -584,12 +584,12 @@ namespace Tests
                 var meter2 = "Meter002";
                 var startDate = "y";
 
-                AFAttribute attr1 = AFAttribute.FindAttribute(@"\Meters\" + meter1 + @"|Energy Usage", database);
-                AFAttribute attr2 = AFAttribute.FindAttribute(@"\Meters\" + meter2 + @"|Energy Usage", database);
+                AFAttribute attr1 = AFAttribute.FindAttribute(@"\Meters\" + meter1 + @"|Energy Usage", Database);
+                AFAttribute attr2 = AFAttribute.FindAttribute(@"\Meters\" + meter2 + @"|Energy Usage", Database);
                 var valAtt1Before = attr1.GetValue(new AFTime(startDate));
                 var valAtt2Before = attr2.GetValue(new AFTime(startDate));
 
-                Ex3ReadingAndWritingDataSln.Program3.SwapValues(database, meter1, meter2, startDate, "y+1h");
+                Ex3ReadingAndWritingDataSln.Program3.SwapValues(Database, meter1, meter2, startDate, "y+1h");
 
                 var valAtt1After = attr1.GetValue(new AFTime(startDate));
                 var valAtt2After = attr2.GetValue(new AFTime(startDate));
@@ -611,19 +611,19 @@ namespace Tests
             Console.SetOut(standardOutput);
 
             //note this method either creates or ensures it was created.  That is what we will test
-            Ex4BuildingAnAFHierarchy.Program4.CreateElementTemplate(database);
-            Assert.True(database.ElementTemplates.Contains("FeederTemplate"));
+            Ex4BuildingAnAFHierarchy.Program4.CreateElementTemplate(Database);
+            Assert.True(Database.ElementTemplates.Contains("FeederTemplate"));
 
-            Ex4BuildingAnAFHierarchy.Program4.CreateFeedersRootElement(database);
-            Assert.True(database.Elements.Contains("Feeders"));
+            Ex4BuildingAnAFHierarchy.Program4.CreateFeedersRootElement(Database);
+            Assert.True(Database.Elements.Contains("Feeders"));
 
-            Ex4BuildingAnAFHierarchy.Program4.CreateFeederElements(database);
-            Assert.True(database.Elements["Feeders"].Elements.Contains("Feeder001"));
+            Ex4BuildingAnAFHierarchy.Program4.CreateFeederElements(Database);
+            Assert.True(Database.Elements["Feeders"].Elements.Contains("Feeder001"));
 
-            Ex4BuildingAnAFHierarchy.Program4.CreateWeakReference(database);
+            Ex4BuildingAnAFHierarchy.Program4.CreateWeakReference(Database);
 
-            AFElement feeder0001 = database.Elements["Feeders"].Elements["Feeder001"];
-            var reftype = database.Elements["Geographical Locations"].Elements["London"].GetReferenceTypes(feeder0001);
+            AFElement feeder0001 = Database.Elements["Feeders"].Elements["Feeder001"];
+            var reftype = Database.Elements["Geographical Locations"].Elements["London"].GetReferenceTypes(feeder0001);
 
             Assert.Equal("Weak Reference", reftype[0].Name);
         }
@@ -638,21 +638,21 @@ namespace Tests
             Console.SetOut(standardOutput);
 
             //note this method either creates or ensures it was created.  That is what we will test
-            Ex4BuildingAnAFHierarchySln.Program4.CreateElementTemplate(database);
-            Assert.True(database.ElementTemplates.Contains("FeederTemplate"));
+            Ex4BuildingAnAFHierarchySln.Program4.CreateElementTemplate(Database);
+            Assert.True(Database.ElementTemplates.Contains("FeederTemplate"));
 
             //note this method either creates or ensures it was created.  That is what we will test
-            Ex4BuildingAnAFHierarchySln.Program4.CreateFeedersRootElement(database);
-            Assert.True(database.Elements.Contains("Feeders"));
+            Ex4BuildingAnAFHierarchySln.Program4.CreateFeedersRootElement(Database);
+            Assert.True(Database.Elements.Contains("Feeders"));
 
             //note this method either creates or ensures it was created.  That is what we will test
-            Ex4BuildingAnAFHierarchySln.Program4.CreateFeederElements(database);
-            Assert.True(database.Elements["Feeders"].Elements.Contains("Feeder001"));
+            Ex4BuildingAnAFHierarchySln.Program4.CreateFeederElements(Database);
+            Assert.True(Database.Elements["Feeders"].Elements.Contains("Feeder001"));
 
-            Ex4BuildingAnAFHierarchySln.Program4.CreateWeakReference(database);
+            Ex4BuildingAnAFHierarchySln.Program4.CreateWeakReference(Database);
 
-            AFElement feeder0001 = database.Elements["Feeders"].Elements["Feeder001"];
-            var reftype = database.Elements["Geographical Locations"].Elements["London"].GetReferenceTypes(feeder0001);
+            AFElement feeder0001 = Database.Elements["Feeders"].Elements["Feeder001"];
+            var reftype = Database.Elements["Geographical Locations"].Elements["London"].GetReferenceTypes(feeder0001);
 
             Assert.Equal("Weak Reference", reftype[0].Name);
         }
@@ -667,10 +667,10 @@ namespace Tests
 
             //note this method either creates or ensures it was created.  That is what we will test
             Ex4BuildingAnAFHierarchy.Bonus.Run();
-            var newDB = database.PISystem.Databases["Ethical Power Company"];
+            var newDB = Database.PISystem.Databases["Ethical Power Company"];
             Assert.NotNull(newDB);
 
-            AFElement meters = database.Elements["Meters"];
+            AFElement meters = Database.Elements["Meters"];
             var meter = meters.Elements.First();
             var reftype = newDB.Elements["Geographical Locations"].Elements["London"].GetReferenceTypes(meter);
 
@@ -689,7 +689,7 @@ namespace Tests
 
             //note this method either creates or ensures it was created.  That is what we will test
             Ex4BuildingAnAFHierarchySln.Bonus.Run();
-            var newDB = database.PISystem.Databases["Ethical Power Company"];
+            var newDB = Database.PISystem.Databases["Ethical Power Company"];
             Assert.NotNull(newDB);
 
             AFElement meters = newDB.Elements["Meters"];
@@ -708,21 +708,21 @@ namespace Tests
             using (StringWriter sw = new StringWriter())
             {
                 Console.SetOut(sw);
-                var eventFrameTemplate = Ex5WorkingWithEventFramesSln.Program5.CreateEventFrameTemplate(database);
+                var eventFrameTemplate = Ex5WorkingWithEventFramesSln.Program5.CreateEventFrameTemplate(Database);
                 Assert.NotNull(eventFrameTemplate);
-                Ex5WorkingWithEventFramesSln.Program5.CreateEventFrames(database, eventFrameTemplate);
+                Ex5WorkingWithEventFramesSln.Program5.CreateEventFrames(Database, eventFrameTemplate);
 
                 AFTime startTime = DateTime.Today.AddDays(-7);
                 string queryString = $"template:\"{eventFrameTemplate.Name}\"";
-                using (AFEventFrameSearch eventFrameSearch = new AFEventFrameSearch(database, "EventFrame Captures", AFEventFrameSearchMode.ForwardFromStartTime, startTime, queryString))
+                using (AFEventFrameSearch eventFrameSearch = new AFEventFrameSearch(Database, "EventFrame Captures", AFEventFrameSearchMode.ForwardFromStartTime, startTime, queryString))
                 {
                     eventFrameSearch.CacheTimeout = TimeSpan.FromMinutes(5);
                     var resp = eventFrameSearch.FindObjects();
                     Assert.True(resp.Count() > 0);
                 }
 
-                Ex5WorkingWithEventFramesSln.Program5.CaptureValues(database, eventFrameTemplate);
-                Ex5WorkingWithEventFramesSln.Program5.PrintReport(database, eventFrameTemplate);
+                Ex5WorkingWithEventFramesSln.Program5.CaptureValues(Database, eventFrameTemplate);
+                Ex5WorkingWithEventFramesSln.Program5.PrintReport(Database, eventFrameTemplate);
                 var actual = sw.ToString();
                 Assert.Contains("Daily Usage-Meter", actual);
                 Assert.Contains(", Meter003,", actual);
@@ -736,21 +736,21 @@ namespace Tests
             using (StringWriter sw = new StringWriter())
             {
                 Console.SetOut(sw);
-                var eventFrameTemplate = Ex5WorkingWithEventFramesSln.Program5.CreateEventFrameTemplate(database);
+                var eventFrameTemplate = Ex5WorkingWithEventFramesSln.Program5.CreateEventFrameTemplate(Database);
                 Assert.NotNull(eventFrameTemplate);
-                Ex5WorkingWithEventFramesSln.Program5.CreateEventFrames(database, eventFrameTemplate);
+                Ex5WorkingWithEventFramesSln.Program5.CreateEventFrames(Database, eventFrameTemplate);
 
                 AFTime startTime = DateTime.Today.AddDays(-7);
                 string queryString = $"template:\"{eventFrameTemplate.Name}\"";
-                using (AFEventFrameSearch eventFrameSearch = new AFEventFrameSearch(database, "EventFrame Captures", AFEventFrameSearchMode.ForwardFromStartTime, startTime, queryString))
+                using (AFEventFrameSearch eventFrameSearch = new AFEventFrameSearch(Database, "EventFrame Captures", AFEventFrameSearchMode.ForwardFromStartTime, startTime, queryString))
                 {
                     eventFrameSearch.CacheTimeout = TimeSpan.FromMinutes(5);
                     var resp = eventFrameSearch.FindObjects();
                     Assert.True(resp.Count() > 0);
                 }
 
-                Ex5WorkingWithEventFramesSln.Program5.CaptureValues(database, eventFrameTemplate);
-                Ex5WorkingWithEventFramesSln.Program5.PrintReport(database, eventFrameTemplate);
+                Ex5WorkingWithEventFramesSln.Program5.CaptureValues(Database, eventFrameTemplate);
+                Ex5WorkingWithEventFramesSln.Program5.PrintReport(Database, eventFrameTemplate);
                 var actual = sw.ToString();
                 Assert.Contains("Daily Usage-Meter", actual);
                 Assert.Contains(", Meter003,", actual);
@@ -761,8 +761,8 @@ namespace Tests
         [Trait("Category", "Delete")]
         public void Cleanup()
         {
-            database.PISystem.Databases.Remove("Ethical Power Company");
-            database.PISystem.Databases.Remove(database);
+            Database.PISystem.Databases.Remove("Ethical Power Company");
+            Database.PISystem.Databases.Remove(Database);
         }
     }
 }

@@ -6,12 +6,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Ex3-Reading-And-Writing-Data-Sln")]
+[assembly: AssemblyTitle("Ex3_Sln")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Ex3-Reading-And-Writing-Data-Sln")]
-[assembly: AssemblyCopyright("Copyright ©  2016")]
+[assembly: AssemblyProduct("Ex3_Sln")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

@@ -6,12 +6,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("PI-AF-SDK-For-Beginners-TechCon2016")]
+[assembly: AssemblyTitle("Ex1")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("PI-AF-SDK-For-Beginners-TechCon2016")]
-[assembly: AssemblyCopyright("Copyright ©  2016")]
+[assembly: AssemblyProduct("Ex1")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

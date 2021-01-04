@@ -6,12 +6,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Ex3-Searching-For-Assets-Sln")]
+[assembly: AssemblyTitle("Ex2_Sln")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Ex3-Searching-For-Assets-Sln")]
-[assembly: AssemblyCopyright("Copyright ©  2016")]
+[assembly: AssemblyProduct("Ex2_Sln")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

@@ -13,7 +13,7 @@ namespace Ex4BuildingAnAFHierarchy
         public static string AFServer { get; set; }
         public static string Database { get; set; }
 
-        static void Main()
+        public static void Main()
         {
             Setup();
             AFDatabase database = GetDatabase(AFServer, Database);
@@ -29,7 +29,7 @@ namespace Ex4BuildingAnAFHierarchy
             Console.ReadLine();
         }
 
-        static AFDatabase GetDatabase(string serverName, string databaseName)
+        public static AFDatabase GetDatabase(string serverName, string databaseName)
         {
             PISystems systems = new PISystems();
             PISystem assetServer;
@@ -48,6 +48,7 @@ namespace Ex4BuildingAnAFHierarchy
         public static void CreateElementTemplate(AFDatabase database)
         {
             if (database == null) throw new ArgumentNullException(nameof(database));
+
             string templateName = "FeederTemplate";
             AFElementTemplate feederTemplate;
             if (database.ElementTemplates.Contains(templateName))

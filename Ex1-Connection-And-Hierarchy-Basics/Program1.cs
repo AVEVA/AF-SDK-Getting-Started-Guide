@@ -24,7 +24,7 @@ namespace Ex1ConnectionAndHierarchyBasics
             Console.ReadLine();
         }
 
-        static AFDatabase GetDatabase(string server, string database)
+        public static AFDatabase GetDatabase(string server, string database)
         {
             PISystems piSystems = new PISystems();
             PISystem assetServer = piSystems[server];

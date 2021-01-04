@@ -1,9 +1,9 @@
 ﻿using System;
+using System.IO;
+using Microsoft.Extensions.Configuration;
 using OSIsoft.AF;
 using OSIsoft.AF.Asset;
 using OSIsoft.AF.UnitsOfMeasure;
-using System.IO;
-using Microsoft.Extensions.Configuration;
 
 namespace Ex1ConnectionAndHierarchyBasicsSln
 {
@@ -32,7 +32,7 @@ namespace Ex1ConnectionAndHierarchyBasicsSln
             Console.ReadLine();
         }
 
-        static AFDatabase GetDatabase(string server, string database)
+        public static AFDatabase GetDatabase(string server, string database)
         {
             PISystems piSystems = new PISystems();
             PISystem assetServer = piSystems[server];

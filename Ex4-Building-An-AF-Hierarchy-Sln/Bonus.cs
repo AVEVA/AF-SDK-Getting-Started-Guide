@@ -1,10 +1,9 @@
-﻿
-using System;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using OSIsoft.AF;
 using OSIsoft.AF.Asset;
 using OSIsoft.AF.UnitsOfMeasure;
-using System.Collections.Generic;
 
 namespace Ex4BuildingAnAFHierarchySln
 {
@@ -46,7 +45,7 @@ namespace Ex4BuildingAnAFHierarchySln
                 "Building Info",
                 "Location",
                 "Time-Series Data",
-                "Energy Usage"
+                "Energy Usage",
             };
             foreach (var item in items)
             {
@@ -55,6 +54,7 @@ namespace Ex4BuildingAnAFHierarchySln
                 if (!database.AttributeCategories.Contains(item))
                     database.AttributeCategories.Add(item);
             }
+
             if (database.IsDirty)
                 database.CheckIn();
         }
@@ -77,6 +77,7 @@ namespace Ex4BuildingAnAFHierarchySln
                 mStatusEnum.Add("Good", 0);
                 mStatusEnum.Add("Bad", 1);
             }
+
             if (database.IsDirty)
                 database.CheckIn();
         }
@@ -175,7 +176,6 @@ namespace Ex4BuildingAnAFHierarchySln
             cityEnergyUsageAttrTemp.ConfigString = @"\\%@\Configuration|PIDataArchiveName%\%Element%.%Attribute%";
         }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Globalization", "CA1305:Specify IFormatProvider", Justification = "<Pending>")]
         private static void CreateElements(AFDatabase database)
         {
             if (database == null) return;
@@ -206,6 +206,7 @@ namespace Ex4BuildingAnAFHierarchySln
                     AFElement e = meters.Elements.Add(name, eTemp);
                 }
             }
+
             if (database.IsDirty)
                 database.CheckIn();
         }
@@ -237,6 +238,7 @@ namespace Ex4BuildingAnAFHierarchySln
                 geoLocations.Elements.Add("Montreal", cityTemplate);
                 geoLocations.Elements.Add("San Francisco", cityTemplate);
             }
+
             if (database.IsDirty)
                 database.CheckIn();
         }
@@ -261,6 +263,7 @@ namespace Ex4BuildingAnAFHierarchySln
                 if (!city.Elements.Contains(meter.Name))
                     city.Elements.Add(meter, weakRefType);
             }
+
             if (database.IsDirty)
                 database.CheckIn();
         }

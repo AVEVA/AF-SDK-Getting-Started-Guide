@@ -53,7 +53,6 @@ namespace Ex3ReadingAndWritingData
                 return assetServer.Databases.DefaultDatabase;
         }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Globalization", "CA1305:Specify IFormatProvider", Justification = "<Pending>")]
         public static void PrintHistorical(AFDatabase database, string meterName, string startTime, string endTime)
         {
             if (database == null) throw new ArgumentNullException(nameof(database));
@@ -104,7 +103,6 @@ namespace Ex3ReadingAndWritingData
             // Your code here
         }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Globalization", "CA1305:Specify IFormatProvider", Justification = "<Pending>")]
         public static void PrintDailyAverageEnergyUsage(AFDatabase database, string startTime, string endTime)
         {
             Console.WriteLine(string.Format("Print Daily Energy Usage - Start: {0}, End: {1}", startTime, endTime));
@@ -114,19 +112,15 @@ namespace Ex3ReadingAndWritingData
             // attrList = GetAttributes();
         }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Globalization", "CA1305:Specify IFormatProvider", Justification = "<Pending>")]
         public static void SwapValues(AFDatabase database, string meter1, string meter2, string startTime, string endTime)
         {
             Console.WriteLine(string.Format("Swap values for meters: {0}, {1} between {2} and {3}", meter1, meter2, startTime, endTime));
             // Your code here
         }
 
-
         // Helper method used in PrintEnergyUsageAtTime() and PrintDailyAverageEnergyUseage 
         // Note that this is an optional method, it is used in the solutions, but it is possible
         // to get a valid solution without using this method
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Globalization", "CA1307:Specify StringComparison", Justification = "<Pending>")]
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Globalization", "CA1305:Specify IFormatProvider", Justification = "<Pending>")]
         public static AFAttributeList GetAttributes(AFDatabase database, string templateName, string attributeName)
         {
             AFAttributeList attrList = new AFAttributeList();

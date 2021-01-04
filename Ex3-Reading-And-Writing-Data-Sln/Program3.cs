@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using Microsoft.Extensions.Configuration;
 using OSIsoft.AF;
 using OSIsoft.AF.Asset;
 using OSIsoft.AF.Data;
 using OSIsoft.AF.PI;
-using OSIsoft.AF.Time;
 using OSIsoft.AF.Search;
-using Microsoft.Extensions.Configuration;
-using System.IO;
+using OSIsoft.AF.Time;
 
 namespace Ex3ReadingAndWritingDataSln
 {
@@ -19,7 +19,7 @@ namespace Ex3ReadingAndWritingDataSln
         public static string AFServer { get; set; }
         public static string Database { get; set; }
 
-        static void Main()
+        public static void Main()
         {
             Setup();
             AFDatabase database = GetDatabase(AFServer, Database);
@@ -37,7 +37,7 @@ namespace Ex3ReadingAndWritingDataSln
             Console.ReadLine();
         }
 
-        static AFDatabase GetDatabase(string serverName, string databaseName)
+        public static AFDatabase GetDatabase(string serverName, string databaseName)
         {
             PISystems systems = new PISystems();
             PISystem assetServer;
@@ -53,7 +53,6 @@ namespace Ex3ReadingAndWritingDataSln
                 return assetServer.Databases.DefaultDatabase;
         }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Globalization", "CA1305:Specify IFormatProvider", Justification = "<Pending>")]
         public static void PrintHistorical(AFDatabase database, string meterName, string startTime, string endTime)
         {
             if (database == null) throw new ArgumentNullException(nameof(database));
@@ -75,10 +74,10 @@ namespace Ex3ReadingAndWritingDataSln
             {
                 Console.WriteLine("Timestamp (UTC): {0}, Value (kJ): {1}", val.Timestamp.UtcTime, val.Value);
             }
+
             Console.WriteLine();
         }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Globalization", "CA1305:Specify IFormatProvider", Justification = "<Pending>")]
         public static void PrintInterpolated(AFDatabase database, string meterName, string startTime, string endTime, TimeSpan timeSpan)
         {
             Console.WriteLine(string.Format("Print Interpolated Values - Meter: {0}, Start: {1}, End: {2}", meterName, startTime, endTime));
@@ -102,10 +101,10 @@ namespace Ex3ReadingAndWritingDataSln
             {
                 Console.WriteLine("Timestamp (Local): {0}, Value: {1:0.00} {2}", val.Timestamp.LocalTime, val.Value, val.UOM?.Abbreviation);
             }
+
             Console.WriteLine();
         }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Globalization", "CA1305:Specify IFormatProvider", Justification = "<Pending>")]
         public static void PrintHourlyAverage(AFDatabase database, string meterName, string startTime, string endTime)
         {
             Console.WriteLine(string.Format("Print Hourly Average - Meter: {0}, Start: {1}, End: {2}", meterName, startTime, endTime));
@@ -123,7 +122,6 @@ namespace Ex3ReadingAndWritingDataSln
                 calcBasis: AFCalculationBasis.TimeWeighted,
                 timeType: AFTimestampCalculation.EarliestTime);
 
-
             foreach (AFValue val in vals[AFSummaryTypes.Average])
             {
                 Console.WriteLine("Timestamp (Local): {0:yyyy-MM-dd HH\\h}, Value: {1:0.00} {2}", val.Timestamp.LocalTime, val.Value, val?.UOM?.Abbreviation);
@@ -137,19 +135,17 @@ namespace Ex3ReadingAndWritingDataSln
             Console.WriteLine("Print Energy Usage at Time: {0}", timeStamp);
 
             AFAttributeList attrList = GetAttributes(database, "MeterBasic", "Energy Usage");
-
             AFTime time = new AFTime(timeStamp);
-
             IList<AFValue> vals = attrList.Data.RecordedValue(time);
 
             foreach (AFValue val in vals)
             {
                 Console.WriteLine("Meter: {0}, Timestamp (Local): {1:yyyy-MM-dd HH\\h}, Value: {2:0.00} {3}", val.Attribute.Element.Name, val.Timestamp.LocalTime, val.Value, val.UOM?.Abbreviation);
             }
+
             Console.WriteLine();
         }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Globalization", "CA1305:Specify IFormatProvider", Justification = "<Pending>")]
         public static void PrintDailyAverageEnergyUsage(AFDatabase database, string startTime, string endTime)
         {
             Console.WriteLine(string.Format("Print Daily Energy Usage - Start: {0}, End: {1}", startTime, endTime));
@@ -182,20 +178,19 @@ namespace Ex3ReadingAndWritingDataSln
                 {
                     Console.WriteLine("Timestamp (Local): {0:yyyy-MM-dd}, Avg. Value: {1:0.00} {2}", val?.Timestamp.LocalTime, val?.Value, val?.UOM?.Abbreviation);
                 }
-                Console.WriteLine();
 
+                Console.WriteLine();
             }
+
             Console.WriteLine();
         }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Globalization", "CA1305:Specify IFormatProvider", Justification = "<Pending>")]
         public static void SwapValues(AFDatabase database, string meter1, string meter2, string startTime, string endTime)
         {
             Console.WriteLine(string.Format("Swap values for meters: {0}, {1} between {2} and {3}", meter1, meter2, startTime, endTime));
 
             // NOTE: This method does not ensure that there is no data loss if there is failure.
             // Persist the data first in case you need to rollback.
-
             AFAttribute attr1 = AFAttribute.FindAttribute(@"\Meters\" + meter1 + @"|Energy Usage", database);
             AFAttribute attr2 = AFAttribute.FindAttribute(@"\Meters\" + meter2 + @"|Energy Usage", database);
 
@@ -236,11 +231,7 @@ namespace Ex3ReadingAndWritingDataSln
             Console.WriteLine();
         }
 
-
-
         // Helper method used in PrintEnergyUsageAtTime() and PrintDailyAverageEnergyUseage
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Globalization", "CA1305:Specify IFormatProvider", Justification = "<Pending>")]
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Globalization", "CA1307:Specify StringComparison", Justification = "<Pending>")]
         public static AFAttributeList GetAttributes(AFDatabase database, string templateName, string attributeName)
         {
             AFAttributeList attrList = new AFAttributeList();
