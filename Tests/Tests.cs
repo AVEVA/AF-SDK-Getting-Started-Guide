@@ -489,8 +489,16 @@ namespace Tests
             var valAtt2After = attr2.GetValue(new AFTime(startDate));
 
             // adding console logging to see what is going on here, because this fails occassionally
-            Console.WriteLine($"{valAtt1Before.Value}, {valAtt2After.Value}");
-            Console.WriteLine($"{valAtt2Before.Value}, {valAtt1After.Value}");
+            {
+                var standardOutput = new StreamWriter(Console.OpenStandardOutput())
+                {
+                    AutoFlush = true,
+                };
+                Console.SetOut(standardOutput);
+
+                Console.WriteLine($"{valAtt1Before.Value}, {valAtt2After.Value}");
+                Console.WriteLine($"{valAtt2Before.Value}, {valAtt1After.Value}");
+            }
 
             Assert.Equal(valAtt1Before.Value.ToString(), valAtt2After.Value.ToString());
             Assert.Equal(valAtt2Before.Value.ToString(), valAtt1After.Value.ToString());
