@@ -469,19 +469,21 @@ namespace Tests
         {
             var meter1 = "Meter001";
             var meter2 = "Meter002";
-            var startDate = "y";
+            var startDate = "*-1h";
+            var endDate = "*";
 
             AFAttribute attr1 = AFAttribute.FindAttribute(@"\Meters\" + meter1 + @"|Energy Usage", Database);
             AFAttribute attr2 = AFAttribute.FindAttribute(@"\Meters\" + meter2 + @"|Energy Usage", Database);
             var valAtt1Before = attr1.GetValue(new AFTime(startDate));
             var valAtt2Before = attr2.GetValue(new AFTime(startDate));
 
+            string actual = null;
             using (StringWriter sw = new StringWriter())
             {
                 Console.SetOut(sw);
-                Ex3ReadingAndWritingDataSln.Program3.SwapValues(Database, meter1, meter2, startDate, "y+1h");
+                Ex3ReadingAndWritingDataSln.Program3.SwapValues(Database, meter1, meter2, startDate, endDate);
 
-                var actual = sw.ToString();
+                actual = sw.ToString();
                 Assert.Contains("Swap values for meters: ", actual);
             }
 
@@ -496,8 +498,9 @@ namespace Tests
                 };
                 Console.SetOut(standardOutput);
 
-                Console.WriteLine($"{valAtt1Before.Value}, {valAtt2After.Value}");
-                Console.WriteLine($"{valAtt2Before.Value}, {valAtt1After.Value}");
+                Console.WriteLine(actual);
+                Console.WriteLine($"{valAtt1Before.Value}, {valAtt1After.Value}");
+                Console.WriteLine($"{valAtt2Before.Value}, {valAtt2After.Value}");
             }
 
             Assert.Equal(valAtt1Before.Value.ToString(), valAtt2After.Value.ToString());

@@ -70,15 +70,15 @@ jobs:
           testRunTitle: '$(Agent.JobName) on $(imageName)'
           workingDirectory: $(Build.SourcesDirectory)$(projPath)/
 
-      - task: DotNetCoreCLI@2
-        displayName: 'Run Delete'
-        condition: always()
-        inputs:
-          command: test
-          arguments: --filter Category=Delete
-          publishTestResults: true
-          testRunTitle: '$(Agent.JobName) on $(imageName)'
-          workingDirectory: $(Build.SourcesDirectory)$(projPath)/
+  #      - task: DotNetCoreCLI@2
+  #        displayName: 'Run Delete'
+  #        condition: always()
+  #        inputs:
+  #          command: test
+  #          arguments: --filter Category=Delete
+  #          publishTestResults: true
+  #          testRunTitle: '$(Agent.JobName) on $(imageName)'
+  #          workingDirectory: $(Build.SourcesDirectory)$(projPath)/
 
   - template: '/miscellaneous/build_templates/analysis.yml'
     parameters:
