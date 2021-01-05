@@ -4,6 +4,7 @@ using System.Linq;
 using Microsoft.Extensions.Configuration;
 using OSIsoft.AF;
 using OSIsoft.AF.Asset;
+using OSIsoft.AF.Data;
 using OSIsoft.AF.EventFrame;
 using OSIsoft.AF.Search;
 using OSIsoft.AF.Time;
@@ -469,39 +470,50 @@ namespace Tests
         {
             var meter1 = "Meter001";
             var meter2 = "Meter002";
-            var startDate = "*-1h";
-            var endDate = "*";
+            var startDateRelative = "*-5m";
+            var endDateRelative = "*";
+            var startDate = new AFTime(startDateRelative).ToString();
+            var endDate = new AFTime(endDateRelative).ToString();
+            AFTimeRange timeRange = new AFTimeRange(startDate, endDate);
 
             AFAttribute attr1 = AFAttribute.FindAttribute(@"\Meters\" + meter1 + @"|Energy Usage", Database);
             AFAttribute attr2 = AFAttribute.FindAttribute(@"\Meters\" + meter2 + @"|Energy Usage", Database);
-            var valAtt1Before = attr1.GetValue(new AFTime(startDate));
-            var valAtt2Before = attr2.GetValue(new AFTime(startDate));
 
-            string actual = null;
+            var valAtt1Before = attr1.Data.RecordedValues(
+                timeRange: timeRange,
+                boundaryType: AFBoundaryType.Inside,
+                desiredUOM: null,
+                filterExpression: null,
+                includeFilteredValues: true).First();
+
+            var valAtt2Before = attr2.Data.RecordedValues(
+                timeRange: timeRange,
+                boundaryType: AFBoundaryType.Inside,
+                desiredUOM: null,
+                filterExpression: null,
+                includeFilteredValues: true).First();
+
             using (StringWriter sw = new StringWriter())
             {
                 Console.SetOut(sw);
                 Ex3ReadingAndWritingDataSln.Program3.SwapValues(Database, meter1, meter2, startDate, endDate);
 
-                actual = sw.ToString();
+                var actual = sw.ToString();
                 Assert.Contains("Swap values for meters: ", actual);
             }
 
-            var valAtt1After = attr1.GetValue(new AFTime(startDate));
-            var valAtt2After = attr2.GetValue(new AFTime(startDate));
-
-            // adding console logging to see what is going on here, because this fails occassionally
-            {
-                var standardOutput = new StreamWriter(Console.OpenStandardOutput())
-                {
-                    AutoFlush = true,
-                };
-                Console.SetOut(standardOutput);
-
-                Console.WriteLine(actual);
-                Console.WriteLine($"{valAtt1Before.Value}, {valAtt1After.Value}");
-                Console.WriteLine($"{valAtt2Before.Value}, {valAtt2After.Value}");
-            }
+            var valAtt1After = attr1.Data.RecordedValues(
+                timeRange: timeRange,
+                boundaryType: AFBoundaryType.Inside,
+                desiredUOM: null,
+                filterExpression: null,
+                includeFilteredValues: true).First();
+            var valAtt2After = attr2.Data.RecordedValues(
+                timeRange: timeRange,
+                boundaryType: AFBoundaryType.Inside,
+                desiredUOM: null,
+                filterExpression: null,
+                includeFilteredValues: true).First();
 
             Assert.Equal(valAtt1Before.Value.ToString(), valAtt2After.Value.ToString());
             Assert.Equal(valAtt2Before.Value.ToString(), valAtt1After.Value.ToString());
@@ -591,29 +603,55 @@ namespace Tests
         [Trait("Category", "Exercise3")]
         public void SwapValuesEx3()
         {
+            var meter1 = "Meter001";
+            var meter2 = "Meter002";
+            var startDateRelative = "*-5m";
+            var endDateRelative = "*";
+            var startDate = new AFTime(startDateRelative).ToString();
+            var endDate = new AFTime(endDateRelative).ToString();
+            AFTimeRange timeRange = new AFTimeRange(startDate, endDate);
+
+            AFAttribute attr1 = AFAttribute.FindAttribute(@"\Meters\" + meter1 + @"|Energy Usage", Database);
+            AFAttribute attr2 = AFAttribute.FindAttribute(@"\Meters\" + meter2 + @"|Energy Usage", Database);
+
+            var valAtt1Before = attr1.Data.RecordedValues(
+                timeRange: timeRange,
+                boundaryType: AFBoundaryType.Inside,
+                desiredUOM: null,
+                filterExpression: null,
+                includeFilteredValues: true).First();
+
+            var valAtt2Before = attr2.Data.RecordedValues(
+                timeRange: timeRange,
+                boundaryType: AFBoundaryType.Inside,
+                desiredUOM: null,
+                filterExpression: null,
+                includeFilteredValues: true).First();
+
             using (StringWriter sw = new StringWriter())
             {
                 Console.SetOut(sw);
-                var meter1 = "Meter001";
-                var meter2 = "Meter002";
-                var startDate = "y";
-
-                AFAttribute attr1 = AFAttribute.FindAttribute(@"\Meters\" + meter1 + @"|Energy Usage", Database);
-                AFAttribute attr2 = AFAttribute.FindAttribute(@"\Meters\" + meter2 + @"|Energy Usage", Database);
-                var valAtt1Before = attr1.GetValue(new AFTime(startDate));
-                var valAtt2Before = attr2.GetValue(new AFTime(startDate));
-
-                Ex3ReadingAndWritingDataSln.Program3.SwapValues(Database, meter1, meter2, startDate, "y+1h");
-
-                var valAtt1After = attr1.GetValue(new AFTime(startDate));
-                var valAtt2After = attr2.GetValue(new AFTime(startDate));
+                Ex3ReadingAndWritingDataSln.Program3.SwapValues(Database, meter1, meter2, startDate, endDate);
 
                 var actual = sw.ToString();
-
                 Assert.Contains("Swap values for meters: ", actual);
-                Assert.Equal(valAtt1Before.Value.ToString(), valAtt2After.Value.ToString());
-                Assert.Equal(valAtt2Before.Value.ToString(), valAtt1After.Value.ToString());
             }
+
+            var valAtt1After = attr1.Data.RecordedValues(
+                timeRange: timeRange,
+                boundaryType: AFBoundaryType.Inside,
+                desiredUOM: null,
+                filterExpression: null,
+                includeFilteredValues: true).First();
+            var valAtt2After = attr2.Data.RecordedValues(
+                timeRange: timeRange,
+                boundaryType: AFBoundaryType.Inside,
+                desiredUOM: null,
+                filterExpression: null,
+                includeFilteredValues: true).First();
+
+            Assert.Equal(valAtt1Before.Value.ToString(), valAtt2After.Value.ToString());
+            Assert.Equal(valAtt2Before.Value.ToString(), valAtt1After.Value.ToString());
         }
 
         [Fact]
