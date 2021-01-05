@@ -33,6 +33,10 @@ variables:
     value: product-readiness.pi_afgsg_apsettings.json
   - name: analysisProject
     value: PI_AFGSG_DotNet
+  - name: run_import
+    value: false
+  - name: run_delete
+    value: false
 
 jobs:
   - job: Tests
@@ -54,6 +58,7 @@ jobs:
       - script: |
           "%pihome64%\af\afimport" "\\OCSSAMPLESAPI01\Green Power Company" /F:"AF Database - Green Power Company.xml" /P
         workingDirectory: $(Build.SourcesDirectory)$(projPath)
+        condition: eq(variables.run_import, true)
         displayName: 'import database2'
 
       - script: |
@@ -70,15 +75,15 @@ jobs:
           testRunTitle: '$(Agent.JobName) on $(imageName)'
           workingDirectory: $(Build.SourcesDirectory)$(projPath)/
 
-  #      - task: DotNetCoreCLI@2
-  #        displayName: 'Run Delete'
-  #        condition: always()
-  #        inputs:
-  #          command: test
-  #          arguments: --filter Category=Delete
-  #          publishTestResults: true
-  #          testRunTitle: '$(Agent.JobName) on $(imageName)'
-  #          workingDirectory: $(Build.SourcesDirectory)$(projPath)/
+      - task: DotNetCoreCLI@2
+        displayName: 'Run Delete'
+        condition: eq(variables.run_delete, true)
+        inputs:
+          command: test
+          arguments: --filter Category=Delete
+          publishTestResults: true
+          testRunTitle: '$(Agent.JobName) on $(imageName)'
+          workingDirectory: $(Build.SourcesDirectory)$(projPath)/
 
   - template: '/miscellaneous/build_templates/analysis.yml'
     parameters:
