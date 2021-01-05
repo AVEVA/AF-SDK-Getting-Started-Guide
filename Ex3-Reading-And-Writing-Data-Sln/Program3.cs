@@ -215,7 +215,7 @@ namespace Ex3ReadingAndWritingDataSln
                 includeFilteredValues: false);
 
             if (valsToRemove1.Count == 0 && valsToRemove2.Count == 0)
-                throw new Exception("There are no values to swap");
+                throw new Exception("There are no values to swap.");
 
             List<AFValue> valsToRemove = valsToRemove1.ToList();
             valsToRemove.AddRange(valsToRemove2.ToList());
