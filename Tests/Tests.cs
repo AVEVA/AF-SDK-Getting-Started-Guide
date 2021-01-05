@@ -469,8 +469,8 @@ namespace Tests
         {
             var meter1 = "Meter001";
             var meter2 = "Meter002";
-            var startDate = "*-1h";
-            var endDate = "*";
+            var startDate = "y";
+            var endDate = "y+1h";
 
             AFAttribute attr1 = AFAttribute.FindAttribute(@"\Meters\" + meter1 + @"|Energy Usage", Database);
             AFAttribute attr2 = AFAttribute.FindAttribute(@"\Meters\" + meter2 + @"|Energy Usage", Database);
