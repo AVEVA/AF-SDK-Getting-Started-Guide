@@ -16,12 +16,12 @@ namespace Ex5WorkingWithEventFramesSln
         private static IConfiguration _config;
 
         public static string AFServer { get; set; }
-        public static string Database { get; set; }
+        public static string DatabaseString { get; set; }
 
-        static void Main()
+        public static void Main()
         {
             Setup();
-            AFDatabase database = GetDatabase(AFServer, Database);
+            AFDatabase database = GetDatabase(AFServer, DatabaseString);
 
             if (database == null) throw new NullReferenceException("Database is null");
 
@@ -34,7 +34,7 @@ namespace Ex5WorkingWithEventFramesSln
             Console.ReadLine();
         }
 
-        static AFDatabase GetDatabase(string serverName, string databaseName)
+        public static AFDatabase GetDatabase(string serverName, string databaseName)
         {
             PISystems systems = new PISystems();
             PISystem assetServer;
@@ -82,7 +82,6 @@ namespace Ex5WorkingWithEventFramesSln
                 // This method returns the collection of AFBaseElement objects that were created with this template.
                 using (AFElementSearch elementQuery = new AFElementSearch(database, "Meters", queryString))
                 {
-
                     DateTime timeReference = DateTime.Today.AddDays(-7);
                     int count = 0;
                     foreach (AFElement meter in elementQuery.FindObjects())
@@ -95,6 +94,7 @@ namespace Ex5WorkingWithEventFramesSln
                             ef.SetStartTime(startTime);
                             ef.SetEndTime(endTime);
                             ef.PrimaryReferencedElement = meter;
+
                             // It is good practice to periodically check in the database
                             if (++count % 500 == 0)
                                 database.CheckIn();
@@ -102,6 +102,7 @@ namespace Ex5WorkingWithEventFramesSln
                     }
                 }
             }
+
             if (database.IsDirty)
                 database.CheckIn();
         }
@@ -110,6 +111,7 @@ namespace Ex5WorkingWithEventFramesSln
         {
             if (database == null) throw new ArgumentNullException(nameof(database));
             if (eventFrameTemplate == null) throw new ArgumentNullException(nameof(eventFrameTemplate));
+
             // Formulate search constraints on time and template
             AFTime startTime = DateTime.Today.AddDays(-7);
             string queryString = $"template:\"{eventFrameTemplate.Name}\"";
@@ -123,6 +125,7 @@ namespace Ex5WorkingWithEventFramesSln
                     if ((count++ % 500) == 0)
                         database.CheckIn();
                 }
+
                 if (database.IsDirty)
                     database.CheckIn();
             }
@@ -157,7 +160,7 @@ namespace Ex5WorkingWithEventFramesSln
 
             // ==== Client constants ====
             AFServer = _config["AFServer"];
-            Database = _config["Database"];
+            DatabaseString = _config["Database"];
         }
     }
 }

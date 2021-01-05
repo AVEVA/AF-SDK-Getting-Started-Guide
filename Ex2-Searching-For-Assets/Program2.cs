@@ -13,12 +13,12 @@ namespace Ex2SearchingForAssets
         private static IConfiguration _config;
 
         public static string AFServer { get; set; }
-        public static string Database { get; set; }
+        public static string DatabaseString { get; set; }
 
         public static void Main()
         {
             Setup();
-            AFDatabase database = GetDatabase(AFServer, Database);
+            AFDatabase database = GetDatabase(AFServer, DatabaseString);
 
             if (database == null) throw new NullReferenceException("Database is null");
 
@@ -72,7 +72,6 @@ namespace Ex2SearchingForAssets
         public static void FindMetersByTemplate(AFDatabase database, string templateName)
         {
             /// Your code here
-
         }
 
         public static void FindMetersBySubstation(AFDatabase database, string substationLocation)
@@ -99,7 +98,7 @@ namespace Ex2SearchingForAssets
 
             // ==== Client constants ====
             AFServer = _config["AFServer"];
-            Database = _config["Database"];
+            DatabaseString = _config["Database"];
         }
     }
 }

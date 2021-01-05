@@ -13,17 +13,18 @@ namespace Tests
 {
     public class Tests
     {
-        public static AFDatabase Database { get; set; }
-        public static string AFServer { get; set; }
-        public static string DatabaseString { get; set; }
-
         public Tests()
         {
             Setup();
             Database = new PISystems()[AFServer].Databases[DatabaseString];
         }
 
-        internal static void Setup()
+        public static AFDatabase Database { get; set; }
+        public static string AFServer { get; set; }
+        public static string DatabaseString { get; set; }
+
+        [Fact]
+        public static void Setup()
         {
             IConfigurationBuilder builder = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
@@ -456,7 +457,6 @@ namespace Tests
                 Ex3ReadingAndWritingDataSln.Program3.PrintDailyAverageEnergyUsage(Database, "t-7d", "t");
                 var actual = sw.ToString();
 
-
                 Assert.Contains("Print Daily Energy Usage - Start: t-7d, End: t\r\nAverages for Meter: Meter001\r\nTimestamp (Local):", actual);
                 Assert.Contains(", Avg. Value:", actual);
             }
@@ -567,7 +567,6 @@ namespace Tests
                 Ex3ReadingAndWritingDataSln.Program3.PrintDailyAverageEnergyUsage(Database, "t-7d", "t");
                 var actual = sw.ToString();
 
-
                 Assert.Contains("Print Daily Energy Usage - Start: t-7d, End: t\r\nAverages for Meter: Meter001\r\nTimestamp (Local):", actual);
                 Assert.Contains(", Avg. Value:", actual);
             }
@@ -606,11 +605,13 @@ namespace Tests
         [Trait("Category", "Exercise4")]
         public void Ex4()
         {
-            var standardOutput = new StreamWriter(Console.OpenStandardOutput());
-            standardOutput.AutoFlush = true;
+            var standardOutput = new StreamWriter(Console.OpenStandardOutput())
+            {
+                AutoFlush = true,
+            };
             Console.SetOut(standardOutput);
 
-            //note this method either creates or ensures it was created.  That is what we will test
+            // note this method either creates or ensures it was created.  That is what we will test
             Ex4BuildingAnAFHierarchy.Program4.CreateElementTemplate(Database);
             Assert.True(Database.ElementTemplates.Contains("FeederTemplate"));
 
@@ -633,19 +634,21 @@ namespace Tests
         [Trait("Category", "Solution")]
         public void Ex4Sln()
         {
-            var standardOutput = new StreamWriter(Console.OpenStandardOutput());
-            standardOutput.AutoFlush = true;
+            var standardOutput = new StreamWriter(Console.OpenStandardOutput())
+            {
+                AutoFlush = true,
+            };
             Console.SetOut(standardOutput);
 
-            //note this method either creates or ensures it was created.  That is what we will test
+            // note this method either creates or ensures it was created.  That is what we will test
             Ex4BuildingAnAFHierarchySln.Program4.CreateElementTemplate(Database);
             Assert.True(Database.ElementTemplates.Contains("FeederTemplate"));
 
-            //note this method either creates or ensures it was created.  That is what we will test
+            // note this method either creates or ensures it was created.  That is what we will test
             Ex4BuildingAnAFHierarchySln.Program4.CreateFeedersRootElement(Database);
             Assert.True(Database.Elements.Contains("Feeders"));
 
-            //note this method either creates or ensures it was created.  That is what we will test
+            // note this method either creates or ensures it was created.  That is what we will test
             Ex4BuildingAnAFHierarchySln.Program4.CreateFeederElements(Database);
             Assert.True(Database.Elements["Feeders"].Elements.Contains("Feeder001"));
 
@@ -661,11 +664,14 @@ namespace Tests
         [Trait("Category", "Exercise4")]
         public void Ex4Bonus()
         {
-            var standardOutput = new StreamWriter(Console.OpenStandardOutput());
+            var standardOutput = new StreamWriter(Console.OpenStandardOutput())
+            {
+                AutoFlush = true,
+            };
             standardOutput.AutoFlush = true;
             Console.SetOut(standardOutput);
 
-            //note this method either creates or ensures it was created.  That is what we will test
+            // note this method either creates or ensures it was created.  That is what we will test
             Ex4BuildingAnAFHierarchy.Bonus.Run();
             var newDB = Database.PISystem.Databases["Ethical Power Company"];
             Assert.NotNull(newDB);
@@ -673,7 +679,6 @@ namespace Tests
             AFElement meters = Database.Elements["Meters"];
             var meter = meters.Elements.First();
             var reftype = newDB.Elements["Geographical Locations"].Elements["London"].GetReferenceTypes(meter);
-
 
             Assert.Equal("Weak Reference", reftype[0].Name);
         }
@@ -683,11 +688,13 @@ namespace Tests
         [Trait("Category", "Solution")]
         public void Ex4BonusSln()
         {
-            var standardOutput = new StreamWriter(Console.OpenStandardOutput());
-            standardOutput.AutoFlush = true;
+            var standardOutput = new StreamWriter(Console.OpenStandardOutput())
+            {
+                AutoFlush = true,
+            };
             Console.SetOut(standardOutput);
 
-            //note this method either creates or ensures it was created.  That is what we will test
+            // note this method either creates or ensures it was created.  That is what we will test
             Ex4BuildingAnAFHierarchySln.Bonus.Run();
             var newDB = Database.PISystem.Databases["Ethical Power Company"];
             Assert.NotNull(newDB);
@@ -695,7 +702,6 @@ namespace Tests
             AFElement meters = newDB.Elements["Meters"];
             var meter = meters.Elements["Meter001"];
             var reftype = newDB.Elements["Geographical Locations"].Elements["London"].GetReferenceTypes(meter);
-
 
             Assert.Equal("Weak Reference", reftype[0].Name);
         }

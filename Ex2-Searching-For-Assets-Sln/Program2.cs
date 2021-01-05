@@ -13,12 +13,12 @@ namespace Ex2SearchingForAssetsSln
         private static IConfiguration _config;
 
         public static string AFServer { get; set; }
-        public static string Database { get; set; }
+        public static string DatabaseString { get; set; }
 
         public static void Main()
         {
             Setup();
-            AFDatabase database = GetDatabase(AFServer, Database);
+            AFDatabase database = GetDatabase(AFServer, DatabaseString);
 
             if (database == null) throw new NullReferenceException("Database is null");
 
@@ -105,7 +105,7 @@ namespace Ex2SearchingForAssetsSln
                     Console.Write("{0}{1}", countNames++ == 0 ? string.Empty : ", ", element.Name);
                 }
 
-                Console.WriteLine("");
+                Console.WriteLine(String.Empty);
             }
         }
 
@@ -125,7 +125,7 @@ namespace Ex2SearchingForAssetsSln
                     Console.Write("{0}{1}", countNames++ == 0 ? string.Empty : ", ", element.Name);
                 }
 
-                Console.WriteLine("");
+                Console.WriteLine(String.Empty);
             }
         }
 
@@ -165,7 +165,7 @@ namespace Ex2SearchingForAssetsSln
 
             // ==== Client constants ====
             AFServer = _config["AFServer"];
-            Database = _config["Database"];
+            DatabaseString = _config["Database"];
         }
     }
 }

@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using Microsoft.Extensions.Configuration;
 using OSIsoft.AF;
 using OSIsoft.AF.Asset;
 using OSIsoft.AF.Data;
 using OSIsoft.AF.PI;
-using OSIsoft.AF.Time;
 using OSIsoft.AF.Search;
-using Microsoft.Extensions.Configuration;
-using System.IO;
+using OSIsoft.AF.Time;
 
 namespace Ex3ReadingAndWritingData
 {
@@ -17,12 +17,12 @@ namespace Ex3ReadingAndWritingData
         private static IConfiguration _config;
 
         public static string AFServer { get; set; }
-        public static string Database { get; set; }
+        public static string DatabaseString { get; set; }
 
-        static void Main()
+        public static void Main()
         {
             Setup();
-            AFDatabase database = GetDatabase(AFServer, Database);
+            AFDatabase database = GetDatabase(AFServer, DatabaseString);
 
             if (database == null) throw new NullReferenceException("Database is null");
 
@@ -37,7 +37,7 @@ namespace Ex3ReadingAndWritingData
             Console.ReadLine();
         }
 
-        static AFDatabase GetDatabase(string serverName, string databaseName)
+        public static AFDatabase GetDatabase(string serverName, string databaseName)
         {
             PISystems systems = new PISystems();
             PISystem assetServer;
@@ -115,6 +115,7 @@ namespace Ex3ReadingAndWritingData
         public static void SwapValues(AFDatabase database, string meter1, string meter2, string startTime, string endTime)
         {
             Console.WriteLine(string.Format("Swap values for meters: {0}, {1} between {2} and {3}", meter1, meter2, startTime, endTime));
+
             // Your code here
         }
 
@@ -143,7 +144,7 @@ namespace Ex3ReadingAndWritingData
             return attrList;
         }
 
-        static void Setup()
+        public static void Setup()
         {
             IConfigurationBuilder builder = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
@@ -152,7 +153,7 @@ namespace Ex3ReadingAndWritingData
 
             // ==== Client constants ====
             AFServer = _config["AFServer"];
-            Database = _config["Database"];
+            DatabaseString = _config["Database"];
         }
     }
 }

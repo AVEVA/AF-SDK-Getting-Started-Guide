@@ -16,12 +16,12 @@ namespace Ex5WorkingWithEventFrames
         private static IConfiguration _config;
 
         public static string AFServer { get; set; }
-        public static string Database { get; set; }
+        public static string DatabaseString { get; set; }
 
-        static void Main()
+        public static void Main()
         {
             Setup();
-            AFDatabase database = GetDatabase(AFServer, Database);
+            AFDatabase database = GetDatabase(AFServer, DatabaseString);
 
             if (database == null) throw new NullReferenceException("Database is null");
 
@@ -34,7 +34,7 @@ namespace Ex5WorkingWithEventFrames
             Console.ReadLine();
         }
 
-        static AFDatabase GetDatabase(string serverName, string databaseName)
+        public static AFDatabase GetDatabase(string serverName, string databaseName)
         {
             PISystems systems = new PISystems();
             PISystem assetServer;
@@ -77,6 +77,7 @@ namespace Ex5WorkingWithEventFrames
         {
             if (database == null) throw new ArgumentNullException(nameof(database));
             if (eventFrameTemplate == null) throw new ArgumentNullException(nameof(eventFrameTemplate));
+
             // Your code here
         }
 
@@ -84,6 +85,7 @@ namespace Ex5WorkingWithEventFrames
         {
             if (database == null) throw new ArgumentNullException(nameof(database));
             if (eventFrameTemplate == null) throw new ArgumentNullException(nameof(eventFrameTemplate));
+
             // Your code here
         }
 
@@ -91,6 +93,7 @@ namespace Ex5WorkingWithEventFrames
         {
             if (database == null) throw new ArgumentNullException(nameof(database));
             if (eventFrameTemplate == null) throw new ArgumentNullException(nameof(eventFrameTemplate));
+
             // Your code here
         }
 
@@ -103,7 +106,7 @@ namespace Ex5WorkingWithEventFrames
 
             // ==== Client constants ====
             AFServer = _config["AFServer"];
-            Database = _config["Database"];
+            DatabaseString = _config["Database"];
         }
     }
 }

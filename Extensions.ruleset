@@ -5,12 +5,14 @@
       Overrides are by exception only and should include one of the following:
 	  - A PBI number for the eventual removal of the override. For example, in a case where compliance will take a long time.
 	  - A justification of why the override is required. -->
-  <Rules AnalyzerId="StyleCop.Analyzers" RuleNamespace="StyleCop.Analyzers">
-    <Rule Id="CA1303" Action="None" /> <!-- Prefer inline strings in sample code for readability -->
+  <Rules AnalyzerId="StyleCop.Analyzers" RuleNamespace="StyleCop.Analyzers">    
     <Rule Id="CA1031" Action="None" /> <!-- Allow catching general exceptions for sample code to ensure cleanup -->   
+    <Rule Id="CA1303" Action="None" /> <!-- Prefer inline strings in sample code for readability -->
+    <Rule Id="CA1305" Action="None" /> <!-- format behavior differences is fine --> 
     <Rule Id="CA2201" Action="None" /> <!-- Allow use of basic System.Exception in sample code -->
     <Rule Id="IDE0049" Action="None" /> <!-- Printed this way, and misnaming isn't too bad -->
     <Rule Id="IDE0051" Action="None" /> <!-- Skelton programs can have unused members -->
+    <Rule Id="IDE0059" Action="None" /> <!-- Skelton programs can have unnessacry assignments because they will be used -->
     <Rule Id="IDE0060" Action="None" /> <!-- Skelton programs can have unused members -->
     <Rule Id="CA1801" Action="None" /> <!-- Skelton programs can have unused members -->
     <Rule Id="SA1121" Action="None" /> <!-- Printed this way, and misnaming isn't too bad -->

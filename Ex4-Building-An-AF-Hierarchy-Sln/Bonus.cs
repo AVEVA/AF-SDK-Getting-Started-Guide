@@ -59,7 +59,6 @@ namespace Ex4BuildingAnAFHierarchySln
                 database.CheckIn();
         }
 
-
         private static void CreateEnumerationSets(AFDatabase database)
         {
             if (database == null) return;
@@ -81,7 +80,6 @@ namespace Ex4BuildingAnAFHierarchySln
             if (database.IsDirty)
                 database.CheckIn();
         }
-
 
         private static void CreateTemplates(AFDatabase database)
         {
@@ -203,7 +201,7 @@ namespace Ex4BuildingAnAFHierarchySln
                 if (!meters.Elements.Contains(name))
                 {
                     AFElementTemplate eTemp = i <= 8 ? basic : advanced;
-                    AFElement e = meters.Elements.Add(name, eTemp);
+                    meters.Elements.Add(name, eTemp);
                 }
             }
 
