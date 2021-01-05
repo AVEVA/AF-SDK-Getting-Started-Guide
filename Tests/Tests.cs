@@ -155,8 +155,12 @@ namespace Tests
 
                 Ex1ConnectionAndHierarchyBasicsSln.Program1.PrintElementTemplates(Database);
                 var actual = sw.ToString();
-                string expected = "Print Element Templates\r\nName: City; Categories: \r\nName: MeterAdvanced; Categories: Shows Status;\r\nName: MeterBasic; Categories: Measures Energy;\r\n";
+                string expected = "Print Element Templates\r\nName: City; Categories:";
                 Assert.Contains(expected, actual);
+
+                // split apart because in non-deleted system there is an extra template
+                string expected2 = " \r\nName: MeterAdvanced; Categories: Shows Status;\r\nName: MeterBasic; Categories: Measures Energy;\r\n";
+                Assert.Contains(expected2, actual);
             }
         }
 
