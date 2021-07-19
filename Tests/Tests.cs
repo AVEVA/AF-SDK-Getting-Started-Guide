@@ -793,7 +793,7 @@ namespace Tests
                 {
                     eventFrameSearch.CacheTimeout = TimeSpan.FromMinutes(5);
                     var resp = eventFrameSearch.FindObjects();
-                    Assert.True(resp.Count() > 0);
+                    Assert.True(resp.Any());
                 }
 
                 Ex5WorkingWithEventFramesSln.Program5.CaptureValues(Database, eventFrameTemplate);
@@ -821,7 +821,7 @@ namespace Tests
                 {
                     eventFrameSearch.CacheTimeout = TimeSpan.FromMinutes(5);
                     var resp = eventFrameSearch.FindObjects();
-                    Assert.True(resp.Count() > 0);
+                    Assert.True(resp.Any());
                 }
 
                 Ex5WorkingWithEventFramesSln.Program5.CaptureValues(Database, eventFrameTemplate);
