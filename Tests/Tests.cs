@@ -506,18 +506,20 @@ namespace Tests
                 Assert.Contains("Swap values for meters: ", actual);
             }
 
-            var valAtt1After = attr1.Data.RecordedValues(
+            var valsAtt1After = attr1.Data.RecordedValues(
                 timeRange: timeRange,
                 boundaryType: AFBoundaryType.Inside,
                 desiredUOM: null,
                 filterExpression: null,
-                includeFilteredValues: true).First();
-            var valAtt2After = attr2.Data.RecordedValues(
+                includeFilteredValues: true);
+            var valAtt1After = valsAtt1After.First();
+            var valsAtt2After = attr2.Data.RecordedValues(
                 timeRange: timeRange,
                 boundaryType: AFBoundaryType.Inside,
                 desiredUOM: null,
                 filterExpression: null,
-                includeFilteredValues: true).First();
+                includeFilteredValues: true);
+            var valAtt2After = valsAtt2After.First();
 
             // adding console logging to see what is going on here, because this fails occassionally
             {
@@ -529,6 +531,18 @@ namespace Tests
 
                 Console.WriteLine($"{valAtt1Before.Value}, {valAtt1After.Value}");
                 Console.WriteLine($"{valAtt2Before.Value}, {valAtt2After.Value}");
+
+                Console.WriteLine("All vals att1 after:");
+                foreach (var val in valsAtt1After)
+                {
+                    Console.WriteLine($"{val.Timestamp} | {val.Value}");
+                }
+
+                Console.WriteLine("All vals att2 after:");
+                foreach (var val in valsAtt2After)
+                {
+                    Console.WriteLine($"{val.Timestamp} | {val.Value}");
+                }
             }
 
             Assert.Equal(valAtt1Before.Value.ToString(), valAtt2After.Value.ToString());
