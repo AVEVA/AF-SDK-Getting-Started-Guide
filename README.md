@@ -1,8 +1,8 @@
 # AFSDK Getting Started Guide
 
-**Version:** 1.0.1
+**Version:** 1.0.2
 
-[![Build Status](https://dev.azure.com/osieng/engineering/_apis/build/status/product-readiness/PI-System/AF-SDK-Getting-Started-Guide?branchName=master)](https://dev.azure.com/osieng/engineering/_build/latest?definitionId=2251&branchName=master) 
+[![Build Status](https://dev.azure.com/osieng/engineering/_apis/build/status/product-readiness/PI-System/AF-SDK-Getting-Started-Guide?branchName=main)](https://dev.azure.com/osieng/engineering/_build/latest?definitionId=2251&branchName=main)
 
 This sample uses the AFSDK to accomplish some common tasks with the PISystem.
 

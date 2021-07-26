@@ -2,31 +2,23 @@ trigger:
   batch: true
   branches:
     include:
-      - master
-  paths:
-    include:
-      - '/'
+      - main
 
 pr:
   branches:
     include:
-      - master
-  paths:
-    include:
-      - '/'
+      - main
 
 schedules:
   - cron: '0 0 * * 0'
     displayName: Weekly build
     branches:
       include:
-        - master
+        - main
     always: true
 
 variables:
   - template: '/miscellaneous/build_templates/variables.yml'
-  - name: projPath
-    value: ''
   - name: CredFile
     value: appsettings.json
   - name: CredFileLibrary
@@ -48,22 +40,18 @@ jobs:
         parameters:
           fileOriginal: $(CredFile)
           fileLibrary: $(CredFileLibrary)
-          filePath: $(projPath)
 
       - script: |
           for /D %%a in (".\*.*") do xcopy /y /d appsettings.json "%%a\"
-        workingDirectory: $(Build.SourcesDirectory)$(projPath)
         displayName: 'copy file to subfolders'
 
       - script: |
           "%pihome64%\af\afimport" "\\OCSSAMPLESAPI01\Green Power Company" /F:"AF Database - Green Power Company.xml" /P
-        workingDirectory: $(Build.SourcesDirectory)$(projPath)
         condition: eq(variables.run_import, true)
         displayName: 'import database2'
 
       - script: |
           nuget restore
-        workingDirectory: $(Build.SourcesDirectory)$(projPath)
         displayName: 'nuget restore'
 
       - task: DotNetCoreCLI@2
@@ -72,8 +60,7 @@ jobs:
           command: test
           arguments: --filter Category=Solution
           publishTestResults: true
-          testRunTitle: '$(Agent.JobName) on $(imageName)'
-          workingDirectory: $(Build.SourcesDirectory)$(projPath)/
+          testRunTitle: '$(Agent.JobName) on $(Agent.OS)'
 
       - task: DotNetCoreCLI@2
         displayName: 'Run Delete'
@@ -82,8 +69,7 @@ jobs:
           command: test
           arguments: --filter Category=Delete
           publishTestResults: true
-          testRunTitle: '$(Agent.JobName) on $(imageName)'
-          workingDirectory: $(Build.SourcesDirectory)$(projPath)/
+          testRunTitle: '$(Agent.JobName) on $(Agent.OS) (Delete)'
 
   - template: '/miscellaneous/build_templates/analysis.yml'
     parameters:
