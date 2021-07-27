@@ -82,13 +82,13 @@ jobs:
     pool:
       name: 00-OSIManaged-Test
       demands: COMPUTERNAME -equals $(buildAgent)
-    steps:    
+    steps:
       - script: |
           nuget restore
         displayName: 'Nuget restore'
 
-    - template: '/miscellaneous/build_templates/binskim.yml@templates'
+      - template: '/miscellaneous/build_templates/binskim.yml@templates'
 
-    - template: '/miscellaneous/build_templates/analysis.yml@templates'
-      parameters:
-        language: dotnet
+      - template: '/miscellaneous/build_templates/analysis.yml@templates'
+        parameters:
+          language: dotnet
