@@ -1,5 +1,9 @@
 # Version History
 
+## 1.0.3 / 2021-08-10
+
+- Updated gitignore
+
 ## 1.0.2 / 2021-07-26
 
 - Migrate from master to main branch
