@@ -106,7 +106,7 @@ namespace Ex4BuildingAnAFHierarchySln
         {
             if (database == null) throw new ArgumentNullException(nameof(database));
 
-            Console.WriteLine("Adding a week reference of the Feeder001 under London");
+            Console.WriteLine("Adding a weak reference of the Feeder001 under London");
             AFReferenceType weakRefType = database.ReferenceTypes["Weak Reference"];
 
             AFElement london = database.Elements["Geographical Locations"].Elements["London"];
