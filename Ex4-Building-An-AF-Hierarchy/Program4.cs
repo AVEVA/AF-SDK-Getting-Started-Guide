@@ -91,8 +91,8 @@ namespace Ex4BuildingAnAFHierarchy
             _config = builder.Build();
 
             // ==== Client constants ====
-            AFServer = _config["AFServer"];
-            DatabaseString = _config["Database"];
+            AFServer = _config["AFServerName"];
+            DatabaseString = _config["AFDatabaseName"];
         }
     }
 }
