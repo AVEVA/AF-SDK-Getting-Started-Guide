@@ -29,7 +29,7 @@ variables:
   - name: analysisProject
     value: PI_AFGSG_DotNet
   - name: run_import
-    value: true
+    value: false
   - name: run_delete
     value: false
 
