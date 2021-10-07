@@ -1,5 +1,10 @@
 # Version History
 
+## 1.0.4 / 2021-10-11
+
+- Update pipelines to use Azure Key Vault for secrets
+- Changed parameter names in appsettings.json
+
 ## 1.0.3 / 2021-08-10
 
 - Updated gitignore

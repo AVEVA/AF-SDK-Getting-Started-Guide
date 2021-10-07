@@ -26,10 +26,6 @@ resources:
 
 variables:
   - template: '/miscellaneous/build_templates/variables.yml@templates'
-  - name: CredFile
-    value: appsettings.json
-  - name: CredFileLibrary
-    value: product-readiness.pi_afgsg_apsettings.json
   - name: analysisProject
     value: PI_AFGSG_DotNet
   - name: run_import
@@ -43,10 +39,9 @@ jobs:
       name: 00-OSIManaged-Test
       demands: COMPUTERNAME -equals $(buildAgent)
     steps:
-      - template: '/miscellaneous/build_templates/config.yml@templates'
+      - template: '/miscellaneous/build_templates/appsettings.yml@templates'
         parameters:
-          fileOriginal: $(CredFile)
-          fileLibrary: $(CredFileLibrary)
+          secrets: 'AFServerName, AFDatabaseName'
 
       - script: |
           for /D %%a in (".\*.*") do xcopy /y /d appsettings.json "%%a\"

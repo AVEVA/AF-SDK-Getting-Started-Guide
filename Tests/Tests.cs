@@ -33,8 +33,8 @@ namespace Tests
             var config = builder.Build();
 
             // ==== Client constants ====
-            AFServer = config["AFServer"];
-            DatabaseString = config["Database"];
+            AFServer = config["AFServerName"];
+            DatabaseString = config["AFDatabaseName"];
             (config as ConfigurationRoot).Dispose();
         }
 
