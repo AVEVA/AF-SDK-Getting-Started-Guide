@@ -1,5 +1,9 @@
 # Version History
 
+## 1.0.5 / 2021-12-01
+
+- Update pipelines to reference internal analysis templates
+
 ## 1.0.4 / 2021-10-11
 
 - Update pipelines to use Azure Key Vault for secrets
