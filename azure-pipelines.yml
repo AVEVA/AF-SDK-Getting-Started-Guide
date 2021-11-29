@@ -77,7 +77,7 @@ jobs:
           publishTestResults: true
           testRunTitle: '$(Agent.JobName) on $(Agent.OS) (Delete)'
 
-  - template: '/miscellaneous/build_templates/analysis.yml@templates'
+  - template: '/miscellaneous/build_templates/code-analysis.yml@templates'
     parameters:
       buildSteps:
         - script: |
