@@ -47,9 +47,14 @@ jobs:
       name: 00-OSIManaged-Containers
       demands: Agent.OS -equals Windows_NT
     steps:
+      - checkout: self
+      - checkout: OpsGuildPipelineTools
+      
       - template: '/miscellaneous/build_templates/appsettings.yml@templates'
         parameters:
           secrets: 'AFServerName, AFDatabaseName'
+          
+      - template: '/Templates/Utilities/InstallAFSDK.step.v0.yml@OpsGuildPipelineTools'
 
       - script: |
           for /D %%a in (".\*.*") do xcopy /y /d appsettings.json "%%a\"
@@ -71,6 +76,7 @@ jobs:
           arguments: --filter Category=Solution
           publishTestResults: true
           testRunTitle: '$(Agent.JobName) on $(Agent.OS)'
+          projects: '$(Build.SourcesDirectory)\AF-SDK-Getting-Started-Guide\Getting-Started-With-PI-AF-SDK.sln'
 
       - task: DotNetCoreCLI@2
         displayName: 'Run Delete'
