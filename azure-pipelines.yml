@@ -59,15 +59,18 @@ jobs:
       - script: |
           for /D %%a in (".\*.*") do xcopy /y /d appsettings.json "%%a\"
         displayName: 'copy file to subfolders'
+        workingDirectory: $(Build.SourcesDirectory)\AF-SDK-Getting-Started-Guide
 
       - script: |
           "%pihome64%\af\afimport" "\\OCSSAMPLESAPI01\Green Power Company" /F:"AF Database - Green Power Company.xml" /P
         condition: eq(variables.run_import, true)
         displayName: 'import database2'
+        workingDirectory: $(Build.SourcesDirectory)\AF-SDK-Getting-Started-Guide
 
       - script: |
           nuget restore
         displayName: 'Nuget restore'
+        workingDirectory: $(Build.SourcesDirectory)\AF-SDK-Getting-Started-Guide
 
       - task: DotNetCoreCLI@2
         displayName: 'Run tests'
