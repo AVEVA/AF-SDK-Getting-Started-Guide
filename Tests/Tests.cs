@@ -474,8 +474,8 @@ namespace Tests
         {
             var meter1 = "Meter001";
             var meter2 = "Meter002";
-            var startDateRelative = "*-5m";
-            var endDateRelative = "*";
+            var startDateRelative = "*-6m";
+            var endDateRelative = "*-2m";
             var startDate = new AFTime(startDateRelative).ToString();
             var endDate = new AFTime(endDateRelative).ToString();
             AFTimeRange timeRange = new AFTimeRange(startDate, endDate);
