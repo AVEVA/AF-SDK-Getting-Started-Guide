@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using Microsoft.Extensions.Configuration;
+using System.Text.Json;
 using OSIsoft.AF;
 using OSIsoft.AF.Asset;
 using OSIsoft.AF.Search;
@@ -10,8 +9,6 @@ namespace Ex2SearchingForAssetsSln
 {
     public static class Program2
     {
-        private static IConfiguration _config;
-
         public static string AFServer { get; set; }
         public static string DatabaseString { get; set; }
 
@@ -158,14 +155,11 @@ namespace Ex2SearchingForAssetsSln
 
         public static void Setup()
         {
-            IConfigurationBuilder builder = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json");
-            _config = builder.Build();
+            AppSettings settings = JsonSerializer.Deserialize<AppSettings>(File.ReadAllText(Directory.GetCurrentDirectory() + "/appsettings.json"));
 
             // ==== Client constants ====
-            AFServer = _config["AFServerName"];
-            DatabaseString = _config["AFDatabaseName"];
+            AFServer = settings.AFServerName;
+            DatabaseString = settings.AFDatabaseName;
         }
     }
 }

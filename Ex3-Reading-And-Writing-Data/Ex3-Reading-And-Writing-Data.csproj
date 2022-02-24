@@ -92,6 +92,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppSettings.cs" />
     <Compile Include="Program3.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
