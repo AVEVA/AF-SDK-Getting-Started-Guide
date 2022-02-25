@@ -101,6 +101,11 @@ jobs:
 
         - template: '/miscellaneous/build_templates/appsettings.yml@templates'
 
+        - script: |
+            for /D %%a in (".\*.*") do xcopy /y /d appsettings.json "%%a\"
+          displayName: 'copy file to subfolders'
+          workingDirectory: $(Build.SourcesDirectory)\AF-SDK-Getting-Started-Guide
+
         - task: NuGetCommand@2
           displayName: 'nuget restore'
           inputs:
