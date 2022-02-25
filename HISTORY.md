@@ -1,5 +1,12 @@
 # Version History
 
+## 1.1.0 / 2022-02-28
+
+- Updated dependencies
+- Migrated build agent
+- Update analyses
+- Remove dependency on Microsoft.Extensions.Configuration
+
 ## 1.0.4 / 2021-10-11
 
 - Update pipelines to use Azure Key Vault for secrets
