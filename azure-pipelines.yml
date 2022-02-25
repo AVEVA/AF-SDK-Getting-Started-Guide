@@ -92,7 +92,7 @@ jobs:
 
   - template: '/miscellaneous/build_templates/code-analysis.yml@templates'
     parameters:
-      projectPath: '$(Build.SourcesDirectory)\AF-SDK-Getting-Started-Guide'
+      projectPath: '\AF-SDK-Getting-Started-Guide'
       buildSteps:
         - checkout: self
         - checkout: OpsGuildPipelineTools
