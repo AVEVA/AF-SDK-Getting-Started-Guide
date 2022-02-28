@@ -4,12 +4,12 @@
 
 - Updated dependencies
 - Migrated build agent
-- Update analyses
-- Remove dependency on Microsoft.Extensions.Configuration
+- Updated analyses
+- Removed dependency on Microsoft.Extensions.Configuration
 
 ## 1.0.4 / 2021-10-11
 
-- Update pipelines to use Azure Key Vault for secrets
+- Updated pipelines to use Azure Key Vault for secrets
 - Changed parameter names in appsettings.json
 
 ## 1.0.3 / 2021-08-10
@@ -18,7 +18,7 @@
 
 ## 1.0.2 / 2021-07-26
 
-- Migrate from master to main branch
+- Migrated from master to main branch
 
 ## 1.0.1 / 2021-07-19
 
