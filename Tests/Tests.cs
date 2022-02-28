@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
-using Microsoft.Extensions.Configuration;
+using System.Text.Json;
 using OSIsoft.AF;
 using OSIsoft.AF.Asset;
 using OSIsoft.AF.Data;
@@ -27,15 +27,11 @@ namespace Tests
         [Fact]
         public static void Setup()
         {
-            IConfigurationBuilder builder = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json");
-            var config = builder.Build();
+            AppSettings settings = JsonSerializer.Deserialize<AppSettings>(File.ReadAllText(Directory.GetCurrentDirectory() + "/appsettings.json"));
 
             // ==== Client constants ====
-            AFServer = config["AFServerName"];
-            DatabaseString = config["AFDatabaseName"];
-            (config as ConfigurationRoot).Dispose();
+            AFServer = settings.AFServerName;
+            DatabaseString = settings.AFDatabaseName;
         }
 
         [Fact]
@@ -474,8 +470,8 @@ namespace Tests
         {
             var meter1 = "Meter001";
             var meter2 = "Meter002";
-            var startDateRelative = "*-5m";
-            var endDateRelative = "*";
+            var startDateRelative = "*-6m";
+            var endDateRelative = "*-2m";
             var startDate = new AFTime(startDateRelative).ToString();
             var endDate = new AFTime(endDateRelative).ToString();
             AFTimeRange timeRange = new AFTimeRange(startDate, endDate);

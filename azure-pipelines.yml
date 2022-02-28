@@ -19,6 +19,14 @@ schedules:
 
 resources:
   repositories:
+    - repository: OpsGuildAutomationRepo
+      type: git
+      name: Engineering/OpsGuild.Automation
+      ref: refs/heads/main
+    - repository: OpsGuildPipelineTools
+      type: git
+      name: Engineering/opsguild.pipeline-tools
+      ref: refs/heads/main
     - repository: templates
       type: github
       name: osisoft/OSI-Samples
@@ -36,25 +44,33 @@ variables:
 jobs:
   - job: Tests
     pool:
-      name: 00-OSIManaged-Test
-      demands: COMPUTERNAME -equals $(buildAgent)
+      name: 00-OSIManaged-Containers
+      demands: Agent.OS -equals Windows_NT
     steps:
+      - checkout: self
+      - checkout: OpsGuildPipelineTools
+      
       - template: '/miscellaneous/build_templates/appsettings.yml@templates'
         parameters:
           secrets: 'AFServerName, AFDatabaseName'
+          
+      - template: '/Templates/Utilities/InstallAFSDK.step.v0.yml@OpsGuildPipelineTools'
 
       - script: |
           for /D %%a in (".\*.*") do xcopy /y /d appsettings.json "%%a\"
         displayName: 'copy file to subfolders'
+        workingDirectory: $(Build.SourcesDirectory)\AF-SDK-Getting-Started-Guide
 
       - script: |
           "%pihome64%\af\afimport" "\\OCSSAMPLESAPI01\Green Power Company" /F:"AF Database - Green Power Company.xml" /P
         condition: eq(variables.run_import, true)
         displayName: 'import database2'
+        workingDirectory: $(Build.SourcesDirectory)\AF-SDK-Getting-Started-Guide
 
       - script: |
           nuget restore
         displayName: 'Nuget restore'
+        workingDirectory: $(Build.SourcesDirectory)\AF-SDK-Getting-Started-Guide
 
       - task: DotNetCoreCLI@2
         displayName: 'Run tests'
@@ -63,6 +79,7 @@ jobs:
           arguments: --filter Category=Solution
           publishTestResults: true
           testRunTitle: '$(Agent.JobName) on $(Agent.OS)'
+          projects: '$(Build.SourcesDirectory)\AF-SDK-Getting-Started-Guide\Getting-Started-With-PI-AF-SDK.sln'
 
       - task: DotNetCoreCLI@2
         displayName: 'Run Delete'
@@ -73,17 +90,33 @@ jobs:
           publishTestResults: true
           testRunTitle: '$(Agent.JobName) on $(Agent.OS) (Delete)'
 
-  - job: Analysis
-    pool:
-      name: 00-OSIManaged-Test
-      demands: COMPUTERNAME -equals $(buildAgent)
-    steps:
-      - script: |
-          nuget restore
-        displayName: 'Nuget restore'
+  - template: '/miscellaneous/build_templates/code-analysis.yml@templates'
+    parameters:
+      projectPath: '\AF-SDK-Getting-Started-Guide'
+      buildSteps:
+        - checkout: self
+        - checkout: OpsGuildPipelineTools
 
-      - template: '/miscellaneous/build_templates/binskim.yml@templates'
+        - template: '/Templates/Utilities/InstallAFSDK.step.v0.yml@OpsGuildPipelineTools'
 
-      - template: '/miscellaneous/build_templates/analysis.yml@templates'
-        parameters:
-          language: dotnet
+        - template: '/miscellaneous/build_templates/appsettings.yml@templates'
+
+        - script: |
+            for /D %%a in (".\*.*") do xcopy /y /d appsettings.json "%%a\"
+          displayName: 'copy file to subfolders'
+          workingDirectory: $(Build.SourcesDirectory)\AF-SDK-Getting-Started-Guide
+
+        - task: NuGetCommand@2
+          displayName: 'nuget restore'
+          inputs:
+            command: 'restore'
+            restoreSolution: '**/*.sln'
+
+        - task: VSBuild@1
+          displayName: 'Build solution'
+          inputs: 
+            vsVersion: 16.0
+            
+        - template: '/miscellaneous/build_templates/binskim.yml@templates'
+          parameters:
+            deleteBinSkim: 'AFSDKInstallKit/*'
