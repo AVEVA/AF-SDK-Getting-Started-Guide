@@ -46,13 +46,16 @@ jobs:
     pool:
       name: 00-OSIManaged-Containers
       demands: Agent.OS -equals Windows_NT
+    variables:
+      - name: AFDatabaseName
+        value: $(AFDatabaseNameAFGSG)
     steps:
       - checkout: self
       - checkout: OpsGuildPipelineTools
       
       - template: '/miscellaneous/build_templates/appsettings.yml@templates'
         parameters:
-          secrets: 'AFServerName, AFDatabaseName'
+          secrets: 'AFServerName, AFDatabaseNameAFGSG'
           
       - template: '/Templates/Utilities/InstallAFSDK.step.v0.yml@OpsGuildPipelineTools'
 

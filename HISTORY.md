@@ -1,5 +1,9 @@
 # Version History
 
+## 1.1.1 / 2022-03-04
+
+- Changed pipeline AF database name
+
 ## 1.1.0 / 2022-02-28
 
 - Updated dependencies
